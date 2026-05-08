@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practice — SSBForge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">SSB<span>FORGE</span></a>
+        <div class="nav-links" id="navLinks"></div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<div class="practice-page">
+  <!-- MODULE TABS HEADER -->
+  <div class="practice-header">
+    <div class="practice-header-inner">
+      <h1 id="pageTitle">Practice</h1>
+      <div class="module-tabs" id="moduleTabs">
+        <button class="module-tab" data-mode="tat">TAT</button>
+        <button class="module-tab" data-mode="wat">WAT</button>
+        <button class="module-tab" data-mode="ppdt">PPDT</button>
+        <button class="module-tab" data-mode="lecturette">Lecturette</button>
+        <button class="module-tab" data-mode="srt">SRT</button>
+        <button class="module-tab" data-mode="oir">OIR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE BODY -->
+  <div class="practice-body">
+    <!-- MAIN SLIDESHOW AREA -->
+    <div class="slideshow-area">
+
+      <!-- Slide display card -->
+      <div class="slideshow-card" id="slideshowCard">
+        <!-- Image slot (TAT, PPDT) -->
+        <img id="slideImage" src="" alt="Stimulus" class="hidden" />
+        <!-- Text slot (WAT, Lecturette, OIR) -->
+        <div class="slide-text-content" id="slideTextArea">
+          <div id="slideTextInner" class="slide-word">
+            Press Start
+          </div>
+        </div>
+        <!-- Progress bar -->
+        <div class="slide-progress-bar-wrap">
+          <div class="slide-progress-bar" id="progressBar" style="width:100%"></div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="slideshow-controls">
+        <button class="ctrl-btn primary" id="startBtn">▶ Start</button>
+        <button class="ctrl-btn" id="prevBtn" disabled>◀ Prev</button>
+        <button class="ctrl-btn" id="nextBtn" disabled>Next ▶</button>
+        <button class="ctrl-btn" id="resetBtn">↺ Reset</button>
+        <label class="auto-toggle">
+          <input type="checkbox" id="autoAdvance" checked />
+          Auto-advance
+        </label>
+        <span class="slide-counter" id="slideCounter">0 / 0</span>
+      </div>
+
+      <!-- Instructions box -->
+      <div class="slideshow-card" style="min-height:auto; padding: 1.5rem;">
+        <div class="sidebar-section-title" style="margin-bottom:0.75rem;">INSTRUCTIONS</div>
+        <p id="instructionText" style="font-size:14px; color:var(--text-muted); line-height:1.7;">
+          Select a module above to begin. Each module mirrors real SSB conditions with automatic timers.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: TIMER + CONTENT LIST -->
+    <div class="content-sidebar">
+
+      <!-- Timer -->
+      <div class="timer-panel">
+        <div class="timer-label">Time Remaining</div>
+        <div class="timer-display" id="timerDisplay">--:--</div>
+        <div class="timer-bar"><div class="timer-bar-fill" id="timerBarFill" style="width:100%"></div></div>
+        <div class="timer-info" id="timerInfo">Start a module to begin the timer.</div>
+        <div class="timer-controls">
+          <button class="ctrl-btn" id="timerPauseBtn">⏸ Pause</button>
+          <button class="ctrl-btn" id="timerSkipBtn">⏭ Skip</button>
+        </div>
+      </div>
+
+      <!-- Content list -->
+      <div>
+        <div class="sidebar-section-title" style="margin-bottom:0.75rem;">CONTENT IN THIS SET</div>
+        <div class="content-list" id="contentList"></div>
+        <div class="premium-lock-notice mt-1" id="premiumNotice">
+          🔒 More content available in <a href="premium.html">Premium (₹51/mo)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h2>Login to SSBForge</h2>
+    <input type="email" id="loginEmail" placeholder="Email address" class="modal-input" />
+    <input type="password" id="loginPassword" placeholder="Password" class="modal-input" />
+    <button class="btn-primary full-width" id="doLogin">Login</button>
+    <div class="modal-divider">or</div>
+    <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
+  </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/content.js"></script>
+<script src="js/practice.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hindu — SSBForge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">SSB<span>FORGE</span></a>
+        <div class="nav-links" id="navLinks"></div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<div class="newspaper-page">
+  <div class="newspaper-header">
+    <span class="section-label">DAILY CURRENT AFFAIRS</span>
+    <h1>The Hindu — Archive</h1>
+    <p>Fresh newspaper added daily. Stay sharp on current affairs for GD and Lecturette.</p>
+  </div>
+
+  <!-- How-to note for admin -->
+  <div id="adminNote" class="hidden" style="background:var(--dark-3);border:1px dashed var(--border-strong);padding:1rem 1.5rem;border-radius:var(--radius-lg);margin-bottom:2rem;font-size:13px;color:var(--text-muted);">
+    <strong style="color:var(--gold);">Admin tip:</strong> To add a newspaper, upload the PDF to your Google Drive folder (set sharing to "Anyone with the link can view"), then add an entry to <code style="color:var(--gold-light);">content/newspaper/index.json</code> in the format shown in the README. The paper will appear here automatically.
+  </div>
+
+  <!-- PDF viewer overlay -->
+  <div id="pdfOverlay" class="hidden" style="position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.85);display:flex;flex-direction:column;align-items:stretch;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.5rem;background:var(--dark-2);border-bottom:1px solid var(--border);">
+      <span id="pdfTitle" style="font-family:var(--font-cond);font-size:16px;letter-spacing:1px;color:var(--cream);">The Hindu</span>
+      <div style="display:flex;gap:0.75rem;">
+        <a id="pdfDownloadBtn" href="#" target="_blank" class="ctrl-btn" style="font-size:12px;">⬇ Download</a>
+        <button id="pdfClose" class="ctrl-btn" style="font-size:12px;">✕ Close</button>
+      </div>
+    </div>
+    <iframe id="pdfFrame" src="" style="flex:1;border:none;width:100%;"></iframe>
+  </div>
+
+  <div id="npLoading" class="np-loading">
+    <div style="font-size:32px;margin-bottom:1rem;">📰</div>
+    <p>Loading newspaper archive...</p>
+  </div>
+
+  <div class="newspaper-grid" id="newspaperGrid" style="display:none;"></div>
+
+  <div id="npError" class="hidden" style="text-align:center;padding:3rem;color:var(--text-muted);">
+    <div style="font-size:36px;margin-bottom:1rem;">📭</div>
+    <p>No newspapers found. Add PDFs to your Google Drive folder and update <code>content/newspaper/index.json</code>.</p>
+    <p style="margin-top:0.5rem;font-size:13px;">See <a href="https://github.com/your-repo/ssbforge/blob/main/README.md">README.md</a> for setup instructions.</p>
+  </div>
+
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Load newspaper index from content/newspaper/index.json
+// Format: [{ "date": "2025-01-15", "label": "Jan 15, 2025", "driveId": "GOOGLE_DRIVE_FILE_ID" }, ...]
+
+async function loadNewspapers() {
+  const grid = document.getElementById('newspaperGrid');
+  const loading = document.getElementById('npLoading');
+  const errEl = document.getElementById('npError');
+
+  try {
+    const resp = await fetch('content/newspaper/index.json');
+    if (!resp.ok) throw new Error('Not found');
+    const papers = await resp.json();
+
+    loading.style.display = 'none';
+
+    if (!papers.length) {
+      errEl.classList.remove('hidden');
+      return;
+    }
+
+    // Sort newest first
+    papers.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    grid.style.display = 'grid';
+    papers.forEach((p, i) => {
+      const card = document.createElement('div');
+      card.className = 'newspaper-card';
+      const isToday = p.date === new Date().toISOString().slice(0, 10);
+      card.innerHTML = `
+        <div class="np-date">${isToday ? '🆕 Today · ' : ''}${p.label}</div>
+        <div class="np-title">The Hindu</div>
+        <p style="font-size:13px;color:var(--text-muted);">Edition: ${p.label}</p>
+        <button class="np-open" data-id="${p.driveId}" data-label="${p.label}">Open PDF</button>
+      `;
+      card.querySelector('.np-open').addEventListener('click', function() {
+        openPDF(this.dataset.id, this.dataset.label);
+      });
+      grid.appendChild(card);
+    });
+  } catch(e) {
+    loading.style.display = 'none';
+    errEl.classList.remove('hidden');
+  }
+}
+
+function openPDF(driveId, label) {
+  const overlay = document.getElementById('pdfOverlay');
+  const frame = document.getElementById('pdfFrame');
+  const title = document.getElementById('pdfTitle');
+  const dl = document.getElementById('pdfDownloadBtn');
+
+  // Google Drive embed URL
+  const embedUrl = `https://drive.google.com/file/d/${driveId}/preview`;
+  const downloadUrl = `https://drive.google.com/uc?export=download&id=${driveId}`;
+
+  title.textContent = `The Hindu — ${label}`;
+  frame.src = embedUrl;
+  dl.href = downloadUrl;
+  overlay.classList.remove('hidden');
+  overlay.style.display = 'flex';
+}
+
+document.getElementById('pdfClose').addEventListener('click', () => {
+  document.getElementById('pdfOverlay').style.display = 'none';
+  document.getElementById('pdfFrame').src = '';
+});
+
+loadNewspapers();
+
+// Show admin note if logged-in as admin
+const user = JSON.parse(localStorage.getItem('ssbUser') || 'null');
+if (user && user.role === 'admin') {
+  document.getElementById('adminNote').classList.remove('hidden');
+}
+</script>
+</body>
+</html>

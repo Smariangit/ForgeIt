@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium — SSBForge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">SSB<span>FORGE</span></a>
+        <div class="nav-links" id="navLinks"></div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<div class="premium-page">
+  <!-- HERO PRICE -->
+  <div class="premium-hero">
+    <span class="section-label">UNLOCK EVERYTHING</span>
+    <h1>Premium Access</h1>
+    <div style="display:flex;align-items:baseline;justify-content:center;gap:1rem;margin:0.75rem 0 0.25rem;">
+      <div class="price" style="margin:0;"><sup>₹</sup>51<span style="font-size:36px;">/mo</span></div>
+    </div>
+    
+    <div class="price-note">Less than ₹2 per day · Cancel anytime</div>
+    <div style="margin-top:0.75rem;display:inline-block;background:rgba(58,125,68,0.15);border:1px solid var(--success);padding:0.4rem 1.2rem;border-radius:4px;font-size:13px;color:#7dca89;">
+      ✓ Most affordable SSB prep in India
+    </div>
+  </div>
+
+  <!-- FEATURES GRID -->
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="fi-icon">🖼️</div>
+      <h3>Unlimited TAT Images</h3>
+      <p>Access our full library of 300+ TAT stimulus images with timer and story prompts. New images added weekly.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">✍️</div>
+      <h3>Full WAT Word Bank</h3>
+      <p>500+ words with curated response strategies. Practice full timed sets matching actual SSB format.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">👥</div>
+      <h3>PPDT Picture Sets</h3>
+      <p>200+ PPDT images, organised by clarity level and OLQ signals. Perfect for story construction practice.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">🎤</div>
+      <h3>Lecturette Topic Bank</h3>
+      <p>300+ curated topics covering defence, current affairs, science, and social issues with prep time simulation.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">📊</div>
+      <h3>Full OIR Paper Library</h3>
+      <p>30+ complete OIR papers — verbal and non-verbal. Timed, scored, and explained.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">📰</div>
+      <h3>Current Affairs</h3>
+      <p>Boost your general knowledge and awareness through current affairs, updated everyday. Build current affairs depth for GD rounds.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">🧠</div>
+      <h3>Mind Forge</h3>
+      <p>Unlock powerful insights from the world’s greatest self-development books—train your mind with the right ideas, build officer-like qualities, and become the leader you're meant to be.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">🚫</div>
+      <h3>Zero Ads, Forever</h3>
+      <p>SSBForge will never show ads. Premium keeps the lights on so you can focus on preparation.</p>
+    </div>
+    <div class="feature-item">
+      <div class="fi-icon">⚡</div>
+      <h3>Priority New Content</h3>
+      <p>Premium users get new material first — every paper, image, and topic we add lands in your account immediately.</p>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div style="background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:3rem;overflow:hidden;">
+    <table style="width:100%;border-collapse:collapse;font-size:14px;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--border);">
+          <th style="padding:1rem 1.5rem;text-align:left;color:var(--text-muted);font-family:var(--font-cond);letter-spacing:1px;font-weight:500;">FEATURE</th>
+          <th style="padding:1rem;text-align:center;color:var(--text-muted);font-family:var(--font-cond);letter-spacing:1px;font-weight:500;">FREE</th>
+          <th style="padding:1rem;text-align:center;color:var(--gold);font-family:var(--font-cond);letter-spacing:1px;font-weight:700;background:var(--gold-dim);">PREMIUM ₹51</th>
+        </tr>
+      </thead>
+      <tbody id="comparisonBody"></tbody>
+    </table>
+  </div>
+
+  <!-- PAYMENT SECTION -->
+  <div class="payment-section" id="paymentSection">
+    <h2>Get Premium Now</h2>
+    <p>Secure payment via Razorpay. Supports UPI, cards, netbanking, wallets.</p>
+    <button class="btn-primary" id="razorpayBtn">Pay ₹51 via Razorpay</button>
+    <div class="payment-logos">
+      <span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>Net Banking</span><span>Wallets</span>
+    </div>
+    <p style="margin-top:1.5rem;font-size:12px;color:var(--text-muted);">
+      After payment, your account is upgraded instantly. Need help? 
+      <a href="mailto:contact@ssbforge.in">contact@ssbforge.in</a>
+    </p>
+  </div>
+
+  <!-- Already premium notice (shown if logged in + premium) -->
+  <div id="alreadyPremium" class="hidden" style="text-align:center;padding:3rem;background:var(--dark-2);border:1px solid var(--success);border-radius:var(--radius-lg);">
+    <div style="font-size:40px;margin-bottom:1rem;">⭐</div>
+    <h2 style="font-family:var(--font-serif);color:var(--cream);margin-bottom:0.5rem;">You're Premium!</h2>
+    <p style="color:var(--text-muted);">All content is unlocked. Happy preparation!</p>
+    <a href="practice.html" class="btn-primary" style="display:inline-block;margin-top:1.5rem;">Go Practice</a>
+  </div>
+
+</div>
+
+<!-- Razorpay SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- EmailJS — free 200 emails/month. Sign up at emailjs.com -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Comparison table data
+const rows = [
+  ["TAT Images", "5 images", "100+ images"],
+  ["WAT Word Sets", "1 set (30 words)", "Full bank (100+ words)"],
+  ["PPDT Pictures", "3 pictures", "100+ pictures"],
+  ["Lecturette Topics", "10 topics", "100+ topics"],
+  ["OIR Papers", "1 paper", "30+ papers"],
+  ["Current Affairs", "✕", "✓ Daily"],
+  ["Mind Forge ", "✕", "✓"],
+  ["Ads", "✕ None", "✕ None"],
+  ["New Content", "✕ None", "Instant access"],
+];
+const tbody = document.getElementById('comparisonBody');
+rows.forEach(([feat, free, prem]) => {
+  const tr = document.createElement('tr');
+  tr.style.borderBottom = '1px solid var(--border)';
+  tr.innerHTML = `
+    <td style="padding:0.85rem 1.5rem;color:var(--text);">${feat}</td>
+    <td style="padding:0.85rem 1rem;text-align:center;color:var(--text-muted);">${free}</td>
+    <td style="padding:0.85rem 1rem;text-align:center;color:var(--gold);background:var(--gold-dim);">${prem}</td>
+  `;
+  tbody.appendChild(tr);
+});
+
+// Razorpay payment
+document.getElementById('razorpayBtn').addEventListener('click', function() {
+  const user = JSON.parse(localStorage.getItem('ssbUser') || 'null');
+  if (!user) {
+    document.getElementById('loginModal').classList.add('active');
+    return;
+  }
+
+  // NOTE: Replace 'YOUR_RAZORPAY_KEY_ID' with your actual Razorpay key from razorpay.com dashboard
+  // Amount is in paise: 51 rupees = 5100 paise
+  const options = {
+    key: 'YOUR_RAZORPAY_KEY_ID',
+    amount: 5100,
+    currency: 'INR',
+    name: 'SSBForge',
+    description: 'Premium Monthly Access',
+    image: '',
+    prefill: {
+      email: user.email || '',
+      name: user.name || '',
+    },
+    notes: { user_email: user.email || '' },
+    theme: { color: '#C9A84C' },
+    handler: function(response) {
+      // On success: upgrade user in localStorage (in production, verify on your backend)
+      const u = JSON.parse(localStorage.getItem('ssbUser') || '{}');
+      u.isPremium = true;
+      u.premiumExpiry = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
+      u.razorpayId = response.razorpay_payment_id;
+      localStorage.setItem('ssbUser', JSON.stringify(u));
+
+      // Send confirmation email via EmailJS (free — 200/month)
+      // Setup: emailjs.com → Create account → Add Gmail service → Create template
+      // Template variables used: {{to_name}}, {{to_email}}, {{payment_id}}, {{expiry_date}}
+      // Replace YOUR_EMAILJS_PUBLIC_KEY, YOUR_SERVICE_ID, YOUR_TEMPLATE_ID below
+      try {
+        emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+          to_name: u.name || 'Aspirant',
+          to_email: u.email,
+          payment_id: response.razorpay_payment_id,
+          expiry_date: new Date(u.premiumExpiry).toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' }),
+          amount: '₹51'
+        });
+      } catch(emailErr) {
+        console.log('Email not configured yet:', emailErr);
+      }
+
+      alert('✅ Payment successful! Premium unlocked. Welcome aboard!\n\nA confirmation has been sent to ' + u.email);
+      document.getElementById('paymentSection').classList.add('hidden');
+      document.getElementById('alreadyPremium').classList.remove('hidden');
+    },
+    modal: { ondismiss: function() { console.log('Payment dismissed'); } }
+  };
+
+  try {
+    const rzp = new Razorpay(options);
+    rzp.open();
+  } catch(e) {
+    alert('Razorpay could not load. Please add your Razorpay Key ID in premium.html (see instructions in README).');
+  }
+});
+
+// Check if already premium
+const u = JSON.parse(localStorage.getItem('ssbUser') || 'null');
+if (u && u.isPremium) {
+  document.getElementById('paymentSection').classList.add('hidden');
+  document.getElementById('alreadyPremium').classList.remove('hidden');
+}
+</script>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h2>Login First</h2>
+    <p>Please login or create an account to subscribe.</p>
+    <input type="email" id="loginEmail" placeholder="Email address" class="modal-input" />
+    <input type="password" id="loginPassword" placeholder="Password" class="modal-input" />
+    <button class="btn-primary full-width" id="doLogin">Login</button>
+    <div class="modal-divider">or</div>
+    <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
+  </div>
+</div>
+
+</body>
+</html>
