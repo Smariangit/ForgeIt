@@ -1,0 +1,22 @@
+[
+  {"id":"srt_1","label":"Situation 1","situation":"You are trekking alone and notice a fellow trekker has twisted his ankle 5 km from the base camp.","free":true},
+  {"id":"srt_2","label":"Situation 2","situation":"You see a shop on fire. The shopkeeper is inside and people around are just watching.","free":true},
+  {"id":"srt_3","label":"Situation 3","situation":"During a group project, you realise your team leader's plan has a serious flaw that will cause failure.","free":true},
+  {"id":"srt_4","label":"Situation 4","situation":"You witness a road accident. The injured person needs immediate help but people are reluctant to help fearing legal trouble.","free":true},
+  {"id":"srt_5","label":"Situation 5","situation":"Your friend confides that he has been cheating in exams. You are appearing for the same exam next week.","free":true},
+  {"id":"srt_6","label":"Situation 6","situation":"You are in a bus. A passenger collapses suddenly. The driver says he cannot stop.","free":true},
+  {"id":"srt_7","label":"Situation 7","situation":"You are on night duty. You find your senior is misusing government property.","free":true},
+  {"id":"srt_8","label":"Situation 8","situation":"A classmate is being bullied by seniors in the hostel. He is too scared to complain.","free":true},
+  {"id":"srt_9","label":"Situation 9","situation":"You find a wallet with cash and ID cards on the road. The owner's address is on the ID.","free":true},
+  {"id":"srt_10","label":"Situation 10","situation":"During a river crossing exercise, a batch-mate panics in the middle of the river.","free":true},
+  {"id":"srt_11","label":"Situation 11","situation":"You are leading a platoon and your radio stops working 3 km behind enemy lines.","free":true},
+  {"id":"srt_12","label":"Situation 12","situation":"You discover that a supplier has been bribing an official to get a government contract.","free":true},
+  {"id":"srt_13","label":"Situation 13","situation":"Your team is exhausted after a 20 km march. There is still 5 km left. Morale is very low.","free":true},
+  {"id":"srt_14","label":"Situation 14","situation":"An elderly woman is being harassed on a crowded bus. Other passengers are ignoring it.","free":true},
+  {"id":"srt_15","label":"Situation 15","situation":"You are giving a presentation to senior officers when you realise you have incorrect data.","free":true},
+  {"id":"srt_16","label":"Situation 16","situation":"You are part of a rescue team. One of your colleagues refuses to proceed, citing danger.","free":false},
+  {"id":"srt_17","label":"Situation 17","situation":"You discover your batch-mate has been leaking examination papers to others.","free":false},
+  {"id":"srt_18","label":"Situation 18","situation":"A fire breaks out in the camp kitchen at midnight. Most personnel are asleep.","free":false},
+  {"id":"srt_19","label":"Situation 19","situation":"You are in charge of supplies. You find 20% of rations are spoiled and troops are hungry.","free":false},
+  {"id":"srt_20","label":"Situation 20","situation":"During a flood relief operation, locals are fighting over relief material.","free":false}
+]

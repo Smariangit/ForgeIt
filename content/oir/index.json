@@ -1,0 +1,7 @@
+[
+  {"id":"oir_1","label":"OIR Paper 1 (Verbal + Non-Verbal)","src":"content/oir/oir_paper_1.jpg","free":true,"timeSeconds":1020},
+  {"id":"oir_2","label":"OIR Paper 2","src":"content/oir/oir_paper_2.jpg","free":false,"timeSeconds":1020},
+  {"id":"oir_3","label":"OIR Paper 3","src":"content/oir/oir_paper_3.jpg","free":false,"timeSeconds":1020},
+  {"id":"oir_4","label":"OIR Paper 4","src":"content/oir/oir_paper_4.jpg","free":false,"timeSeconds":1020},
+  {"id":"oir_5","label":"OIR Paper 5","src":"content/oir/oir_paper_5.jpg","free":false,"timeSeconds":1020}
+]

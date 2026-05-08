@@ -1,0 +1,22 @@
+[
+  {"id":"lec_1","label":"India's Role in UN Peacekeeping","topic":"India's Role in UN Peacekeeping","free":true},
+  {"id":"lec_2","label":"Digital India: Progress and Challenges","topic":"Digital India: Progress and Challenges","free":true},
+  {"id":"lec_3","label":"Women in the Indian Armed Forces","topic":"Women in the Indian Armed Forces","free":true},
+  {"id":"lec_4","label":"Climate Change and National Security","topic":"Climate Change and National Security","free":true},
+  {"id":"lec_5","label":"India's Space Programme","topic":"India's Space Programme","free":true},
+  {"id":"lec_6","label":"Cyber Warfare: The New Battlefield","topic":"Cyber Warfare: The New Battlefield","free":true},
+  {"id":"lec_7","label":"India's Border Management","topic":"India's Border Management","free":true},
+  {"id":"lec_8","label":"Nuclear Deterrence in South Asia","topic":"Nuclear Deterrence in South Asia","free":true},
+  {"id":"lec_9","label":"Role of Youth in Nation Building","topic":"Role of Youth in Nation Building","free":true},
+  {"id":"lec_10","label":"India-China Relations","topic":"India-China Relations","free":true},
+  {"id":"lec_11","label":"India's Arctic Policy","topic":"India's Arctic Policy","free":false},
+  {"id":"lec_12","label":"Hypersonic Missiles and Future Warfare","topic":"Hypersonic Missiles and Future Warfare","free":false},
+  {"id":"lec_13","label":"Agnipath Scheme: Pros and Cons","topic":"Agnipath Scheme: Pros and Cons","free":false},
+  {"id":"lec_14","label":"QUAD and Indo-Pacific Strategy","topic":"QUAD and Indo-Pacific Strategy","free":false},
+  {"id":"lec_15","label":"AI in Defence Applications","topic":"AI in Defence Applications","free":false},
+  {"id":"lec_16","label":"India-Pakistan Relations","topic":"India-Pakistan Relations","free":false},
+  {"id":"lec_17","label":"Terrorism: Causes and Solutions","topic":"Terrorism: Causes and Solutions","free":false},
+  {"id":"lec_18","label":"India's Defence Exports","topic":"India's Defence Exports","free":false},
+  {"id":"lec_19","label":"Role of Media in Democracy","topic":"Role of Media in Democracy","free":false},
+  {"id":"lec_20","label":"Atmanirbhar Bharat in Defence","topic":"Atmanirbhar Bharat in Defence","free":false}
+]

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About SSB — SSBForge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">SSB<span>FORGE</span></a>
+        <div class="nav-links" id="navLinks"></div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<div style="padding-top:60px;">
+
+  <!-- HERO BANNER -->
+  <div style="background:linear-gradient(160deg,var(--dark) 0%,var(--dark-3) 100%);border-bottom:1px solid var(--border);padding:4rem 2rem 3rem;text-align:center;">
+    <span class="section-label">COMPLETE GUIDE</span>
+    <h1 style="font-family:var(--font-serif);font-size:clamp(32px,5vw,56px);color:var(--cream);margin:0.5rem 0;">The SSB Interview</h1>
+    <p style="color:var(--text-muted);max-width:580px;margin:0 auto;font-size:16px;">Everything you need to know about the Services Selection Board — structure, tests, OLQs, and how to prepare.</p>
+  </div>
+
+  <!-- QUICK NAV -->
+  <div style="background:var(--dark-2);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;padding:0 1rem;">
+    <div style="display:inline-flex;gap:0;max-width:1200px;margin:0 auto;">
+      <a href="#what-is-ssb" class="module-tab" style="text-decoration:none;">What is SSB</a>
+      <a href="#olqs" class="module-tab" style="text-decoration:none;">15 OLQs</a>
+      <a href="#stage1" class="module-tab" style="text-decoration:none;">Stage 1</a>
+      <a href="#stage2" class="module-tab" style="text-decoration:none;">Stage 2</a>
+      <a href="#psychology" class="module-tab" style="text-decoration:none;">Psych Tests</a>
+      <a href="#gto" class="module-tab" style="text-decoration:none;">GTO</a>
+      <a href="#interview" class="module-tab" style="text-decoration:none;">Interview</a>
+      <a href="#tips" class="module-tab" style="text-decoration:none;">Tips</a>
+    </div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;padding:3rem 2rem 5rem;">
+
+    <!-- WHAT IS SSB -->
+    <section id="what-is-ssb" style="margin-bottom:4rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">OVERVIEW</span>
+        <h2 class="ssb-h2">What is the SSB Interview?</h2>
+      </div>
+      <p class="ssb-para">The Services Selection Board (SSB) is the selection mechanism used by the Indian Armed Forces — Army, Navy, and Air Force — to identify candidates with Officer Like Qualities (OLQs). It is a five-day residential assessment conducted at one of several SSB centres across India.</p>
+      <p class="ssb-para">Unlike a written exam, SSB tests your personality, not your knowledge. Assessors — a psychologist, Group Testing Officer (GTO), and an Interviewing Officer (IO) — independently observe you over five days and give an independent recommendation. Their collective assessment determines your Conference result.</p>
+
+      <div class="info-grid" style="margin-top:2rem;">
+        <div class="info-card">
+          <div class="info-icon">📅</div>
+          <div class="info-label">Duration</div>
+          <div class="info-val">5 Days</div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">👁️</div>
+          <div class="info-label">Assessors</div>
+          <div class="info-val">3 Independent</div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🎯</div>
+          <div class="info-label">Selection Rate</div>
+          <div class="info-val">~1 in 40</div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">✍️</div>
+          <div class="info-label">Tests</div>
+          <div class="info-val">12+ Tasks</div>
+        </div>
+      </div>
+
+      <div class="ssb-timeline" style="margin-top:2.5rem;">
+        <div class="tl-item"><div class="tl-day">Day 1</div><div class="tl-content"><strong>Screening (Stage 1)</strong> — OIR Test + PPDT. Roughly 60% are screened out.</div></div>
+        <div class="tl-item"><div class="tl-day">Day 2</div><div class="tl-content"><strong>Psychology Tests</strong> — TAT, WAT, SRT, SD. Conducted in the morning. Afternoon is free.</div></div>
+        <div class="tl-item"><div class="tl-day">Day 3–4</div><div class="tl-content"><strong>GTO Tasks</strong> — Group Discussion, Group Planning, PGT, HGT, Lecturette, Command Task, FGT, IO.</div></div>
+        <div class="tl-item"><div class="tl-day">Day 4–5</div><div class="tl-content"><strong>Personal Interview</strong> — 45–60 minute one-on-one with the Interviewing Officer.</div></div>
+        <div class="tl-item tl-last"><div class="tl-day">Day 5</div><div class="tl-content"><strong>Conference</strong> — All three assessors meet. Final Recommended / Not Recommended decision.</div></div>
+      </div>
+    </section>
+
+    <!-- 15 OLQs -->
+    <section id="olqs" style="margin-bottom:4rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">CORE FRAMEWORK</span>
+        <h2 class="ssb-h2">The 15 Officer Like Qualities</h2>
+      </div>
+      <p class="ssb-para">Every task in SSB — written, spoken, physical, or group — is designed to reveal the presence or absence of these 15 OLQs. They are grouped into four clusters.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1.5rem;">
+
+        <div class="olq-cluster">
+          <div class="cluster-title">🧠 Planning & Organising</div>
+          <div class="olq-list">
+            <div class="olq-item"><span class="olq-num">1</span><div><strong>Effective Intelligence</strong><p>Practical, common-sense thinking applied to real situations. Not just IQ — the ability to adapt knowledge to varied contexts.</p></div></div>
+            <div class="olq-item"><span class="olq-num">2</span><div><strong>Reasoning Ability</strong><p>Logical deduction and sound judgement. Drawing correct conclusions from incomplete information.</p></div></div>
+            <div class="olq-item"><span class="olq-num">3</span><div><strong>Organising Ability</strong><p>Marshalling resources — people, time, material — in an efficient and purposeful way.</p></div></div>
+          </div>
+        </div>
+
+        <div class="olq-cluster">
+          <div class="cluster-title">💪 Social Effectiveness</div>
+          <div class="olq-list">
+            <div class="olq-item"><span class="olq-num">4</span><div><strong>Social Adaptability</strong><p>Getting along with a wide range of people, adapting behaviour to social context without losing integrity.</p></div></div>
+            <div class="olq-item"><span class="olq-num">5</span><div><strong>Cooperation</strong><p>Willingness to subordinate personal interests for the team. Supporting others, sharing credit.</p></div></div>
+            <div class="olq-item"><span class="olq-num">6</span><div><strong>Sense of Responsibility</strong><p>Taking ownership of tasks and outcomes. Not passing blame. Following through on commitments.</p></div></div>
+          </div>
+        </div>
+
+        <div class="olq-cluster">
+          <div class="cluster-title">🔥 Dynamic Qualities</div>
+          <div class="olq-list">
+            <div class="olq-item"><span class="olq-num">7</span><div><strong>Initiative</strong><p>Acting without being told. Spotting what needs to be done and doing it.</p></div></div>
+            <div class="olq-item"><span class="olq-num">8</span><div><strong>Self Confidence</strong><p>Belief in your own ability to handle situations. Expressed through calm decisiveness, not arrogance.</p></div></div>
+            <div class="olq-item"><span class="olq-num">9</span><div><strong>Speed of Decision</strong><p>Making timely decisions under pressure. Indecision is as costly as a wrong decision.</p></div></div>
+            <div class="olq-item"><span class="olq-num">10</span><div><strong>Ability to Influence the Group</strong><p>Moving others toward a goal through conviction, not authority. Persuasion, not domination.</p></div></div>
+            <div class="olq-item"><span class="olq-num">11</span><div><strong>Liveliness</strong><p>Energy, enthusiasm, and a positive outlook that is contagious. Not loudness — genuine vigour.</p></div></div>
+          </div>
+        </div>
+
+        <div class="olq-cluster">
+          <div class="cluster-title">🎖️ Leadership & Integrity</div>
+          <div class="olq-list">
+            <div class="olq-item"><span class="olq-num">12</span><div><strong>Stamina</strong><p>Physical and mental endurance. Maintaining performance through fatigue, stress, and discomfort.</p></div></div>
+            <div class="olq-item"><span class="olq-num">13</span><div><strong>Courage</strong><p>Physical and moral courage. Saying what is true, doing what is right even when it is difficult.</p></div></div>
+            <div class="olq-item"><span class="olq-num">14</span><div><strong>Determination</strong><p>Persistent effort toward a goal despite obstacles. The refusal to give up.</p></div></div>
+            <div class="olq-item"><span class="olq-num">15</span><div><strong>Sense of Honour & Integrity</strong><p>Consistency between words and actions. Truthfulness. Living by a personal code of ethics.</p></div></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ssb-callout" style="margin-top:2rem;">
+        <strong style="color:var(--gold);">Key insight:</strong> You cannot fake OLQs over five days. Assessors are trained to spot inconsistency between your psychology results, GTO performance, and interview persona. The only reliable strategy is genuine self-development.
+      </div>
+    </section>
+
+    <!-- STAGE 1 -->
+    <section id="stage1" style="margin-bottom:4rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">DAY 1</span>
+        <h2 class="ssb-h2">Stage 1 — Screening</h2>
+      </div>
+      <p class="ssb-para">Stage 1 is a same-day filter. About 40–60% of candidates are screened in; the rest are sent back immediately. It consists of two tests.</p>
+
+      <div class="test-block">
+        <div class="test-name">Officer Intelligence Rating (OIR)</div>
+        <div class="test-meta"><span class="tag">Verbal + Non-Verbal</span><span class="tag">~17 minutes total</span><span class="tag">Individual</span></div>
+        <p>Two booklets — one verbal (analogies, series completion, odd-one-out, coding-decoding) and one non-verbal (figure series, pattern completion, spatial reasoning). Speed and accuracy both matter. The OIR gives you a rating from 1 (best) to 5 (below standard). Aim for OIR Grade 1 or 2.</p>
+        <div class="prep-tip">Practice: Use the OIR module on this site. Aim to complete each booklet in under 8 minutes.</div>
+      </div>
+
+      <div class="test-block" style="margin-top:1.5rem;">
+        <div class="test-name">PPDT — Picture Perception & Discussion Test</div>
+        <div class="test-meta"><span class="tag">30s observation</span><span class="tag">4 min writing</span><span class="tag">Group discussion</span></div>
+        <p>A hazy image is shown for 30 seconds. You then write a story (4 minutes) identifying: number of characters, approximate age, mood (positive/negative), and a complete narrative with beginning, middle, and end. Characters must include a hero with strong OLQs.</p>
+        <p style="margin-top:0.75rem;">After writing, your group of 15–20 candidates discusses the image for 15 minutes. Assessors watch how you interact: do you listen, do you push your story forward constructively, do you lead, do you collaborate?</p>
+        <div class="prep-tip">Practice: Write stories with a single decisive protagonist. In GD, enter early, speak clearly, and help build consensus — don't just push your own narrative.</div>
+      </div>
+    </section>
+
+    <!-- STAGE 2 PSYCH -->
+    <section id="psychology" style="margin-bottom:4rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">DAY 2 — STAGE 2</span>
+        <h2 class="ssb-h2">Psychological Tests</h2>
+      </div>
+      <p class="ssb-para">The psychology battery is conducted on Day 2 morning. Four tests reveal your subconscious thought patterns. Write freely — assessors look for consistency and positivity, not literary quality.</p>
+
+      <div class="test-block">
+        <div class="test-name">TAT — Thematic Apperception Test</div>
+        <div class="test-meta"><span class="tag">12 images + 1 blank</span><span class="tag">30 seconds per image</span></div>
+        <p>A series of ambiguous images is shown. You write one story per image in 30 seconds. The final slide is blank — you write any story you like. Each story must have: a definite hero (who has OLQs), a clear situation, and a positive resolution. Avoid tragedies, passive heroes, or unhelpful characters.</p>
+        <div class="prep-tip">Practice: Your protagonist must act. They must face a challenge, take initiative, and resolve it positively. Never write a story where the hero gives up, dies, or fails morally.</div>
+      </div>
+
+      <div class="test-block" style="margin-top:1.5rem;">
+        <div class="test-name">WAT — Word Association Test</div>
+        <div class="test-meta"><span class="tag">60 words</span><span class="tag">15 seconds per word</span></div>
+        <p>60 words are shown one by one on a screen, 15 seconds each. Write the first complete sentence that comes to your mind. There is no right or wrong answer — but patterns matter. Positive, action-oriented, socially connected responses reflect healthy OLQs. Avoid negative, aggressive, or self-pitying sentences.</p>
+        <div class="prep-tip">Train your instincts: for every word, practise writing an action-oriented, positive sentence in under 5 seconds. The 15-second pressure is real.</div>
+      </div>
+
+      <div class="test-block" style="margin-top:1.5rem;">
+        <div class="test-name">SRT — Situation Reaction Test</div>
+        <div class="test-meta"><span class="tag">60 situations</span><span class="tag">30 minutes total</span></div>
+        <p>60 everyday situations are given (e.g., "You see a man drowning in a river nearby"). You write what you would do in a few words. Speed is critical — roughly 30 seconds per situation. Responses must be practical, moral, and show initiative.</p>
+        <p style="margin-top:0.75rem;">Common SRT themes: accidents, natural disasters, conflict situations, moral dilemmas, resource shortages. In every case, the ideal response involves taking charge, helping others, and acting within ethical limits.</p>
+        <div class="prep-tip">Don't overthink. Write your genuine instinctive response. Assessors distrust overly polished answers — they look for spontaneity and character.</div>
+      </div>
+
+      <div class="test-block" style="margin-top:1.5rem;">
+        <div class="test-name">SD — Self Description</div>
+        <div class="test-meta"><span class="tag">5 perspectives</span><span class="tag">~15 minutes</span></div>
+        <p>You write what five people think of you: your parents, teacher, friend, yourself, and the person you want to become. Assessors compare your self-description with how you actually behave in GTO tasks and your IO interview. Inconsistency is a red flag.</p>
+        <div class="prep-tip">Be honest and self-aware. Mention genuine weaknesses alongside genuine strengths. Don't describe a perfect person — describe a real one who is growing.</div>
+      </div>
+    </section>
+
+    <!-- GTO -->
+    <section id="gto" style="margin-bottom:4rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">DAY 3–4 — STAGE 2</span>
+        <h2 class="ssb-h2">GTO — Group Testing Officer Tasks</h2>
+      </div>
+      <p class="ssb-para">The GTO series is the most physically and socially demanding part of SSB. You are observed in group and individual settings across 9 tasks over two days.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;">
+        <div class="gto-card"><div class="gto-name">Group Discussion (GD)</div><p>Two rounds: one on a current affairs topic, one on a concrete problem. No appointed leader. Assessors watch your content, listening ability, and group dynamics contribution.</p></div>
+        <div class="gto-card"><div class="gto-name">Group Planning Exercise (GPE)</div><p>A model terrain is shown. A scenario is read out. You write your individual plan, then the group discusses and presents a unified plan. Tests planning, synthesis, and communication.</p></div>
+        <div class="gto-card"><div class="gto-name">Progressive Group Task (PGT)</div><p>The group must cross an obstacle course using limited material (planks, ropes, poles). Four obstacles of increasing difficulty. No appointed leader — leadership emerges organically.</p></div>
+        <div class="gto-card"><div class="gto-name">Half Group Task (HGT)</div><p>Same as PGT but with half the group (7–8 candidates). More individual pressure. Less room to hide.</p></div>
+        <div class="gto-card"><div class="gto-name">Lecturette</div><p>Choose one of four topics. 3 minutes to prepare, 3 minutes to speak to your group. Assessed on fluency, structure, confidence, and content.</p></div>
+        <div class="gto-card"><div class="gto-name">Command Task</div><p>You are made commander of 2–3 subordinates (other candidates). Complete an obstacle using given resources. Tests your leadership style — do you command, delegate, and take responsibility?</p></div>
+        <div class="gto-card"><div class="gto-name">Final Group Task (FGT)</div><p>Full group. One obstacle. Treated as a final opportunity. High energy, decisive action, and collaborative spirit all matter.</p></div>
+        <div class="gto-card"><div class="gto-name">Individual Obstacles (IO)</div><p>10 obstacles graded 1–10 by difficulty. Attempted alone, scored on the total points. Tests physical confidence and risk-taking within ability.</p></div>
+        <div class="gto-card"><div class="gto-name">Snake Race / Group Obstacle Race</div><p>Physical team relay. Less formally assessed, but energy, sportsmanship, and camaraderie observed.</p></div>
+      </div>
+
+      <div class="ssb-callout" style="margin-top:2rem;">
+        <strong style="color:var(--gold);">GTO Golden Rule:</strong> Do something. Inaction is the worst outcome. A wrong idea, stated confidently and amended when challenged, is far better than silence.
+      </div>
+    </section>
+
+    <!-- INTERVIEW -->
+    <section id="interview" style="margin-bottom:4rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">DAY 4–5</span>
+        <h2 class="ssb-h2">The Personal Interview</h2>
+      </div>
+      <p class="ssb-para">A 45–60 minute one-on-one with the Interviewing Officer (IO). This is not a quiz — it is a structured conversation designed to understand who you are. The IO has already read your PIQ (Personal Information Questionnaire) filled on Day 1.</p>
+
+      <div style="margin-top:1.5rem;display:flex;flex-direction:column;gap:1rem;">
+        <div class="interview-block"><div class="ib-label">Phase 1: Rapport Building</div><p>The IO creates a comfortable atmosphere. Casual questions about your journey, hometown, family. Be natural — this is where genuine personality shows.</p></div>
+        <div class="interview-block"><div class="ib-label">Phase 2: Family & Background</div><p>Parents' professions, siblings, upbringing, values instilled at home. The IO is building a picture of your foundational influences.</p></div>
+        <div class="interview-block"><div class="ib-label">Phase 3: Education & Career</div><p>Why you chose your stream, academic performance, college activities, failures and how you handled them.</p></div>
+        <div class="interview-block"><div class="ib-label">Phase 4: Defence Motivation</div><p>Why the Armed Forces specifically? What do you know about the service you're applying for? Which regiment/branch appeals to you and why? Be specific and genuine.</p></div>
+        <div class="interview-block"><div class="ib-label">Phase 5: Current Affairs & GK</div><p>Geo-political situations, defence news, national issues. Not a test of facts — a test of whether you have an informed, considered opinion.</p></div>
+        <div class="interview-block"><div class="ib-label">Phase 6: Self-Assessment</div><p>Strengths, weaknesses, life goals, role models, challenges overcome. Consistency with your SD test is critical here.</p></div>
+      </div>
+
+      <div class="ssb-callout" style="margin-top:2rem;">
+        <strong style="color:var(--gold);">Interview truth:</strong> The IO is not trying to trick you. They are trying to know you. The candidate who is most self-aware and most honest — not most polished — tends to fare best.
+      </div>
+    </section>
+
+    <!-- TIPS -->
+    <section id="tips" style="margin-bottom:2rem;">
+      <div class="ssb-section-head">
+        <span class="section-label">PREPARATION</span>
+        <h2 class="ssb-h2">How to Actually Prepare</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:1.5rem;">
+        <div class="tip-card">
+          <div style="font-size:28px;margin-bottom:0.75rem;">📖</div>
+          <h3 style="font-family:var(--font-cond);color:var(--gold);margin-bottom:0.5rem;font-size:17px;">Read daily</h3>
+          <p>The Hindu every morning. Focus on defence, foreign policy, and social issues. Build genuine opinions — the IO can spot borrowed ones immediately.</p>
+        </div>
+        <div class="tip-card">
+          <div style="font-size:28px;margin-bottom:0.75rem;">🪞</div>
+          <h3 style="font-family:var(--font-cond);color:var(--gold);margin-bottom:0.5rem;font-size:17px;">Self-awareness first</h3>
+          <p>Write your PIQ answers now, before you go. Know your own story — your decisions, your values, your turning points. The IO asks about you.</p>
+        </div>
+        <div class="tip-card">
+          <div style="font-size:28px;margin-bottom:0.75rem;">🏃</div>
+          <h3 style="font-family:var(--font-cond);color:var(--gold);margin-bottom:0.5rem;font-size:17px;">Physical fitness</h3>
+          <p>For Individual Obstacles and the overall stamina test. Run 5km daily. Do pull-ups and dips. Physical confidence translates directly into psychological confidence.</p>
+        </div>
+        <div class="tip-card">
+          <div style="font-size:28px;margin-bottom:0.75rem;">🗣️</div>
+          <h3 style="font-family:var(--font-cond);color:var(--gold);margin-bottom:0.5rem;font-size:17px;">Speak out loud</h3>
+          <p>Practice Lecturette and GD out loud, not just in your head. Fluency under pressure requires repetition. Use the Practice module on this site.</p>
+        </div>
+        <div class="tip-card">
+          <div style="font-size:28px;margin-bottom:0.75rem;">✍️</div>
+          <h3 style="font-family:var(--font-cond);color:var(--gold);margin-bottom:0.5rem;font-size:17px;">Write TAT/WAT daily</h3>
+          <p>30 seconds is brutally short. The only way to get consistently positive, well-structured stories is repetition. Ten TATs a day for a month makes a measurable difference.</p>
+        </div>
+        <div class="tip-card">
+          <div style="font-size:28px;margin-bottom:0.75rem;">🧘</div>
+          <h3 style="font-family:var(--font-cond);color:var(--gold);margin-bottom:0.5rem;font-size:17px;">Be, don't perform</h3>
+          <p>The single most common mistake: trying to perform OLQs rather than genuinely having them. Develop the qualities in daily life. Let SSB observe what already exists.</p>
+        </div>
+      </div>
+
+      <div class="ssb-callout" style="margin-top:2.5rem;text-align:center;">
+        <div style="font-family:var(--font-serif);font-size:22px;color:var(--cream);margin-bottom:0.5rem;">"The best preparation for SSB is becoming a better human being."</div>
+        <div style="font-size:13px;color:var(--text-muted);">— A common refrain among recommended candidates</div>
+      </div>
+    </section>
+
+    <div style="text-align:center;padding:2rem 0;">
+      <a href="practice.html" class="btn-primary" style="margin-right:1rem;">Start Practising</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- CSS additions for this page -->
+<style>
+.ssb-h2{font-family:var(--font-serif);font-size:clamp(24px,3.5vw,36px);color:var(--cream);margin-bottom:1rem;}
+.ssb-section-head{margin-bottom:1.5rem;}
+.ssb-para{color:var(--text-muted);font-size:16px;line-height:1.8;margin-bottom:1rem;max-width:720px;}
+.ssb-callout{background:var(--dark-3);border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1.25rem 1.5rem;font-size:14px;color:var(--text-muted);line-height:1.7;}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;}
+.info-card{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;text-align:center;}
+.info-icon{font-size:24px;margin-bottom:0.5rem;}
+.info-label{font-family:var(--font-cond);font-size:11px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.25rem;}
+.info-val{font-family:var(--font-serif);font-size:20px;font-weight:700;color:var(--gold);}
+.ssb-timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:flex;gap:1.5rem;position:relative;padding-bottom:1.5rem;}
+.tl-item::before{content:'';position:absolute;left:52px;top:28px;bottom:0;width:1px;background:var(--border);}
+.tl-last::before{display:none;}
+.tl-day{font-family:var(--font-cond);font-size:12px;letter-spacing:1px;color:var(--gold);background:var(--dark-2);border:1px solid var(--border-strong);padding:0.3rem 0.6rem;border-radius:var(--radius);height:fit-content;white-space:nowrap;min-width:60px;text-align:center;}
+.tl-content{font-size:14px;color:var(--text-muted);line-height:1.7;padding-top:4px;}
+.tl-content strong{color:var(--cream);}
+.test-block{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem;}
+.test-name{font-family:var(--font-cond);font-size:20px;font-weight:700;color:var(--cream);letter-spacing:0.5px;margin-bottom:0.5rem;}
+.test-block .module-meta{margin-bottom:1rem;}
+.test-block p{font-size:14px;color:var(--text-muted);line-height:1.7;}
+.prep-tip{margin-top:1rem;background:var(--dark-3);border-left:2px solid var(--gold);padding:0.75rem 1rem;font-size:13px;color:var(--text-muted);border-radius:0 var(--radius) var(--radius) 0;}
+.olq-cluster{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;}
+.cluster-title{font-family:var(--font-cond);font-size:16px;font-weight:700;color:var(--gold);letter-spacing:0.5px;margin-bottom:1rem;}
+.olq-list{display:flex;flex-direction:column;gap:1rem;}
+.olq-item{display:flex;gap:0.75rem;align-items:flex-start;}
+.olq-num{background:var(--gold-dim);border:1px solid var(--border-strong);color:var(--gold);font-family:var(--font-cond);font-size:12px;font-weight:700;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;margin-top:2px;}
+.olq-item strong{color:var(--cream);font-size:14px;}
+.olq-item p{font-size:13px;color:var(--text-muted);line-height:1.5;margin-top:0.2rem;}
+.gto-card{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;}
+.gto-name{font-family:var(--font-cond);font-size:15px;font-weight:700;color:var(--gold);margin-bottom:0.5rem;}
+.gto-card p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+.interview-block{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;}
+.ib-label{font-family:var(--font-cond);font-size:13px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:0.4rem;}
+.interview-block p{font-size:14px;color:var(--text-muted);line-height:1.6;}
+.tip-card{background:var(--dark-2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;}
+.tip-card p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+</style>
+
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

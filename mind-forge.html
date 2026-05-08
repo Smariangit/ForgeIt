@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mind Forge - SSBForge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">SSB<span>FORGE</span></a>
+    <div class="nav-links" id="navLinks"></div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<main id="premiumPageContent" class="mind-forge-page hidden">
+  <section class="mind-hero">
+    <div class="mind-hero-inner">
+      <span class="section-label">MIND FORGE</span>
+      <h1>Sharpen the Inner Code</h1>
+      <p>A quiet reading room for discipline, courage, restraint, burning ambition, and the moral clarity from which real leadership begins.</p>
+    </div>
+  </section>
+
+  <section class="mind-shell">
+    <div class="mind-section-head">
+      <div>
+        <span class="section-label">TODAY'S FIRE</span>
+        <h2>Read. Reflect. Act.</h2>
+      </div>
+      <p>Use this space for excerpts, short reflections, and field notes from books that help students become stronger, cleaner, braver human beings.</p>
+    </div>
+
+    <div class="mind-grid">
+      <article class="forge-feature">
+        <div class="forge-kicker">Featured Excerpt</div>
+        <blockquote>Place your strongest passage here: something that makes a student sit straighter, think cleaner, and act with more courage.</blockquote>
+        <div class="forge-source">Book / Author / Chapter</div>
+        <div class="forge-pill-row">
+          <span class="forge-pill">Discipline</span>
+          <span class="forge-pill">Celibacy</span>
+          <span class="forge-pill">Courage</span>
+          <span class="forge-pill">Leadership</span>
+        </div>
+      </article>
+
+      <div class="forge-stack">
+        <article class="forge-card">
+          <h3>Reflection Prompt</h3>
+          <p>What desire, fear, or habit is quietly weakening your command over yourself? Name it clearly, then write the next right action.</p>
+        </article>
+        <article class="forge-card">
+          <h3>Officer Code</h3>
+          <p>Keep the page focused on becoming useful under pressure: truthful speech, physical restraint, courage in action, and service before self.</p>
+        </article>
+        <article class="forge-card">
+          <h3>How To Add Content</h3>
+          <p>Replace these starter cards with excerpts, source names, and your own notes. Short, intense, and practical will work best for students.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="forge-library">
+      <article class="forge-note">
+        <div class="source">Self-Mastery</div>
+        <h3>Desire obeys the man who trains attention.</h3>
+        <p>Add a book excerpt on celibacy, focus, restraint, or conservation of energy.</p>
+        <div class="theme">Theme: Inner command</div>
+      </article>
+      <article class="forge-note">
+        <div class="source">Courage</div>
+        <h3>Fear becomes smaller when duty becomes larger.</h3>
+        <p>Add a passage that teaches students to move despite uncertainty.</p>
+        <div class="theme">Theme: Moral courage</div>
+      </article>
+      <article class="forge-note">
+        <div class="source">Burning Aim</div>
+        <h3>A scattered life cannot produce a focused officer.</h3>
+        <p>Add a passage about ambition, purpose, sacrifice, or relentless preparation.</p>
+        <div class="theme">Theme: Purpose</div>
+      </article>
+    </div>
+
+    <div class="forge-editor-note">
+      Suggested structure: one featured excerpt at the top, three reflection cards beside it, then a growing library grouped by virtues such as discipline, courage, celibacy, service, brotherhood, humility, and ambition.
+    </div>
+  </section>
+</main>
+
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">x</button>
+    <h2>Login to SSBForge</h2>
+    <input type="email" id="loginEmail" placeholder="Email address" class="modal-input" />
+    <input type="password" id="loginPassword" placeholder="Password" class="modal-input" />
+    <button class="btn-primary full-width" id="doLogin">Login</button>
+    <div class="modal-divider">or</div>
+    <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
+  </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/premium-gate.js"></script>
+<script src="js/main.js"></script>
+<script>
+PremiumGate.requireAccess({ pageName: 'Mind Forge', contentId: 'premiumPageContent' });
+</script>
+</body>
+</html>
