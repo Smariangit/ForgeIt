@@ -259,6 +259,14 @@ const Practice = (function() {
     el.timerInfo().textContent = 'Press Start to begin.';
   }
 
+  function getContentListLabel(item, index) {
+    const shouldMaskLabel = (currentModule === 'wat' || currentModule === 'lecturette') && !Auth.isPremium();
+    if (shouldMaskLabel) {
+      return 'Topic ' + (index + 1);
+    }
+    return item.label || item.word || item.topic || item.situation || ('Item ' + (index + 1));
+  }
+
   function renderContentList() {
     const list = el.contentList();
     if (!list) return;
@@ -266,7 +274,7 @@ const Practice = (function() {
     items.forEach((item, i) => {
       const div = document.createElement('div');
       div.className = 'content-item' + (i === currentIdx ? ' current' : '');
-      const label = item.label || item.word || item.topic || item.situation || ('Item ' + (i + 1));
+      const label = getContentListLabel(item, i);
       div.innerHTML = '<span>' + label + '</span>' + (item.locked ? '<span class="item-lock">🔒</span>' : '');
       div.addEventListener('click', () => {
         if (item.locked) { window.location.href = 'premium.html'; return; }

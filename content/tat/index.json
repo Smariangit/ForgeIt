@@ -1,9 +1,9 @@
 [
-  { "id": "tat_001", "label": "Scene 1 — Outdoor", "src": "content/tat/tat_001.jpg", "free": true },
-  { "id": "tat_002", "label": "Scene 2 — Crowd", "src": "content/tat/tat_002.jpg", "free": true },
-  { "id": "tat_003", "label": "Scene 3 — Group", "src": "content/tat/tat_003.jpg", "free": true },
-  { "id": "tat_004", "label": "Scene 4 — Challenge", "src": "content/tat/tat_004.jpg", "free": true },
-  { "id": "tat_005", "label": "Scene 5 — Solo", "src": "content/tat/tat_005.jpg", "free": true },
-  { "id": "tat_006", "label": "Scene 6 — Conflict", "src": "content/tat/tat_006.jpg", "free": false },
-  { "id": "tat_007", "label": "Scene 7 — Nature", "src": "content/tat/tat_007.jpg", "free": false }
+  { "id": "tat_001", "label": "Scene 1", "src": "content/tat/tat_001.jpg", "free": true },
+  { "id": "tat_002", "label": "Scene 2", "src": "content/tat/tat_002.jpg", "free": true },
+  { "id": "tat_003", "label": "Scene 3", "src": "content/tat/tat_003.jpg", "free": true },
+  { "id": "tat_004", "label": "Scene 4", "src": "content/tat/tat_004.jpg", "free": true },
+  { "id": "tat_005", "label": "Scene 5", "src": "content/tat/tat_005.jpg", "free": true },
+  { "id": "tat_006", "label": "Scene 6", "src": "content/tat/tat_006.jpg", "free": false },
+  { "id": "tat_007", "label": "Scene 7", "src": "content/tat/tat_007.jpg", "free": false }
 ]

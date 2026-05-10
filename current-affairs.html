@@ -18,7 +18,7 @@
   </div>
 </nav>
 
-<div id="premiumPageContent" class="hidden" style="padding-top:60px;">
+<div id="premiumPageContent" style="padding-top:60px;">
   <div style="background:linear-gradient(160deg,var(--dark) 0%,var(--dark-3) 100%);border-bottom:1px solid var(--border);padding:3rem 2rem 2.5rem;text-align:center;">
     <span class="section-label">DAILY BRIEFING</span>
     <h1 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,48px);color:var(--cream);margin:0.5rem 0;">Current Affairs</h1>
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <div style="max-width:1000px;margin:0 auto;padding:2.5rem 2rem 5rem;">
+  <div class="premium-preview-zone" style="max-width:1000px;margin:0 auto;padding:2.5rem 2rem 5rem;">
 
     <!-- ADMIN note -->
     <div id="adminAddNote" class="hidden" style="background:var(--dark-3);border:1px dashed var(--border-strong);padding:1rem 1.5rem;border-radius:var(--radius-lg);margin-bottom:2rem;font-size:13px;color:var(--text-muted);">
@@ -171,13 +171,10 @@ document.querySelectorAll('.module-tab[data-cat]').forEach(btn => {
   });
 });
 
-if (PremiumGate.requireAccess({ pageName: 'Current Affairs', contentId: 'premiumPageContent' })) {
-  // Admin note
-  const user = JSON.parse(localStorage.getItem('ssbUser') || 'null');
-  if (user && user.role === 'admin') document.getElementById('adminAddNote').classList.remove('hidden');
-
-  loadCurrentAffairs();
-}
+const hasPremiumAccess = PremiumGate.requireAccess({ pageName: 'Current Affairs', contentId: 'premiumPageContent' });
+const user = JSON.parse(localStorage.getItem('ssbUser') || 'null');
+if (hasPremiumAccess && user && user.role === 'admin') document.getElementById('adminAddNote').classList.remove('hidden');
+loadCurrentAffairs();
 </script>
 </body>
 </html>

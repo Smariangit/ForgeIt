@@ -1,9 +1,12 @@
 [
-  {"id":"ppdt_1","label":"Picture 1 — Hazy Scene","src":"content/ppdt/ppdt_001.jpg","free":true},
-  {"id":"ppdt_2","label":"Picture 2 — Group","src":"content/ppdt/ppdt_002.jpg","free":true},
-  {"id":"ppdt_3","label":"Picture 3 — Outdoor","src":"content/ppdt/ppdt_003.jpg","free":true},
-  {"id":"ppdt_4","label":"Picture 4 — Conflict","src":"content/ppdt/ppdt_004.jpg","free":false},
-  {"id":"ppdt_5","label":"Picture 5 — Urban","src":"content/ppdt/ppdt_005.jpg","free":false},
-  {"id":"ppdt_6","label":"Picture 6 — Nature","src":"content/ppdt/ppdt_006.jpg","free":false},
-  {"id":"ppdt_7","label":"Picture 7 — Crowd","src":"content/ppdt/ppdt_007.jpg","free":false}
+  {"id":"ppdt_1","label":"Picture 1","src":"content/ppdt/ppdt_001.jpg","free":true},
+  {"id":"ppdt_2","label":"Picture 2","src":"content/ppdt/ppdt_002.jpg","free":true},
+  {"id":"ppdt_3","label":"Picture 3","src":"content/ppdt/ppdt_003.jpg","free":true},
+  {"id":"ppdt_4","label":"Picture 4","src":"content/ppdt/ppdt_004.jpg","free":true},
+  {"id":"ppdt_5","label":"Picture 5","src":"content/ppdt/ppdt_005.jpg","free":true},
+  {"id":"ppdt_6","label":"Picture 6","src":"content/ppdt/ppdt_006.jpg","free":false},
+  {"id":"ppdt_7","label":"Picture 7","src":"content/ppdt/ppdt_007.jpg","free":false},
+  {"id":"ppdt_8","label":"Picture 8","src":"content/ppdt/ppdt_008.jpg","free":false},
+  {"id":"ppdt_9","label":"Picture 9","src":"content/ppdt/ppdt_009.jpg","free":false},
+  {"id":"ppdt_10","label":"Picture 10","src":"content/ppdt/ppdt_010.jpg","free":false}
 ]
