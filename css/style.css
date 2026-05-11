@@ -518,7 +518,7 @@ a:hover { color: var(--gold-light); }
 .ca-hero p { color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 18px; }
 .ca-category-bar { background: var(--dark-2); border-bottom: 1px solid var(--border); overflow-x: auto; padding: 0 1rem; }
 .ca-category-tabs { display: inline-flex; min-width: max-content; gap: 0; }
-.ca-shell { max-width: none; margin: 0; padding: 1.25rem 2rem 6rem; }
+.ca-shell { max-width: 1100px; margin: 0 auto;padding: 1.25rem 2rem 6rem; width: 100%;}
 .ca-day-frame { max-width: 1100px; margin: 0 auto; }
 .ca-date-controls { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; }
 .ca-day-stack-wrap { min-width: 0; }
@@ -526,7 +526,7 @@ a:hover { color: var(--gold-light); }
 .ca-day-stack { display: flex; flex-direction: column; gap: 2rem; }
 .ca-loading, .ca-empty, .ca-empty-inline { text-align: center; padding: 3rem; color: var(--text-muted); }
 .ca-news-card {
-  width: min(1200px, 100%); margin: 0 auto; background: var(--dark-2);
+  width: 100%; margin: 0 auto; background: var(--dark-2);
   border: 1px solid var(--border); border-top: 4px solid var(--ca-accent, var(--gold));
   border-radius: var(--radius-lg); padding: clamp(1.5rem, 3vw, 2rem);
 }
