@@ -49,12 +49,52 @@ const MODULES = {
 
 async function loadContentIndex(module) {
   try {
-    const resp = await fetch(MODULES[module].indexFile);
-    if (!resp.ok) throw new Error('No index');
-    return await resp.json();
-  } catch {
-    return getSampleContent(module);
+    const resp = await fetch(MODULES[module].indexFile, { cache: 'no-store' });
+    if (!resp.ok) throw new Error('No index for ' + module);
+    const data = await resp.json();
+    return normalizeContentItems(data, module);
+  } catch (err) {
+    console.warn('Using sample content for ' + module + ':', err);
+    return normalizeContentItems(getSampleContent(module), module);
   }
+}
+
+function normalizeContentItems(data, module) {
+  const list = Array.isArray(data) ? data : [];
+  const mod = MODULES[module];
+  const freeLimit = FREE_LIMIT[module] || list.length;
+
+  return list.map((raw, index) => {
+    const item = typeof raw === 'string' ? stringToItem(raw, module, index) : { ...raw };
+    const number = index + 1;
+
+    if (!item.id) item.id = module + '_' + number;
+    if (item.free == null) item.free = index < freeLimit;
+
+    if (mod.type === 'text-word') {
+      item.word = item.word || item.label || item.topic || item.situation || '';
+      item.label = item.label || item.word || ('Word ' + number);
+    } else if (mod.type === 'text-topic') {
+      item.topic = item.topic || item.label || item.word || item.situation || '';
+      item.label = item.label || ('Topic ' + number);
+    } else if (mod.type === 'text-situation') {
+      item.situation = item.situation || item.label || item.topic || item.word || '';
+      item.label = item.label || ('Situation ' + number);
+    } else if (mod.type === 'image') {
+      item.label = item.label || (module === 'oir' ? 'OIR Paper ' + number : 'Picture ' + number);
+      item.alt = item.alt || item.label;
+    }
+
+    return item;
+  });
+}
+
+function stringToItem(value, module, index) {
+  const number = index + 1;
+  if (module === 'wat') return { id: 'wat_' + number, label: value, word: value };
+  if (module === 'lecturette') return { id: 'lec_' + number, label: value, topic: value };
+  if (module === 'srt') return { id: 'srt_' + number, label: 'Situation ' + number, situation: value };
+  return { id: module + '_' + number, label: value };
 }
 
 function getSampleContent(module) {

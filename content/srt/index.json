@@ -107,7 +107,7 @@
   {"id":"srt_97","label":"Situation 97","situation":"A teammate breaks down emotionally after losing a close friend in operation.","free":false},
   {"id":"srt_98","label":"Situation 98","situation":"Enemy drones are spotted above your concealed location.","free":false},
   {"id":"srt_99","label":"Situation 99","situation":"Your mission objective changes suddenly while your team is already deployed.","free":false},
-  {"id":"srt_100","label":"Situation 100","situation":"You are the senior-most survivor after a major attack and multiple teams await orders.","free":false},true  
+  {"id":"srt_100","label":"Situation 100","situation":"You are the senior-most survivor after a major attack and multiple teams await orders.","free":false},
   {"id":"srt_101","label":"Situation 101","situation":"You are trekking alone and notice a fellow trekker has twisted his ankle 5 km from the base camp.","free":false},
   {"id":"srt_102","label":"Situation 102","situation":"You see a shop on fire. The shopkeeper is inside and people around are just watching.","free":false},
   {"id":"srt_103","label":"Situation 103","situation":"During a group project, you realise your team leader's plan has a serious flaw that will cause failure.","free":false},
@@ -121,7 +121,7 @@
   {"id":"srt_111","label":"Situation 111","situation":"You are leading a platoon and your radio stops working 3 km behind enemy lines.","free":false},
   {"id":"srt_112","label":"Situation 112","situation":"You discover that a supplier has been bribing an official to get a government contract.","free":false},
   {"id":"srt_113","label":"Situation 113","situation":"Your team is exhausted after a 20 km march. There is still 5 km left. Morale is very low.","free":false},
-  {"id":"srt_114","label":1"Situation 114","situation":"An elderly woman is being harassed on a crowded bus. Other passengers are ignoring it.","free":false},
+  {"id":"srt_114","label":"Situation 114","situation":"An elderly woman is being harassed on a crowded bus. Other passengers are ignoring it.","free":false},
   {"id":"srt_115","label":"Situation 115","situation":"You are giving a presentation to senior officers when you realise you have incorrect data.","free":false},
   {"id":"srt_116","label":"Situation 116","situation":"You are part of a rescue team. One of your colleagues refuses to proceed, citing danger.","free":false},
   {"id":"srt_117","label":"Situation 117","situation":"You discover your batch-mate has been leaking examination papers to others.","free":false},
