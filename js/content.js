@@ -150,11 +150,9 @@ function filterContent(items, module) {
     return items.map(item => ({ ...item, locked: false }));
   }
 
-  const limit = FREE_LIMIT[module] || 5;
-
-  return items.map((item, i) => ({
+  return items.map(item => ({
     ...item,
-    locked: i >= limit
+    locked: item.free === false
   }));
 }
 
