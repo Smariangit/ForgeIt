@@ -114,10 +114,21 @@ const Practice = (function() {
       img.src = item.src || '';
       img.alt = item.label || '';
       img.onerror = function() {
+        const currentSrc = img.getAttribute('src') || '';
+        const fallbacks = getImageFallbacks(currentSrc);
+        const tried = item._triedSrcs || [currentSrc];
+        const next = fallbacks.find(src => !tried.includes(src));
+
+        if (next) {
+          item._triedSrcs = [...tried, next];
+          img.src = next;
+          return;
+        }
+
         img.classList.add('hidden');
         el.slideTextArea().classList.remove('hidden');
         el.slideTextInner().className = 'slide-topic';
-        el.slideTextInner().textContent = '📷 Image not found: ' + item.label + '\n\nUpload the image to the GitHub content folder.';
+        el.slideTextInner().textContent = 'Image not found: ' + item.label + '\n\nCheck the image path in this module index.json.';
       };
     } else if (mod.type === 'text-word') {
       el.slideImage().classList.add('hidden');
@@ -259,6 +270,12 @@ const Practice = (function() {
     el.timerInfo().textContent = 'Press Start to begin.';
   }
 
+
+  function getImageFallbacks(src) {
+    if (!src || !/\.(png|jpe?g|webp)$/i.test(src)) return [];
+    const base = src.replace(/\.(png|jpe?g|webp)$/i, '');
+    return ['.jpg', '.jpeg', '.png', '.webp'].map(ext => base + ext);
+  }
   function getContentListLabel(item, index) {
     const shouldMaskLabel = (currentModule === 'wat' || currentModule === 'lecturette') && !Auth.isPremium();
     if (shouldMaskLabel) {

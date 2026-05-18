@@ -25,6 +25,7 @@
     <p>An officer is a scholar of the world before a master of the sword.</p>
   </section>
 
+
   <div class="ca-category-bar">
     <div class="ca-category-tabs" id="caCategoryTabs"></div>
   </div>
@@ -47,6 +48,10 @@
       </div>
     </div>
   </section>
+
+  <div class="ca-disclaimer">
+    We are not responsible for the authenticity of the news or headlines. Current affairs are automatically updated from consolidated sources and should be verified independently for official use.
+  </div>
 </main>
 
 <div class="modal-overlay" id="loginModal">
@@ -199,6 +204,7 @@ function createNewsCard(item, dateLabel) {
   const card = document.createElement('article');
   card.className = 'ca-news-card';
   card.style.setProperty('--ca-accent', color);
+  const gdAngle = item.gd_angle ? `<div class="ca-gd-angle"><div>GD / INTERVIEW ANGLE</div><p>${item.gd_angle}</p></div>` : '';
   card.innerHTML = `
     <div class="ca-card-meta">
       <span>${dateLabel}</span>
@@ -206,6 +212,7 @@ function createNewsCard(item, dateLabel) {
     </div>
     <h2>${item.headline || 'Untitled update'}</h2>
     <p>${item.summary || ''}</p>
+    ${gdAngle}
   `;
   return card;
 }

@@ -5,10 +5,10 @@ const FREE_LIMIT = { tat: 5, wat: 30, ppdt: 3, lecturette: 10, oir: 1, srt: 15 }
 const MODULES = {
   tat: {
     label: 'TAT — Thematic Apperception Test',
-    timePerSlide: 30,
+    timePerSlide: 240,
     type: 'image',
     indexFile: 'content/tat/index.json',
-    instructions: 'You will see an image for 30 seconds. Write a complete story with: (1) Background leading up to the scene, (2) What is happening NOW, (3) How it will END. Your hero must have strong OLQs. The timer auto-advances to the next image.'
+    instructions: 'You will see an image and have 4 minutes to write your story. Write a complete story with: (1) Background leading up to the scene, (2) What is happening NOW, (3) How it will END. Your hero must have strong OLQs. The timer auto-advances to the next image.'
   },
   wat: {
     label: 'WAT — Word Association Test',
@@ -48,15 +48,36 @@ const MODULES = {
 };
 
 async function loadContentIndex(module) {
-  try {
-    const resp = await fetch(MODULES[module].indexFile, { cache: 'no-store' });
-    if (!resp.ok) throw new Error('No index for ' + module);
-    const data = await resp.json();
-    return normalizeContentItems(data, module);
-  } catch (err) {
-    console.warn('Using sample content for ' + module + ':', err);
-    return normalizeContentItems(getSampleContent(module), module);
+  const candidates = getIndexCandidates(module);
+  let lastError = null;
+
+  for (const indexFile of candidates) {
+    try {
+      const separator = indexFile.includes('?') ? '&' : '?';
+      const resp = await fetch(indexFile + separator + 'v=' + Date.now(), { cache: 'no-store' });
+      if (!resp.ok) throw new Error('No index at ' + indexFile);
+      const data = await resp.json();
+      return normalizeContentItems(data, module);
+    } catch (err) {
+      lastError = err;
+    }
   }
+
+  const embedded = window.PRACTICE_CONTENT_DATA && window.PRACTICE_CONTENT_DATA[module];
+  if (Array.isArray(embedded) && embedded.length) {
+    console.warn('Using embedded content fallback for ' + module + ':', lastError);
+    return normalizeContentItems(embedded, module);
+  }
+
+  console.warn('Using sample content for ' + module + ':', lastError);
+  return normalizeContentItems(getSampleContent(module), module);
+}
+
+function getIndexCandidates(module) {
+  const configured = MODULES[module].indexFile;
+  const upper = 'content/' + module.toUpperCase() + '/index.json';
+  const title = 'content/' + module.charAt(0).toUpperCase() + module.slice(1) + '/index.json';
+  return [...new Set([configured, upper, title])];
 }
 
 function normalizeContentItems(data, module) {
@@ -83,12 +104,21 @@ function normalizeContentItems(data, module) {
     } else if (mod.type === 'image') {
       item.label = item.label || (module === 'oir' ? 'OIR Paper ' + number : 'Picture ' + number);
       item.alt = item.alt || item.label;
+      item.src = normalizeImageSrc(item.src, module, number);
     }
 
     return item;
   });
 }
 
+
+function normalizeImageSrc(src, module, number) {
+  if (src && src.includes('/')) return src;
+  if (src) return 'content/' + module + '/' + src;
+
+  const prefix = module === 'oir' ? 'oir_paper_' : module + '_';
+  return 'content/' + module + '/' + prefix + String(number).padStart(3, '0') + '.jpg';
+}
 function stringToItem(value, module, index) {
   const number = index + 1;
   if (module === 'wat') return { id: 'wat_' + number, label: value, word: value };

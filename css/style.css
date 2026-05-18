@@ -396,6 +396,17 @@ a:hover { color: var(--gold-light); }
 }
 .module-tab:hover { color: var(--text); }
 .module-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.practice-notice-ticker {
+  background: var(--dark-3); border-bottom: 1px solid var(--border);
+  overflow: hidden; padding: 0.75rem 0;
+}
+.practice-notice-track {
+  display: inline-flex; gap: 2rem; white-space: nowrap;
+  animation: tickerScroll 32s linear infinite;
+  font-family: var(--font-cond); font-size: 13px; letter-spacing: 1.5px;
+  color: var(--gold); text-transform: uppercase;
+}
+.practice-notice-track .sep { color: var(--text-muted); }
 
 .practice-body {
   max-width: 1100px; margin: 0 auto; padding: 2rem;
@@ -516,6 +527,11 @@ a:hover { color: var(--gold-light); }
 }
 .ca-hero h1 { font-family: var(--font-serif); font-size: clamp(32px, 6vw, 72px); color: var(--cream); margin: 0.35rem 0 0.75rem; line-height: 1; }
 .ca-hero p { color: var(--text-muted); max-width: 650px; margin: 0 auto; font-size: 18px; }
+.ca-disclaimer {
+  background: rgba(201,168,76,0.08); border-bottom: 1px solid var(--border);
+  color: var(--text-muted); font-size: 13px; line-height: 1.6; text-align: center;
+  padding: 0.75rem 2rem;
+}
 .ca-category-bar { background: var(--dark-2); border-bottom: 1px solid var(--border); overflow-x: auto; padding: 0 1rem; }
 .ca-category-tabs { display: inline-flex; min-width: max-content; gap: 0; }
 .ca-shell { max-width: 1100px; margin: 0 auto;padding: 1.25rem 2rem 6rem; width: 100%;}
@@ -535,6 +551,16 @@ a:hover { color: var(--gold-light); }
 .ca-card-meta span + span { color: var(--ca-accent, var(--gold)); }
 .ca-news-card h2 { font-family: var(--font-serif); font-size: clamp(20px, 3vw, 34px); color: var(--cream); line-height: 1.2; margin-bottom: 1rem; }
 .ca-news-card p { color: var(--text-muted); font-size: 14px; line-height: 1.9; }
+.ca-gd-angle {
+  background: var(--dark-3); border-left: 2px solid var(--gold);
+  padding: 0.75rem 1rem; border-radius: 0 var(--radius) var(--radius) 0;
+  margin-top: 1.1rem;
+}
+.ca-gd-angle div {
+  font-family: var(--font-cond); font-size: 11px; letter-spacing: 2px;
+  color: var(--gold); margin-bottom: 0.4rem;
+}
+.ca-gd-angle p { font-size: 13px; line-height: 1.6; margin: 0; }
 .ca-jump-control { display: flex; flex-direction: column; gap: 0.35rem; min-width: 190px; }
 .ca-jump-control label { font-family: var(--font-cond); font-size: 11px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
 .ca-jump-control select {
