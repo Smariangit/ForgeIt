@@ -9,6 +9,7 @@ const Practice = (function() {
   let timerTotal = 0;
   let isRunning = false;
   let autoAdvance = true;
+  let switchToken = 0;
 
   const el = {
     pageTitle:      () => document.getElementById('pageTitle'),
@@ -50,7 +51,8 @@ const Practice = (function() {
   }
 
   async function switchModule(mode) {
-    if (!ContentLoader.MODULES[mode]) return;
+    if (!ContentLoader.MODULES[mode]) mode = 'tat';
+    const token = ++switchToken;
     currentModule = mode;
 
     el.tabs().forEach(t => t.classList.toggle('active', t.dataset.mode === mode));
@@ -58,13 +60,24 @@ const Practice = (function() {
 
     stopTimer();
     isRunning = false;
+    currentIdx = 0;
+    items = [];
 
     const mod = ContentLoader.MODULES[mode];
     el.pageTitle().textContent = mod.label;
     el.instructions().textContent = mod.instructions;
     el.startBtn().textContent = '▶ Start';
+    el.slideCounter().textContent = '0 / 0';
+    el.timerDisplay().textContent = formatTime(mod.timePerSlide || 1020);
+    el.timerDisplay().classList.remove('danger');
+    el.timerInfo().textContent = 'Loading content...';
+    el.timerBarFill().style.width = '100%';
+    clearSlideStage();
+    renderContentList();
 
     const rawItems = await ContentLoader.loadContentIndex(mode);
+    if (token !== switchToken || currentModule !== mode) return;
+
     items = ContentLoader.filterContent(rawItems, mode);
     currentIdx = 0;
 
@@ -90,8 +103,12 @@ const Practice = (function() {
     if (!items.length) return;
     const item = items[currentIdx];
     const mod = ContentLoader.MODULES[currentModule];
+    const img = el.slideImage();
+
+    resetSlideImage(img);
 
     el.slideCounter().textContent = (currentIdx + 1) + ' / ' + items.length;
+    el.instructions().textContent = item.instructions || mod.instructions;
     renderContentList();
 
     // Locked slide
@@ -109,34 +126,13 @@ const Practice = (function() {
     // Render by type
     if (mod.type === 'image') {
       el.slideTextArea().classList.add('hidden');
-      const img = el.slideImage();
-      img.classList.remove('hidden');
-      img.src = item.src || '';
       img.alt = item.label || '';
-      img.onerror = function() {
-        const currentSrc = img.getAttribute('src') || '';
-        const fallbacks = getImageFallbacks(currentSrc);
-        const tried = item._triedSrcs || [currentSrc];
-        const next = fallbacks.find(src => !tried.includes(src));
-
-        if (next) {
-          item._triedSrcs = [...tried, next];
-          img.src = next;
-          return;
-        }
-
-        img.classList.add('hidden');
-        el.slideTextArea().classList.remove('hidden');
-        el.slideTextInner().className = 'slide-topic';
-        el.slideTextInner().textContent = 'Image not found: ' + item.label + '\n\nCheck the image path in this module index.json.';
-      };
+      loadSlideImage(img, item.src || '', item.label || 'image');
     } else if (mod.type === 'text-word') {
-      el.slideImage().classList.add('hidden');
       el.slideTextArea().classList.remove('hidden');
       el.slideTextInner().className = 'slide-word';
       el.slideTextInner().textContent = item.word || item.label;
     } else if (mod.type === 'text-topic' || mod.type === 'text-situation') {
-      el.slideImage().classList.add('hidden');
       el.slideTextArea().classList.remove('hidden');
       el.slideTextInner().className = 'slide-topic';
       el.slideTextInner().textContent = item.situation || item.topic || item.label;
@@ -149,6 +145,56 @@ const Practice = (function() {
       el.timerDisplay().textContent = formatTime(duration);
       el.timerDisplay().classList.remove('danger');
     }
+  }
+
+  function clearSlideStage() {
+    resetSlideImage(el.slideImage());
+    el.slideTextArea().classList.remove('hidden');
+    el.slideTextInner().className = 'slide-topic';
+    el.slideTextInner().textContent = 'Loading...';
+  }
+
+  function resetSlideImage(img) {
+    img.onload = null;
+    img.onerror = null;
+    img.removeAttribute('src');
+    img.alt = '';
+    img.classList.add('hidden');
+  }
+
+  function loadSlideImage(img, src, label) {
+    if (!src) {
+      showImageMissing(label);
+      return;
+    }
+
+    const tried = [];
+
+    function trySrc(nextSrc) {
+      tried.push(nextSrc);
+      img.onload = function() {
+        img.classList.remove('hidden');
+        el.slideTextArea().classList.add('hidden');
+      };
+      img.onerror = function() {
+        const fallback = getImageFallbacks(nextSrc).find(path => !tried.includes(path));
+        if (fallback) {
+          trySrc(fallback);
+          return;
+        }
+        showImageMissing(label);
+      };
+      img.src = nextSrc;
+    }
+
+    trySrc(src);
+  }
+
+  function showImageMissing(label) {
+    el.slideImage().classList.add('hidden');
+    el.slideTextArea().classList.remove('hidden');
+    el.slideTextInner().className = 'slide-topic';
+    el.slideTextInner().textContent = 'Image not found: ' + label + '\n\nCheck the image path in this module index.json.';
   }
 
   // ===== Timer =====

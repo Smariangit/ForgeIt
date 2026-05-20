@@ -24,7 +24,7 @@ window.CURRENT_AFFAIRS_DATA = [
         "label":  "May 1, 2026",
         "category":  "Defence",
         "headline":  "Maoist-hit Gadchiroli sees strategic connectivity push",
-        "summary":  "Security forces established new police outposts, road connectivity, water National, and future telecom expansion in remote Gadchiroli villages. Seven Maoists carrying â‚¹71 lakh reward were neutralized recently. National-led governance is being used as a counter-insurgency strategy.",
+        "summary":  "Security forces established new police outposts, road connectivity, water National, and future telecom expansion in remote Gadchiroli villages. Seven Maoists carrying ₹71 lakh reward were neutralized recently. National-led governance is being used as a counter-insurgency strategy.",
         "gd_angle":  ""
     },
     {
@@ -51,7 +51,7 @@ window.CURRENT_AFFAIRS_DATA = [
     {
         "label":  "May 3, 2026",
         "category":  "Social",
-        "headline":  "Opposition bloc prepares strategy on womenâ€™s reservation",
+        "headline":  "Opposition bloc prepares strategy on women’s reservation",
         "summary":  "INDIA bloc plans post-election discussions on women\u0027s reservation after the Constitution (131st Amendment) Bill, 2026 faced resistance in Parliament. Debate continues over linking reservation with delimitation and Lok Sabha expansion.",
         "gd_angle":  "Inclusive leadership, women empowerment in nation-building."
     },
@@ -59,21 +59,21 @@ window.CURRENT_AFFAIRS_DATA = [
         "label":  "May 3, 2026",
         "category":  "Environment",
         "headline":  "NGT directs southern States to accelerate clean air action",
-        "summary":  "National Green Tribunal ordered southern States and Puducherry to ensure time-bound implementation of State Action Plans under NCAP. Karnataka had received â‚¹597.54 crore, but fund utilisation was initially low.",
+        "summary":  "National Green Tribunal ordered southern States and Puducherry to ensure time-bound implementation of State Action Plans under NCAP. Karnataka had received ₹597.54 crore, but fund utilisation was initially low.",
         "gd_angle":  "Sustainable development, administrative execution."
     },
     {
         "label":  "May 3, 2026",
         "category":  "National",
         "headline":  "Jammu-Srinagar Vande Bharat begins commercial operations",
-        "summary":  "India\u0027s first direct Vande Bharat between Jammu and Srinagar began operations, reducing travel time from 12â€“24 hours to under 5 hours across 272 km. Over 1,900 passengers travelled on the first day.",
+        "summary":  "India\u0027s first direct Vande Bharat between Jammu and Srinagar began operations, reducing travel time from 12–24 hours to under 5 hours across 272 km. Over 1,900 passengers travelled on the first day.",
         "gd_angle":  "Nation integration, logistics in sensitive regions."
     },
     {
         "label":  "May 3, 2026",
         "category":  "National",
         "headline":  "Madras High Court directs inclusion of Ambedkar in school curriculum",
-        "summary":  "Madras High Court directed Tamil Nadu to introduce structured lessons on Dr. B.R. Ambedkar from Classes IIIâ€“X, focusing on Constitution, equality, justice, liberty and fraternity.",
+        "summary":  "Madras High Court directed Tamil Nadu to introduce structured lessons on Dr. B.R. Ambedkar from Classes III–X, focusing on Constitution, equality, justice, liberty and fraternity.",
         "gd_angle":  "Value system, constitutional awareness, ethical leadership."
     },
     {
@@ -94,14 +94,14 @@ window.CURRENT_AFFAIRS_DATA = [
         "label":  "May 4, 2026",
         "category":  "Geopolitical",
         "headline":  "Iran gives U.S. strategic choice amid stalled peace talks",
-        "summary":  "Iranâ€™s Revolutionary Guards stated the U.S. must choose between military escalation or a diplomatic deal. Tehran submitted a 14-point peace proposal focused on reopening the Strait of Hormuz and ending naval blockades.",
+        "summary":  "Iran’s Revolutionary Guards stated the U.S. must choose between military escalation or a diplomatic deal. Tehran submitted a 14-point peace proposal focused on reopening the Strait of Hormuz and ending naval blockades.",
         "gd_angle":  "Global military balance, crisis diplomacy."
     },
     {
         "label":  "May 4, 2026",
         "category":  "Geopolitical",
         "headline":  "Nepal raises Lipulekh sovereignty issue before India visit",
-        "summary":  "Nepal reiterated claims over the Kalapani-Limpiyadhura-Lipulekh region ahead of India\u0027s Foreign Secretaryâ€™s visit. India rejected the claims, citing lack of historical basis.",
+        "summary":  "Nepal reiterated claims over the Kalapani-Limpiyadhura-Lipulekh region ahead of India\u0027s Foreign Secretary’s visit. India rejected the claims, citing lack of historical basis.",
         "gd_angle":  "Border sensitivity, strategic geography."
     },
     {
@@ -128,7 +128,7 @@ window.CURRENT_AFFAIRS_DATA = [
     {
         "label":  "May 4, 2026",
         "category":  "Economy",
-        "headline":  "Delhi approves â‚¹48,204 crore Metro Phase V expansion",
+        "headline":  "Delhi approves ₹48,204 crore Metro Phase V expansion",
         "summary":  "Delhi government announced a 97-km metro expansion with 7 corridors and 65 stations under Phase V(B), targeted partly for completion by 2029. The project aims to improve urban connectivity and economic productivity.",
         "gd_angle":  "Nation-building, infrastructure planning."
     },
@@ -136,7 +136,7 @@ window.CURRENT_AFFAIRS_DATA = [
         "label":  "May 4, 2026",
         "category":  "Geopolitical",
         "headline":  "India-Nepal border trade tensions rise over customs enforcement",
-        "summary":  "Nepalâ€™s stricter customs enforcement on goods above 100 Nepali rupees caused disruptions in cross-border trade. India remains engaged diplomatically as border communities report economic strain. Bilateral trade with India forms 63.01% of Nepalâ€™s total trade worth $8.02 billion.",
+        "summary":  "Nepal’s stricter customs enforcement on goods above 100 Nepali rupees caused disruptions in cross-border trade. India remains engaged diplomatically as border communities report economic strain. Bilateral trade with India forms 63.01% of Nepal’s total trade worth $8.02 billion.",
         "gd_angle":  "Neighbourhood policy, economic security."
     },
     {

@@ -1,4 +1,3 @@
-// practice-content-data.js - local fallback generated from content/*/index.json
 window.PRACTICE_CONTENT_DATA = {
   "tat": [
     {
@@ -3767,16 +3766,606 @@ window.PRACTICE_CONTENT_DATA = {
     }
 ],
   "ppdt": [
-  {"id":"ppdt_1","label":"Picture 1","src":"content/ppdt/ppdt_001.jpg","free":true},
-  {"id":"ppdt_2","label":"Picture 2","src":"content/ppdt/ppdt_002.jpg","free":true},
-  {"id":"ppdt_3","label":"Picture 3","src":"content/ppdt/ppdt_003.jpg","free":true},
-  {"id":"ppdt_4","label":"Picture 4","src":"content/ppdt/ppdt_004.jpg","free":true},
-  {"id":"ppdt_5","label":"Picture 5","src":"content/ppdt/ppdt_005.jpg","free":true},
-  {"id":"ppdt_6","label":"Picture 6","src":"content/ppdt/ppdt_006.jpg","free":false},
-  {"id":"ppdt_7","label":"Picture 7","src":"content/ppdt/ppdt_007.jpg","free":false},
-  {"id":"ppdt_8","label":"Picture 8","src":"content/ppdt/ppdt_008.jpg","free":false},
-  {"id":"ppdt_9","label":"Picture 9","src":"content/ppdt/ppdt_009.jpg","free":false},
-  {"id":"ppdt_10","label":"Picture 10","src":"content/ppdt/ppdt_010.jpg","free":false}
+    {
+        "id":  "ppdt_001",
+        "label":  "Picture 1",
+        "src":  "content/ppdt/ppdt_001.jpg",
+        "free":  true
+    },
+    {
+        "id":  "ppdt_002",
+        "label":  "Picture 2",
+        "src":  "content/ppdt/ppdt_002.jpg",
+        "free":  true
+    },
+    {
+        "id":  "ppdt_003",
+        "label":  "Picture 3",
+        "src":  "content/ppdt/ppdt_003.jpg",
+        "free":  true
+    },
+    {
+        "id":  "ppdt_004",
+        "label":  "Picture 4",
+        "src":  "content/ppdt/ppdt_004.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_005",
+        "label":  "Picture 5",
+        "src":  "content/ppdt/ppdt_005.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_006",
+        "label":  "Picture 6",
+        "src":  "content/ppdt/ppdt_006.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_007",
+        "label":  "Picture 7",
+        "src":  "content/ppdt/ppdt_007.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_008",
+        "label":  "Picture 8",
+        "src":  "content/ppdt/ppdt_008.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_009",
+        "label":  "Picture 9",
+        "src":  "content/ppdt/ppdt_009.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_010",
+        "label":  "Picture 10",
+        "src":  "content/ppdt/ppdt_010.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_011",
+        "label":  "Picture 11",
+        "src":  "content/ppdt/ppdt_011.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_012",
+        "label":  "Picture 12",
+        "src":  "content/ppdt/ppdt_012.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_013",
+        "label":  "Picture 13",
+        "src":  "content/ppdt/ppdt_013.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_014",
+        "label":  "Picture 14",
+        "src":  "content/ppdt/ppdt_014.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_015",
+        "label":  "Picture 15",
+        "src":  "content/ppdt/ppdt_015.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_016",
+        "label":  "Picture 16",
+        "src":  "content/ppdt/ppdt_016.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_017",
+        "label":  "Picture 17",
+        "src":  "content/ppdt/ppdt_017.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_018",
+        "label":  "Picture 18",
+        "src":  "content/ppdt/ppdt_018.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_019",
+        "label":  "Picture 19",
+        "src":  "content/ppdt/ppdt_019.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_020",
+        "label":  "Picture 20",
+        "src":  "content/ppdt/ppdt_020.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_021",
+        "label":  "Picture 21",
+        "src":  "content/ppdt/ppdt_021.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_022",
+        "label":  "Picture 22",
+        "src":  "content/ppdt/ppdt_022.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_023",
+        "label":  "Picture 23",
+        "src":  "content/ppdt/ppdt_023.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_024",
+        "label":  "Picture 24",
+        "src":  "content/ppdt/ppdt_024.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_025",
+        "label":  "Picture 25",
+        "src":  "content/ppdt/ppdt_025.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_026",
+        "label":  "Picture 26",
+        "src":  "content/ppdt/ppdt_026.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_027",
+        "label":  "Picture 27",
+        "src":  "content/ppdt/ppdt_027.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_028",
+        "label":  "Picture 28",
+        "src":  "content/ppdt/ppdt_028.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_029",
+        "label":  "Picture 29",
+        "src":  "content/ppdt/ppdt_029.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_030",
+        "label":  "Picture 30",
+        "src":  "content/ppdt/ppdt_030.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_031",
+        "label":  "Picture 31",
+        "src":  "content/ppdt/ppdt_031.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_032",
+        "label":  "Picture 32",
+        "src":  "content/ppdt/ppdt_032.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_033",
+        "label":  "Picture 33",
+        "src":  "content/ppdt/ppdt_033.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_034",
+        "label":  "Picture 34",
+        "src":  "content/ppdt/ppdt_034.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_035",
+        "label":  "Picture 35",
+        "src":  "content/ppdt/ppdt_035.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_036",
+        "label":  "Picture 36",
+        "src":  "content/ppdt/ppdt_036.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_037",
+        "label":  "Picture 37",
+        "src":  "content/ppdt/ppdt_037.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_038",
+        "label":  "Picture 38",
+        "src":  "content/ppdt/ppdt_038.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_039",
+        "label":  "Picture 39",
+        "src":  "content/ppdt/ppdt_039.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_040",
+        "label":  "Picture 40",
+        "src":  "content/ppdt/ppdt_040.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_041",
+        "label":  "Picture 41",
+        "src":  "content/ppdt/ppdt_041.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_042",
+        "label":  "Picture 42",
+        "src":  "content/ppdt/ppdt_042.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_043",
+        "label":  "Picture 43",
+        "src":  "content/ppdt/ppdt_043.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_044",
+        "label":  "Picture 44",
+        "src":  "content/ppdt/ppdt_044.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_045",
+        "label":  "Picture 45",
+        "src":  "content/ppdt/ppdt_045.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_046",
+        "label":  "Picture 46",
+        "src":  "content/ppdt/ppdt_046.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_047",
+        "label":  "Picture 47",
+        "src":  "content/ppdt/ppdt_047.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_048",
+        "label":  "Picture 48",
+        "src":  "content/ppdt/ppdt_048.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_049",
+        "label":  "Picture 49",
+        "src":  "content/ppdt/ppdt_049.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_050",
+        "label":  "Picture 50",
+        "src":  "content/ppdt/ppdt_050.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_051",
+        "label":  "Picture 51",
+        "src":  "content/ppdt/ppdt_051.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_052",
+        "label":  "Picture 52",
+        "src":  "content/ppdt/ppdt_052.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_053",
+        "label":  "Picture 53",
+        "src":  "content/ppdt/ppdt_053.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_054",
+        "label":  "Picture 54",
+        "src":  "content/ppdt/ppdt_054.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_055",
+        "label":  "Picture 55",
+        "src":  "content/ppdt/ppdt_055.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_056",
+        "label":  "Picture 56",
+        "src":  "content/ppdt/ppdt_056.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_057",
+        "label":  "Picture 57",
+        "src":  "content/ppdt/ppdt_057.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_058",
+        "label":  "Picture 58",
+        "src":  "content/ppdt/ppdt_058.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_059",
+        "label":  "Picture 59",
+        "src":  "content/ppdt/ppdt_059.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_060",
+        "label":  "Picture 60",
+        "src":  "content/ppdt/ppdt_060.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_061",
+        "label":  "Picture 61",
+        "src":  "content/ppdt/ppdt_061.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_062",
+        "label":  "Picture 62",
+        "src":  "content/ppdt/ppdt_062.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_063",
+        "label":  "Picture 63",
+        "src":  "content/ppdt/ppdt_063.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_064",
+        "label":  "Picture 64",
+        "src":  "content/ppdt/ppdt_064.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_065",
+        "label":  "Picture 65",
+        "src":  "content/ppdt/ppdt_065.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_066",
+        "label":  "Picture 66",
+        "src":  "content/ppdt/ppdt_066.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_067",
+        "label":  "Picture 67",
+        "src":  "content/ppdt/ppdt_067.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_068",
+        "label":  "Picture 68",
+        "src":  "content/ppdt/ppdt_068.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_069",
+        "label":  "Picture 69",
+        "src":  "content/ppdt/ppdt_069.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_070",
+        "label":  "Picture 70",
+        "src":  "content/ppdt/ppdt_070.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_071",
+        "label":  "Picture 71",
+        "src":  "content/ppdt/ppdt_071.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_072",
+        "label":  "Picture 72",
+        "src":  "content/ppdt/ppdt_072.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_073",
+        "label":  "Picture 73",
+        "src":  "content/ppdt/ppdt_073.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_074",
+        "label":  "Picture 74",
+        "src":  "content/ppdt/ppdt_074.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_075",
+        "label":  "Picture 75",
+        "src":  "content/ppdt/ppdt_075.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_076",
+        "label":  "Picture 76",
+        "src":  "content/ppdt/ppdt_076.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_077",
+        "label":  "Picture 77",
+        "src":  "content/ppdt/ppdt_077.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_078",
+        "label":  "Picture 78",
+        "src":  "content/ppdt/ppdt_078.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_079",
+        "label":  "Picture 79",
+        "src":  "content/ppdt/ppdt_079.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_080",
+        "label":  "Picture 80",
+        "src":  "content/ppdt/ppdt_080.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_081",
+        "label":  "Picture 81",
+        "src":  "content/ppdt/ppdt_081.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_082",
+        "label":  "Picture 82",
+        "src":  "content/ppdt/ppdt_082.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_083",
+        "label":  "Picture 83",
+        "src":  "content/ppdt/ppdt_083.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_084",
+        "label":  "Picture 84",
+        "src":  "content/ppdt/ppdt_084.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_085",
+        "label":  "Picture 85",
+        "src":  "content/ppdt/ppdt_085.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_086",
+        "label":  "Picture 86",
+        "src":  "content/ppdt/ppdt_086.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_087",
+        "label":  "Picture 87",
+        "src":  "content/ppdt/ppdt_087.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_088",
+        "label":  "Picture 88",
+        "src":  "content/ppdt/ppdt_088.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_089",
+        "label":  "Picture 89",
+        "src":  "content/ppdt/ppdt_089.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_090",
+        "label":  "Picture 90",
+        "src":  "content/ppdt/ppdt_090.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_091",
+        "label":  "Picture 91",
+        "src":  "content/ppdt/ppdt_091.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_092",
+        "label":  "Picture 92",
+        "src":  "content/ppdt/ppdt_092.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_093",
+        "label":  "Picture 93",
+        "src":  "content/ppdt/ppdt_093.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_094",
+        "label":  "Picture 94",
+        "src":  "content/ppdt/ppdt_094.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_095",
+        "label":  "Picture 95",
+        "src":  "content/ppdt/ppdt_095.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_096",
+        "label":  "Picture 96",
+        "src":  "content/ppdt/ppdt_096.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_097",
+        "label":  "Picture 97",
+        "src":  "content/ppdt/ppdt_097.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_098",
+        "label":  "Picture 98",
+        "src":  "content/ppdt/ppdt_098.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_099",
+        "label":  "Picture 99",
+        "src":  "content/ppdt/ppdt_099.jpg",
+        "free":  false
+    },
+    {
+        "id":  "ppdt_100",
+        "label":  "Picture 100",
+        "src":  "content/ppdt/ppdt_100.jpg",
+        "free":  false
+    }
 ],
   "lecturette": [
   {"id":"lec_1","label":"India's Role in UN Peacekeeping","topic":"India's Role in UN Peacekeeping","free":true},
@@ -3896,7 +4485,7 @@ window.PRACTICE_CONTENT_DATA = {
   {"id":"srt_5","label":"Situation 5","situation":"You witness two school students bullying a younger child on your way home.","free":true},
   {"id":"srt_6","label":"Situation 6","situation":"Your bike breaks down on a deserted road while returning late at night.","free":true},
   {"id":"srt_7","label":"Situation 7","situation":"Your group project is due tomorrow but one member has not completed his part.","free":true},
-  {"id":"srt_8","label":"Situation 8","situation":"You see smoke coming from a neighbor’s kitchen while they are away.","free":true},
+  {"id":"srt_8","label":"Situation 8","situation":"You see smoke coming from a neighbor's kitchen while they are away.","free":true},
   {"id":"srt_9","label":"Situation 9","situation":"A close friend is spreading rumors about another classmate.","free":true},
   {"id":"srt_10","label":"Situation 10","situation":"You find a wallet full of cash and identification cards on the road.","free":true},
 
@@ -3946,7 +4535,7 @@ window.PRACTICE_CONTENT_DATA = {
 
   {"id":"srt_51","label":"Situation 51","situation":"You receive news of a family emergency while leading an important assignment.","free":false},
   {"id":"srt_52","label":"Situation 52","situation":"An important vehicle driver refuses duty due to exhaustion.","free":false},
-  {"id":"srt_53","label":"Situation 53","situation":"During training, your team’s food supplies run critically low.","free":false},
+  {"id":"srt_53","label":"Situation 53","situation":"During training, your team's food supplies run critically low.","free":false},
   {"id":"srt_54","label":"Situation 54","situation":"A teammate is accused of theft without clear evidence.","free":false},
   {"id":"srt_55","label":"Situation 55","situation":"A child falls into a river while you are supervising a community event.","free":false},
   {"id":"srt_56","label":"Situation 56","situation":"You notice a teammate secretly consuming alcohol before training.","free":false},
@@ -4019,11 +4608,30 @@ window.PRACTICE_CONTENT_DATA = {
   {"id":"srt_119","label":"Situation 119","situation":"You are in charge of supplies. You find 20% of rations are spoiled and troops are hungry.","free":false},
   {"id":"srt_120","label":"Situation 120","situation":"During a flood relief operation, locals are fighting over relief material.","free":false}
 ],
-  "oir": [
-  {"id":"oir_1","label":"OIR Paper 1 (Verbal + Non-Verbal)","src":"content/oir/oir_paper_1.jpg","free":true,"timeSeconds":1020},
-  {"id":"oir_2","label":"OIR Paper 2","src":"content/oir/oir_paper_2.jpg","free":false,"timeSeconds":1020},
-  {"id":"oir_3","label":"OIR Paper 3","src":"content/oir/oir_paper_3.jpg","free":false,"timeSeconds":1020},
-  {"id":"oir_4","label":"OIR Paper 4","src":"content/oir/oir_paper_4.jpg","free":false,"timeSeconds":1020},
-  {"id":"oir_5","label":"OIR Paper 5","src":"content/oir/oir_paper_5.jpg","free":false,"timeSeconds":1020}
+  "gpe": [
+    {
+        "id":  "gpe_001",
+        "label":  "GPE 1",
+        "src":  "content/gpe/gpe_001.jpg",
+        "instructions":  "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
+        "free":  true,
+        "timeSeconds":  600
+    },
+    {
+        "id":  "gpe_002",
+        "label":  "GPE 2",
+        "src":  "content/gpe/gpe_002.jpg",
+        "instructions":  "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
+        "free":  false,
+        "timeSeconds":  600
+    },
+    {
+        "id":  "gpe_003",
+        "label":  "GPE 3",
+        "src":  "content/gpe/gpe_003.jpg",
+        "instructions":  "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
+        "free":  false,
+        "timeSeconds":  600
+    }
 ]
 };

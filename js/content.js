@@ -1,6 +1,6 @@
 // content.js — SSBForge Content Registry
 
-const FREE_LIMIT = { tat: 5, wat: 30, ppdt: 3, lecturette: 10, oir: 1, srt: 15 };
+const FREE_LIMIT = { tat: 5, wat: 30, ppdt: 3, lecturette: 10, srt: 15, gpe: 1 };
 
 const MODULES = {
   tat: {
@@ -38,12 +38,12 @@ const MODULES = {
     indexFile: 'content/srt/index.json',
     instructions: 'A situation will be shown for 30 seconds. Write your immediate, instinctive reaction — what you would actually do — in a few words. Responses must be practical, moral, and show initiative. Speed is critical: roughly 30 seconds per situation. Do not overthink.'
   },
-  oir: {
-    label: 'OIR — Officer Intelligence Rating',
-    timePerSlide: null,
+  gpe: {
+    label: 'GPE — Group Planning Exercise',
+    timePerSlide: 600,
     type: 'image',
-    indexFile: 'content/oir/index.json',
-    instructions: 'Each OIR paper has two parts: Verbal and Non-Verbal reasoning. Total time: 17 minutes per paper. Answer as many questions as possible in order. Do not skip — go sequentially. The full-paper timer starts when you press Start.'
+    indexFile: 'content/gpe/index.json',
+    instructions: 'Study the GPE image carefully. Instructions for the exercise will appear here. You have 10 minutes to write a practical, time-bound group plan.'
   }
 };
 
@@ -64,9 +64,13 @@ async function loadContentIndex(module) {
   }
 
   const embedded = window.PRACTICE_CONTENT_DATA && window.PRACTICE_CONTENT_DATA[module];
-  if (Array.isArray(embedded) && embedded.length) {
+  const embeddedItems = Array.isArray(embedded)
+    ? embedded
+    : (embedded && Array.isArray(embedded.value) ? embedded.value : []);
+
+  if (embeddedItems.length) {
     console.warn('Using embedded content fallback for ' + module + ':', lastError);
-    return normalizeContentItems(embedded, module);
+    return normalizeContentItems(embeddedItems, module);
   }
 
   console.warn('Using sample content for ' + module + ':', lastError);
@@ -81,7 +85,9 @@ function getIndexCandidates(module) {
 }
 
 function normalizeContentItems(data, module) {
-  const list = Array.isArray(data) ? data : [];
+  const list = Array.isArray(data)
+    ? data
+    : (data && Array.isArray(data.value) ? data.value : []);
   const mod = MODULES[module];
   const freeLimit = FREE_LIMIT[module] || list.length;
 
@@ -102,7 +108,7 @@ function normalizeContentItems(data, module) {
       item.situation = item.situation || item.label || item.topic || item.word || '';
       item.label = item.label || ('Situation ' + number);
     } else if (mod.type === 'image') {
-      item.label = item.label || (module === 'oir' ? 'OIR Paper ' + number : 'Picture ' + number);
+      item.label = item.label || ('Picture ' + number);
       item.alt = item.alt || item.label;
       item.src = normalizeImageSrc(item.src, module, number);
     }
@@ -116,7 +122,7 @@ function normalizeImageSrc(src, module, number) {
   if (src && src.includes('/')) return src;
   if (src) return 'content/' + module + '/' + src;
 
-  const prefix = module === 'oir' ? 'oir_paper_' : module + '_';
+  const prefix = module + '_';
   return 'content/' + module + '/' + prefix + String(number).padStart(3, '0') + '.jpg';
 }
 function stringToItem(value, module, index) {
@@ -124,6 +130,7 @@ function stringToItem(value, module, index) {
   if (module === 'wat') return { id: 'wat_' + number, label: value, word: value };
   if (module === 'lecturette') return { id: 'lec_' + number, label: value, topic: value };
   if (module === 'srt') return { id: 'srt_' + number, label: 'Situation ' + number, situation: value };
+  if (module === 'gpe') return { id: 'gpe_' + number, label: 'GPE ' + number, src: value, timeSeconds: 600 };
   return { id: module + '_' + number, label: value };
 }
 
@@ -204,11 +211,32 @@ function getSampleContent(module) {
         "You are in charge of supplies. You find 20% of rations are spoiled and troops are hungry.",
         "During a flood relief operation, locals are fighting over relief material.",
       ].map((s, i) => ({ id: 'srt_' + (i+1), label: 'Situation ' + (i+1), situation: s, free: i < 15 }));
-    case 'oir':
+    case 'gpe':
       return [
-        { id: 'oir_1', label: 'OIR Paper 1', src: 'content/oir/oir_paper_1.jpg', free: true, timeSeconds: 1020 },
-        { id: 'oir_2', label: 'OIR Paper 2', src: 'content/oir/oir_paper_2.jpg', free: false, timeSeconds: 1020 },
-        { id: 'oir_3', label: 'OIR Paper 3', src: 'content/oir/oir_paper_3.jpg', free: false, timeSeconds: 1020 },
+        {
+          id: 'gpe_001',
+          label: 'GPE 1',
+          src: 'content/gpe/gpe_001.jpg',
+          instructions: 'Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.',
+          free: true,
+          timeSeconds: 600
+        },
+        {
+          id: 'gpe_002',
+          label: 'GPE 2',
+          src: 'content/gpe/gpe_002.jpg',
+          instructions: 'Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.',
+          free: false,
+          timeSeconds: 600
+        },
+        {
+          id: 'gpe_003',
+          label: 'GPE 3',
+          src: 'content/gpe/gpe_003.jpg',
+          instructions: 'Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.',
+          free: false,
+          timeSeconds: 600
+        }
       ];
     default:
       return [];
@@ -227,3 +255,4 @@ function filterContent(items, module) {
 }
 
 window.ContentLoader = { loadContentIndex, getSampleContent, filterContent, MODULES, FREE_LIMIT };
+
