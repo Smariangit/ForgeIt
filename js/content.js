@@ -111,6 +111,8 @@ function normalizeContentItems(data, module) {
       item.label = item.label || ('Picture ' + number);
       item.alt = item.alt || item.label;
       item.src = normalizeImageSrc(item.src, module, number);
+      // Preserve per-item instructions (e.g. GPE scenario text)
+      item.instructions = item.instructions || null;
     }
 
     return item;
@@ -217,7 +219,7 @@ function getSampleContent(module) {
           id: 'gpe_001',
           label: 'GPE 1',
           src: 'content/gpe/gpe_001.jpg',
-          instructions: 'Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.',
+          instructions: 'You are a group of 6 students from your school going on an educational excursion in a rural area. While travelling, you encounter multiple emergency situations shown in the map. The map scale is 1 cm = 1 km. Current time is 11:30 AM. Your group has one vehicle, ropes, first-aid material, and support from nearby villagers.\n\nSituation Details:\n1. A major flood has damaged the road bridge and disrupted movement across the river.\n2. A nearby road accident has seriously injured a civilian who must be shifted to the hospital immediately.\n3. Intelligence inputs reveal that terrorists are planning to attack an army convoy passing through the area at 1:00 PM.\n4. A school building near the flooded region has stranded civilians and children waiting for rescue.\n5. Railway communication is disturbed and an incoming train may cross the damaged rail bridge.\n6. One member of your group is the leader whose mother is critically ill at home, and he must reach home by 12:30 PM.\n\nAs a group, identify all problems, assign priorities, calculate time and distance using the given scale, divide manpower and resources effectively, coordinate with police/army/railway/local administration, rescue injured civilians, prevent further casualties, and ensure maximum tasks are completed practically within the available time.',
           free: true,
           timeSeconds: 600
         },

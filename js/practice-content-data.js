@@ -4610,28 +4610,164 @@ window.PRACTICE_CONTENT_DATA = {
 ],
   "gpe": [
     {
-        "id":  "gpe_001",
-        "label":  "GPE 1",
-        "src":  "content/gpe/gpe_001.jpg",
-        "instructions":  "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
-        "free":  true,
-        "timeSeconds":  600
+        "id": "gpe_001",
+        "label": "GPE 1",
+        "src": "content/gpe/gpe_001.jpg",
+        "instructions": "You are a group of 6 students from your school going on an educational excursion in a rural area. While travelling, you encounter multiple emergency situations shown in the map. The map scale is 1 cm = 1 km. Current time is 11:30 AM. Your group has one vehicle, ropes, first-aid material, and support from nearby villagers.\n\nSituation Details:\n1. A major flood has damaged the road bridge and disrupted movement across the river.\n2. A nearby road accident has seriously injured a civilian who must be shifted to the hospital immediately.\n3. Intelligence inputs reveal that terrorists are planning to attack an army convoy passing through the area at 1:00 PM.\n4. A school building near the flooded region has stranded civilians and children waiting for rescue.\n5. Railway communication is disturbed and an incoming train may cross the damaged rail bridge.\n6. Your mother is critically ill at home, and you must reach home by 12:30 PM.\n\nAs a group, identify all problems, assign priorities, calculate time and distance using the given scale, divide manpower and resources effectively, coordinate with police/army/railway/local administration, rescue injured civilians, prevent further casualties, and ensure maximum tasks are completed practically within the available time.",
+        "free": true,
+        "timeSeconds": 600
     },
     {
-        "id":  "gpe_002",
-        "label":  "GPE 2",
-        "src":  "content/gpe/gpe_002.jpg",
-        "instructions":  "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
-        "free":  false,
-        "timeSeconds":  600
+        "id": "gpe_002",
+        "label": "GPE 2",
+        "src": "content/gpe/gpe_002.jpg",
+        "instructions": "You are a group of 5 NCC cadets travelling in a school bus for a national-level adventure camp. While crossing this region, heavy overnight rainfall has caused flash floods, road collapses, and communication failures. The map scale is 1 cm = 1 km. Current time is 11:15 AM.\n\nSituation Overview:\n1. The main highway bridge over the river has partially collapsed, stopping civilian movement between the two towns.\n2. A school bus carrying children is trapped in rising floodwater near the school area.\n3. The railway bridge appears unstable after soil erosion, and a passenger train is expected to pass at 12:10 PM.\n4. A chemical factory in the forest region has reported a gas leakage due to flood damage, threatening nearby villages.\n5. Intelligence agencies have intercepted information that anti-national elements plan to sabotage an army relief convoy expected to cross the northern road at 1:00 PM.\n6. One villager injured in a road accident has severe bleeding and must reach the hospital within 45 minutes.\n7. You have been informed that your father suffered a cardiac emergency, and he must reach the city hospital by 12:30 PM.\n8. Mobile towers are down in some regions, creating communication gaps between villages and rescue teams.\n\nResources Available:\n- One vehicle with limited fuel\n- Ropes and wooden planks\n- First-aid kit\n- Local villagers and volunteers\n- One police outpost nearby\n\nTask:\nAs a group, analyze the complete situation, identify all visible and hidden problems, estimate distances and travel time using the map scale, assign priorities logically, divide manpower and resources effectively, coordinate with police, railway authorities, army units, and local administration, rescue stranded civilians, prevent terrorist sabotage, control panic among villagers, and ensure maximum lives are saved with minimum delay.\n\nYour final plan should be practical, time-bound, leadership-oriented, and based on teamwork, resource management, and intelligent decision-making.",
+        "free": false,
+        "timeSeconds": 600
     },
     {
-        "id":  "gpe_003",
-        "label":  "GPE 3",
-        "src":  "content/gpe/gpe_003.jpg",
-        "instructions":  "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
-        "free":  false,
-        "timeSeconds":  600
+        "id": "gpe_003",
+        "label": "GPE 3",
+        "src": "content/gpe/gpe_003.jpg",
+        "instructions": "Instructions for this GPE will be added here. Study the image, identify all problems, prioritize them, divide resources, and write a practical group plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_004",
+        "label": "GPE 4",
+        "src": "content/gpe/gpe_004.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_005",
+        "label": "GPE 5",
+        "src": "content/gpe/gpe_005.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_006",
+        "label": "GPE 6",
+        "src": "content/gpe/gpe_006.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_007",
+        "label": "GPE 7",
+        "src": "content/gpe/gpe_007.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_008",
+        "label": "GPE 8",
+        "src": "content/gpe/gpe_008.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_009",
+        "label": "GPE 9",
+        "src": "content/gpe/gpe_009.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_010",
+        "label": "GPE 10",
+        "src": "content/gpe/gpe_010.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_011",
+        "label": "GPE 11",
+        "src": "content/gpe/gpe_011.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_012",
+        "label": "GPE 12",
+        "src": "content/gpe/gpe_012.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_013",
+        "label": "GPE 13",
+        "src": "content/gpe/gpe_013.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_014",
+        "label": "GPE 14",
+        "src": "content/gpe/gpe_014.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_015",
+        "label": "GPE 15",
+        "src": "content/gpe/gpe_015.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_016",
+        "label": "GPE 16",
+        "src": "content/gpe/gpe_016.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_017",
+        "label": "GPE 17",
+        "src": "content/gpe/gpe_017.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_018",
+        "label": "GPE 18",
+        "src": "content/gpe/gpe_018.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_019",
+        "label": "GPE 19",
+        "src": "content/gpe/gpe_019.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
+    },
+    {
+        "id": "gpe_020",
+        "label": "GPE 20",
+        "src": "content/gpe/gpe_020.jpg",
+        "instructions": "Study the image carefully, identify all visible and hidden problems, prioritize urgent tasks, allocate group resources effectively, consider time-distance calculations, civilian safety, communication, transport, medical support, and administration coordination. Write a practical and logical group execution plan.",
+        "free": false,
+        "timeSeconds": 600
     }
 ]
 };

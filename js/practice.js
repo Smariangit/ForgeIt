@@ -96,6 +96,12 @@ const Practice = (function() {
 
     const hasLocked = items.some(i => i.locked);
     if (el.premiumNotice()) el.premiumNotice().style.display = hasLocked ? 'block' : 'none';
+
+    // GPE: expand content list to show all items without scrolling
+    const sidebar = document.querySelector('.content-sidebar');
+    const contentList = el.contentList();
+    if (sidebar) sidebar.classList.toggle('gpe-mode', mode === 'gpe');
+    if (contentList) contentList.classList.toggle('gpe-list', mode === 'gpe');
   }
 
   // showSlide: renders the current item, NO timer side-effects
