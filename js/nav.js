@@ -38,12 +38,14 @@
     // Wire login/logout
     const lb = document.getElementById('loginBtn');
     if (lb) {
+      lb.dataset.authWired = 'true';
       lb.addEventListener('click', function(e) {
         e.preventDefault();
         if (user) {
           if (confirm('Logged in as ' + user.email + '.\nLogout?')) {
-            localStorage.removeItem('ssbUser');
-            window.location.reload();
+            if (typeof Auth !== 'undefined' && Auth.logout) {
+              Auth.logout();
+            }
           }
         } else {
           const modal = document.getElementById('loginModal');

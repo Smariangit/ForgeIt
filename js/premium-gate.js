@@ -1,12 +1,17 @@
 // premium-gate.js - shows a free preview, then blurs premium-only sections until Auth verifies access
 const PremiumGate = {
-  requireAccess(options) {
+  async requireAccess(options) {
     const pageName = options.pageName || 'Premium Content';
     const content = document.getElementById(options.contentId);
-    const isPremium = typeof Auth !== 'undefined' && Auth.isPremium();
+    let isPremium = typeof Auth !== 'undefined' && Auth.isPremium();
 
     if (!content) return isPremium;
     content.classList.remove('hidden');
+
+    if (!isPremium && typeof Auth !== 'undefined' && Auth.getUser()) {
+      await Auth.refreshUserProfile().catch(() => null);
+      isPremium = Auth.isPremium();
+    }
 
     if (isPremium) {
       content.classList.remove('premium-preview-locked');

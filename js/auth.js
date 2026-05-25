@@ -3,8 +3,14 @@
 //   SUPABASE_URL → Supabase Dashboard → Settings → API → Project URL
 //   SUPABASE_KEY → Supabase Dashboard → Settings → API → anon/public key
 
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_URL = window.SSB_SUPABASE_URL || 'YOUR_SUPABASE_URL';
+const SUPABASE_KEY = window.SSB_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
+
+function isSupabaseConfigured() {
+  return SUPABASE_URL && SUPABASE_KEY
+    && !SUPABASE_URL.includes('YOUR_SUPABASE')
+    && !SUPABASE_KEY.includes('YOUR_SUPABASE');
+}
 
 // ---------------------------------------------------------------------------
 // Supabase Auth REST helpers
@@ -12,6 +18,9 @@ const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY';
 const _sb = {
   // POST to Supabase Auth endpoint
   async authPost(path, body) {
+    if (!isSupabaseConfigured()) {
+      throw new Error('Supabase is not configured. Add your Project URL and anon key in js/auth.js.');
+    }
     const res = await fetch(SUPABASE_URL + '/auth/v1/' + path, {
       method: 'POST',
       headers: {
@@ -26,13 +35,14 @@ const _sb = {
   },
 
   // GET/PATCH profiles table via REST
-  async getProfile(userId) {
+  async getProfile(userId, accessToken) {
+    if (!isSupabaseConfigured()) return null;
     const res = await fetch(
-      SUPABASE_URL + '/rest/v1/profiles?id=eq.' + userId + '&limit=1',
+      SUPABASE_URL + '/rest/v1/profiles?id=eq.' + encodeURIComponent(userId) + '&limit=1',
       {
         headers: {
           'apikey': SUPABASE_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Authorization': 'Bearer ' + (accessToken || SUPABASE_KEY),
           'Accept': 'application/json'
         }
       }
@@ -42,8 +52,11 @@ const _sb = {
   },
 
   async updateProfile(userId, data, accessToken) {
+    if (!isSupabaseConfigured()) {
+      throw new Error('Supabase is not configured. Add your Project URL and anon key in js/auth.js.');
+    }
     const res = await fetch(
-      SUPABASE_URL + '/rest/v1/profiles?id=eq.' + userId,
+      SUPABASE_URL + '/rest/v1/profiles?id=eq.' + encodeURIComponent(userId),
       {
         method: 'PATCH',
         headers: {
@@ -64,6 +77,24 @@ const _sb = {
   // Refresh access token using refresh token
   async refreshSession(refreshToken) {
     return this.authPost('token?grant_type=refresh_token', { refresh_token: refreshToken });
+  },
+
+  async insertPremiumPayment(data, accessToken) {
+    if (!isSupabaseConfigured()) return;
+    const res = await fetch(SUPABASE_URL + '/rest/v1/premium_payments', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(data)
+    });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || 'Payment record could not be saved');
+    }
   }
 };
 
@@ -95,6 +126,20 @@ const _session = {
   clear() { localStorage.removeItem(this.key); }
 };
 
+function saveProfileToSession(profile) {
+  const session = _session.get();
+  if (!session || !profile) return session;
+  const updated = {
+    ...session,
+    name: profile.name || session.name || '',
+    isPremium: profile.premium || false,
+    premiumExpiry: profile.premium_expiry || null,
+    role: profile.role || session.role || 'free'
+  };
+  localStorage.setItem(_session.key, JSON.stringify(updated));
+  return updated;
+}
+
 // ---------------------------------------------------------------------------
 // Auth API
 // ---------------------------------------------------------------------------
@@ -103,6 +148,10 @@ const Auth = {
   // ── Sync session read (no network) ────────────────────────────────────────
   getUser() {
     return _session.get();
+  },
+
+  isConfigured() {
+    return isSupabaseConfigured();
   },
 
   // ── Premium check ─────────────────────────────────────────────────────────
@@ -131,9 +180,7 @@ const Auth = {
         email,
         password,
         data: { name }, // stored in auth.users.user_metadata
-        options: {
-          emailRedirectTo: window.location.origin + '/index.html'
-        }
+        email_redirect_to: window.location.origin + window.location.pathname
       });
 
       // Supabase may require email confirmation — check if session was returned
@@ -147,9 +194,9 @@ const Auth = {
         await _sb.updateProfile(data.user.id, { name }, data.access_token).catch(() => {});
       }
 
-      const profile = await _sb.getProfile(data.user.id).catch(() => null);
+      const profile = await _sb.getProfile(data.user.id, data.access_token).catch(() => null);
       _session.set(data, profile);
-      return { user: data.user };
+      return { user: data.user, session: _session.get() };
     } catch (err) {
       console.error('Register error:', err);
       return { error: err.message || 'Registration failed. Please try again.' };
@@ -162,9 +209,9 @@ const Auth = {
       const data = await _sb.authPost('token?grant_type=password', { email, password });
 
       // Fetch latest profile (premium status, streak, etc.)
-      const profile = await _sb.getProfile(data.user.id).catch(() => null);
+      const profile = await _sb.getProfile(data.user.id, data.access_token).catch(() => null);
       _session.set(data, profile);
-      return { user: data.user };
+      return { user: data.user, session: _session.get() };
     } catch (err) {
       console.error('Login error:', err);
       const msg = err.message || '';
@@ -187,33 +234,75 @@ const Auth = {
     const expiry = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
 
     try {
+      await _sb.insertPremiumPayment({
+        user_id: session.id,
+        email: session.email,
+        razorpay_payment_id: razorpayPaymentId,
+        amount: 51,
+        currency: 'INR',
+        status: 'paid',
+        created_at: new Date().toISOString()
+      }, session.accessToken).catch(err => {
+        console.warn('Premium payment record skipped:', err);
+      });
+
       await _sb.updateProfile(
         session.id,
         { premium: true, premium_expiry: expiry },
         session.accessToken
       );
 
-      // Refresh local session
-      const updated = { ...session, isPremium: true, premiumExpiry: expiry };
-      localStorage.setItem(_session.key, JSON.stringify(updated));
+      const verified = await this.waitForPremiumVerification({ attempts: 8, delayMs: 1200 });
+      if (!verified.success) return verified;
 
-      return { success: true, expiry };
+      return { success: true, expiry: verified.user.premiumExpiry || expiry };
     } catch (err) {
       console.error('Upgrade error:', err);
       return { error: err.message || 'Could not update premium status.' };
     }
   },
 
+  async refreshUserProfile() {
+    let session = _session.get();
+    if (!session) return null;
+
+    await this.refreshIfNeeded();
+    session = _session.get();
+    if (!session) return null;
+
+    const profile = await _sb.getProfile(session.id, session.accessToken).catch(() => null);
+    return saveProfileToSession(profile);
+  },
+
+  async waitForPremiumVerification(options = {}) {
+    const attempts = options.attempts || 10;
+    const delayMs = options.delayMs || 1500;
+
+    for (let i = 0; i < attempts; i++) {
+      const user = await this.refreshUserProfile();
+      if (user && this.isPremium()) {
+        return { success: true, user };
+      }
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+
+    return {
+      pending: true,
+      error: 'Payment was received, but premium verification is still pending. Please wait a minute and log in again, or contact support with your payment ID.'
+    };
+  },
+
   // ── Refresh session token (call on page load if token is near expiry) ──────
   async refreshIfNeeded() {
     const session = _session.get();
     if (!session) return;
+    if (!session.refreshToken) return;
     const fiveMinutes = 5 * 60 * 1000;
     if (session.expiresAt && session.expiresAt - Date.now() > fiveMinutes) return;
 
     try {
       const data = await _sb.refreshSession(session.refreshToken);
-      const profile = await _sb.getProfile(data.user.id).catch(() => null);
+      const profile = await _sb.getProfile(data.user.id, data.access_token).catch(() => null);
       _session.set(data, profile);
     } catch {
       // Token expired or invalid — log out silently
@@ -225,7 +314,7 @@ const Auth = {
   async logout() {
     const session = _session.get();
     // Tell Supabase to invalidate the token
-    if (session?.accessToken) {
+    if (isSupabaseConfigured() && session?.accessToken) {
       fetch(SUPABASE_URL + '/auth/v1/logout', {
         method: 'POST',
         headers: {
@@ -272,7 +361,7 @@ const Auth = {
     const user = await res.json();
 
     // Fetch profile
-    const profile = await _sb.getProfile(user.id).catch(() => null);
+    const profile = await _sb.getProfile(user.id, accessToken).catch(() => null);
 
     // Build a session-compatible object and store it
     _session.set({

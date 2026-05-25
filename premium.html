@@ -101,6 +101,7 @@
     <h2>Get Premium Now</h2>
     <p>Secure payment via Razorpay. Supports UPI, cards, netbanking, wallets.</p>
     <button class="btn-primary" id="razorpayBtn">Pay ₹51 via Razorpay</button>
+    <p id="premiumStatus" class="hidden" style="margin-top:1rem;color:var(--gold);font-size:14px;"></p>
     <div class="payment-logos">
       <span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>Net Banking</span><span>Wallets</span>
     </div>
@@ -153,10 +154,17 @@ rows.forEach(([feat, free, prem]) => {
 });
 
 // Razorpay payment
-document.getElementById('razorpayBtn').addEventListener('click', function() {
+document.getElementById('razorpayBtn').addEventListener('click', async function() {
   const user = Auth.getUser();
   if (!user) {
     document.getElementById('loginModal').classList.add('active');
+    return;
+  }
+
+  await Auth.refreshUserProfile().catch(() => null);
+  if (Auth.isPremium()) {
+    document.getElementById('paymentSection').classList.add('hidden');
+    document.getElementById('alreadyPremium').classList.remove('hidden');
     return;
   }
 
@@ -176,10 +184,14 @@ document.getElementById('razorpayBtn').addEventListener('click', function() {
     notes: { user_email: user.email || '' },
     theme: { color: '#C9A84C' },
     handler: async function(response) {
+      setPremiumStatus('Payment received. Verifying premium access with Supabase...');
+      document.getElementById('razorpayBtn').disabled = true;
       const result = await Auth.upgradeToPremium(response.razorpay_payment_id);
 
       if (result.error) {
+        document.getElementById('razorpayBtn').disabled = false;
         alert('⚠️ Payment received but premium activation failed.\nPayment ID: ' + response.razorpay_payment_id + '\nPlease contact contact@ssbforge.in with this ID and we will activate manually.');
+        setPremiumStatus(result.error);
         return;
       }
 
@@ -216,11 +228,21 @@ document.getElementById('razorpayBtn').addEventListener('click', function() {
   }
 });
 
-// Check if already premium
-if (Auth.isPremium()) {
-  document.getElementById('paymentSection').classList.add('hidden');
-  document.getElementById('alreadyPremium').classList.remove('hidden');
+function setPremiumStatus(message) {
+  const status = document.getElementById('premiumStatus');
+  if (!status) return;
+  status.textContent = message;
+  status.classList.remove('hidden');
 }
+
+// Check if already premium
+(async function checkPremiumOnLoad() {
+  if (Auth.getUser()) await Auth.refreshUserProfile().catch(() => null);
+  if (Auth.isPremium()) {
+    document.getElementById('paymentSection').classList.add('hidden');
+    document.getElementById('alreadyPremium').classList.remove('hidden');
+  }
+})();
 </script>
 
 <!-- LOGIN MODAL -->

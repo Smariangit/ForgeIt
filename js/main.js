@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const loginModal = document.getElementById('loginModal');
   const modalClose = document.getElementById('modalClose');
 
-  if (loginBtn && loginModal) {
+  if (loginBtn && loginModal && !loginBtn.dataset.authWired) {
     loginBtn.addEventListener('click', (e) => {
       e.preventDefault();
       const user = Auth.getUser();
@@ -45,15 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
   // Login form
   const doLogin = document.getElementById('doLogin');
   if (doLogin) {
-    doLogin.addEventListener('click', () => {
+    doLogin.addEventListener('click', async () => {
       const email = document.getElementById('loginEmail').value.trim();
       const pwd = document.getElementById('loginPassword').value;
       if (!email || !pwd) { alert('Please enter email and password.'); return; }
-      const result = Auth.login(email, pwd);
-      if (result.error) { alert(result.error); return; }
+      setAuthButtonState(doLogin, true, 'Signing in...');
+      const result = await Auth.login(email, pwd);
+      setAuthButtonState(doLogin, false, 'Login');
+      if (result.error) {
+        alert(result.error);
+        return;
+      }
+      const user = Auth.getUser();
       loginModal.classList.remove('active');
       updateLoginBtn();
-      alert(`Welcome back, ${result.user.name || result.user.email}!`);
+      alert(`Welcome back, ${user?.name || user?.email || email}!`);
       window.location.reload();
     });
   }
@@ -61,18 +67,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Register button
   const goRegister = document.getElementById('goRegister');
   if (goRegister) {
-    goRegister.addEventListener('click', () => {
+    goRegister.addEventListener('click', async () => {
       const email = document.getElementById('loginEmail').value.trim();
       const pwd = document.getElementById('loginPassword').value;
       if (!email || !pwd) { alert('Please enter an email and password to register.'); return; }
       const name = prompt('Your name (optional):') || '';
-      const result = Auth.register(name, email, pwd);
+      setAuthButtonState(goRegister, true, 'Creating account...');
+      const result = await Auth.register(name, email, pwd);
+      setAuthButtonState(goRegister, false, 'Create Free Account');
       if (result.error) { alert(result.error); return; }
+      if (result.confirm) {
+        alert(result.message || 'Account created. Please confirm your email, then log in.');
+        return;
+      }
       loginModal.classList.remove('active');
       updateLoginBtn();
       alert(`Account created! Welcome to SSBForge, ${name || email}.`);
       window.location.reload();
     });
+  }
+
+  function setAuthButtonState(button, isBusy, label) {
+    if (!button) return;
+    button.disabled = isBusy;
+    button.textContent = label;
   }
 
   // ===== Update login button text =====
