@@ -1,4 +1,4 @@
-const SUPABASE_URL = 'https://cogcatpdaengjybswcnq.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://cogcatpdaengjybswcnq.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvZ2NhdHBkYWVuZ2p5YnN3Y25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNjczOTYsImV4cCI6MjA5NDk0MzM5Nn0.RCD-qCYHtGAFPEqEAoqn76RzzEzs444DhETw2v8Tu_k';
 
 function isSupabaseConfigured() {
