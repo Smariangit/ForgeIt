@@ -38,7 +38,7 @@
     <div class="feature-item">
       <div class="fi-icon">🖼️</div>
       <h3>Unlimited TAT Images</h3>
-      <p>Access our full library of 300+ TAT stimulus images with timer and story prompts. New images added weekly.</p>
+      <p>Access our full library of 100+ TAT stimulus images with timer and story prompts. New images added monthly.</p>
     </div>
     <div class="feature-item">
       <div class="fi-icon">✍️</div>
@@ -48,17 +48,17 @@
     <div class="feature-item">
       <div class="fi-icon">👥</div>
       <h3>PPDT Picture Sets</h3>
-      <p>200+ PPDT images, organised by clarity level and OLQ signals. Perfect for story construction practice.</p>
+      <p>100+ PPDT images, organised by clarity level and OLQ signals. Perfect for story construction practice.</p>
     </div>
     <div class="feature-item">
       <div class="fi-icon">🎤</div>
       <h3>Lecturette Topic Bank</h3>
-      <p>300+ curated topics covering defence, current affairs, science, and social issues with prep time simulation.</p>
+      <p>100+ curated topics covering defence, current affairs, science, and social issues with prep time simulation.</p>
     </div>
     <div class="feature-item">
       <div class="fi-icon">📊</div>
-      <h3>Full OIR Paper Library</h3>
-      <p>30+ complete OIR papers — verbal and non-verbal. Timed, scored, and explained.</p>
+      <h3>Actual SSB format 3D GPE Exercises</h3>
+      <p>20+ 3D models for Group planning exercise for practice.</p>
     </div>
     <div class="feature-item">
       <div class="fi-icon">📰</div>
@@ -134,7 +134,7 @@ const rows = [
   ["WAT Word Sets", "1 set (30 words)", "Full bank (100+ words)"],
   ["PPDT Pictures", "3 pictures", "100+ pictures"],
   ["Lecturette Topics", "10 topics", "100+ topics"],
-  ["OIR Papers", "1 paper", "30+ papers"],
+  ["GPE Exercises", "1 model", "20+ models"],
   ["Current Affairs", "✕", "✓ Daily"],
   ["Mind Forge ", "✕", "✓"],
   ["Ads", "✕ None", "✕ None"],
@@ -154,7 +154,7 @@ rows.forEach(([feat, free, prem]) => {
 
 // Razorpay payment
 document.getElementById('razorpayBtn').addEventListener('click', function() {
-  const user = JSON.parse(localStorage.getItem('ssbUser') || 'null');
+  const user = Auth.getUser();
   if (!user) {
     document.getElementById('loginModal').classList.add('active');
     return;
@@ -175,32 +175,33 @@ document.getElementById('razorpayBtn').addEventListener('click', function() {
     },
     notes: { user_email: user.email || '' },
     theme: { color: '#C9A84C' },
-    handler: function(response) {
-      // On success: upgrade user in localStorage (in production, verify on your backend)
-      const u = JSON.parse(localStorage.getItem('ssbUser') || '{}');
-      u.isPremium = true;
-      u.premiumExpiry = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
-      u.razorpayId = response.razorpay_payment_id;
-      localStorage.setItem('ssbUser', JSON.stringify(u));
+    handler: async function(response) {
+      const result = await Auth.upgradeToPremium(response.razorpay_payment_id);
+
+      if (result.error) {
+        alert('⚠️ Payment received but premium activation failed.\nPayment ID: ' + response.razorpay_payment_id + '\nPlease contact contact@ssbforge.in with this ID and we will activate manually.');
+        return;
+      }
+
+      const u = Auth.getUser();
 
       // Send confirmation email via EmailJS (free — 200/month)
       // Setup: emailjs.com → Create account → Add Gmail service → Create template
-      // Template variables used: {{to_name}}, {{to_email}}, {{payment_id}}, {{expiry_date}}
-      // Replace YOUR_EMAILJS_PUBLIC_KEY, YOUR_SERVICE_ID, YOUR_TEMPLATE_ID below
+      // Template variables: {{to_name}}, {{to_email}}, {{payment_id}}, {{expiry_date}}, {{amount}}
       try {
         emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
         emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-          to_name: u.name || 'Aspirant',
-          to_email: u.email,
+          to_name: u?.name || 'Aspirant',
+          to_email: u?.email,
           payment_id: response.razorpay_payment_id,
-          expiry_date: new Date(u.premiumExpiry).toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' }),
+          expiry_date: new Date(result.expiry).toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' }),
           amount: '₹51'
         });
       } catch(emailErr) {
         console.log('Email not configured yet:', emailErr);
       }
 
-      alert('✅ Payment successful! Premium unlocked. Welcome aboard!\n\nA confirmation has been sent to ' + u.email);
+      alert('✅ Payment successful! Premium unlocked. Welcome aboard!\n\nA confirmation has been sent to ' + (u?.email || 'your email'));
       document.getElementById('paymentSection').classList.add('hidden');
       document.getElementById('alreadyPremium').classList.remove('hidden');
     },
@@ -216,8 +217,7 @@ document.getElementById('razorpayBtn').addEventListener('click', function() {
 });
 
 // Check if already premium
-const u = JSON.parse(localStorage.getItem('ssbUser') || 'null');
-if (u && u.isPremium) {
+if (Auth.isPremium()) {
   document.getElementById('paymentSection').classList.add('hidden');
   document.getElementById('alreadyPremium').classList.remove('hidden');
 }
