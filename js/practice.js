@@ -94,14 +94,11 @@ const Practice = (function() {
     el.timerInfo().textContent = (mod.timePerSlide ? mod.timePerSlide + 's per slide' : '17 min per paper') + ' · Press Start';
     el.timerBarFill().style.width = '100%';
 
-    const hasLocked = items.some(i => i.locked);
-    if (el.premiumNotice()) el.premiumNotice().style.display = hasLocked ? 'block' : 'none';
-
-    // GPE: expand content list to show all items without scrolling
-    const sidebar = document.querySelector('.content-sidebar');
-    const contentList = el.contentList();
-    if (sidebar) sidebar.classList.toggle('gpe-mode', mode === 'gpe');
-    if (contentList) contentList.classList.toggle('gpe-list', mode === 'gpe');
+    // Show premium notice for non-premium users only
+    if (el.premiumNotice()) {
+      const userIsPremium = typeof Auth !== 'undefined' && Auth.isPremium();
+      el.premiumNotice().style.display = userIsPremium ? 'none' : 'block';
+    }
   }
 
   // showSlide: renders the current item, NO timer side-effects
@@ -346,7 +343,8 @@ const Practice = (function() {
       const label = getContentListLabel(item, i);
       div.innerHTML = '<span>' + label + '</span>' + (item.locked ? '<span class="item-lock">🔒</span>' : '');
       div.addEventListener('click', () => {
-        if (item.locked) { window.location.href = 'premium.html'; return; }
+        // Items are never locked for premium users (fetched from Supabase)
+        // Free users only see free items — no locked items in list
         currentIdx = i;
         showSlide();
         if (isRunning) {

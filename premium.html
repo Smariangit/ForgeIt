@@ -99,8 +99,8 @@
   <!-- PAYMENT SECTION -->
   <div class="payment-section" id="paymentSection">
     <h2>Get Premium Now</h2>
-    <p>Secure payment via Razorpay. Supports UPI, cards, netbanking, wallets.</p>
-    <button class="btn-primary" id="razorpayBtn">Pay ₹51 via Razorpay</button>
+    <p>Secure payment via Cashfree. Supports UPI, cards, netbanking, wallets.</p>
+    <button class="btn-primary" id="razorpayBtn">Pay ₹51 via Cashfree</button>
     <p id="premiumStatus" class="hidden" style="margin-top:1rem;color:var(--gold);font-size:14px;"></p>
     <div class="payment-logos">
       <span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>Net Banking</span><span>Wallets</span>
@@ -121,8 +121,8 @@
 
 </div>
 
-<!-- Razorpay SDK -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!-- Cashfree SDK -->
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 <!-- EmailJS — free 200 emails/month. Sign up at emailjs.com -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/nav.js"></script>
@@ -153,78 +153,123 @@ rows.forEach(([feat, free, prem]) => {
   tbody.appendChild(tr);
 });
 
-// Razorpay payment
+// Cashfree payment
 document.getElementById('razorpayBtn').addEventListener('click', async function() {
   const user = Auth.getUser();
+
   if (!user) {
     document.getElementById('loginModal').classList.add('active');
     return;
   }
 
   await Auth.refreshUserProfile().catch(() => null);
+
   if (Auth.isPremium()) {
     document.getElementById('paymentSection').classList.add('hidden');
     document.getElementById('alreadyPremium').classList.remove('hidden');
     return;
   }
 
-  // NOTE: Replace 'YOUR_RAZORPAY_KEY_ID' with your actual Razorpay key from razorpay.com dashboard
-  // Amount is in paise: 51 rupees = 5100 paise
-  const options = {
-    key: 'YOUR_RAZORPAY_KEY_ID',
-    amount: 5100,
-    currency: 'INR',
-    name: 'SSBForge',
-    description: 'Premium Monthly Access',
-    image: '',
-    prefill: {
-      email: user.email || '',
-      name: user.name || '',
-    },
-    notes: { user_email: user.email || '' },
-    theme: { color: '#C9A84C' },
-    handler: async function(response) {
-      setPremiumStatus('Payment received. Verifying premium access with Supabase...');
-      document.getElementById('razorpayBtn').disabled = true;
-      const result = await Auth.upgradeToPremium(response.razorpay_payment_id);
+  /*
+    IMPORTANT SETUP:
 
-      if (result.error) {
-        document.getElementById('razorpayBtn').disabled = false;
-        alert('⚠️ Payment received but premium activation failed.\nPayment ID: ' + response.razorpay_payment_id + '\nPlease contact contact@ssbforge.in with this ID and we will activate manually.');
-        setPremiumStatus(result.error);
-        return;
-      }
+    1. Replace YOUR_CASHFREE_APP_ID with your Cashfree App ID
+    2. Create a backend endpoint that generates:
+       - order_id
+       - payment_session_id
 
-      const u = Auth.getUser();
-
-      // Send confirmation email via EmailJS (free — 200/month)
-      // Setup: emailjs.com → Create account → Add Gmail service → Create template
-      // Template variables: {{to_name}}, {{to_email}}, {{payment_id}}, {{expiry_date}}, {{amount}}
-      try {
-        emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-          to_name: u?.name || 'Aspirant',
-          to_email: u?.email,
-          payment_id: response.razorpay_payment_id,
-          expiry_date: new Date(result.expiry).toLocaleDateString('en-IN', { day:'numeric', month:'long', year:'numeric' }),
-          amount: '₹51'
-        });
-      } catch(emailErr) {
-        console.log('Email not configured yet:', emailErr);
-      }
-
-      alert('✅ Payment successful! Premium unlocked. Welcome aboard!\n\nA confirmation has been sent to ' + (u?.email || 'your email'));
-      document.getElementById('paymentSection').classList.add('hidden');
-      document.getElementById('alreadyPremium').classList.remove('hidden');
-    },
-    modal: { ondismiss: function() { console.log('Payment dismissed'); } }
-  };
+    NEVER expose your Cashfree Secret Key in frontend code.
+  */
 
   try {
-    const rzp = new Razorpay(options);
-    rzp.open();
-  } catch(e) {
-    alert('Razorpay could not load. Please add your Razorpay Key ID in premium.html (see instructions in README).');
+    setPremiumStatus('Creating secure payment session...');
+    document.getElementById('razorpayBtn').disabled = true;
+
+    // Replace this with your deployed backend API URL
+    const response = await fetch('YOUR_BACKEND_API/create-order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        amount: 51,
+        customer_email: user.email,
+        customer_name: user.name || 'SSB Aspirant'
+      })
+    });
+
+    const data = await response.json();
+
+    if (!data.payment_session_id) {
+      throw new Error('Payment session creation failed');
+    }
+
+    const cashfree = Cashfree({
+      mode: 'production'
+      // use 'sandbox' during testing
+    });
+
+    const result = await cashfree.checkout({
+      paymentSessionId: data.payment_session_id,
+      redirectTarget: '_modal'
+    });
+
+    console.log('Cashfree Result:', result);
+
+    // Verify payment from backend
+    const verifyResponse = await fetch('YOUR_BACKEND_API/verify-payment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        order_id: data.order_id
+      })
+    });
+
+    const verifyData = await verifyResponse.json();
+
+    if (!verifyData.success) {
+      throw new Error('Payment verification failed');
+    }
+
+    const premiumResult = await Auth.upgradeToPremium(verifyData.payment_id);
+
+    if (premiumResult.error) {
+      throw new Error(premiumResult.error);
+    }
+
+    const u = Auth.getUser();
+
+    try {
+      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+        to_name: u?.name || 'Aspirant',
+        to_email: u?.email,
+        payment_id: verifyData.payment_id,
+        expiry_date: new Date(premiumResult.expiry).toLocaleDateString('en-IN', {
+          day:'numeric',
+          month:'long',
+          year:'numeric'
+        }),
+        amount: '₹51'
+      });
+
+    } catch(emailErr) {
+      console.log('EmailJS not configured yet:', emailErr);
+    }
+
+    alert('✅ Payment successful! Premium unlocked.');
+
+    document.getElementById('paymentSection').classList.add('hidden');
+    document.getElementById('alreadyPremium').classList.remove('hidden');
+
+  } catch(err) {
+    console.error(err);
+    alert('Payment failed or cancelled. Please try again.');
+    setPremiumStatus(err.message || 'Payment failed');
+    document.getElementById('razorpayBtn').disabled = false;
   }
 });
 
@@ -258,6 +303,36 @@ function setPremiumStatus(message) {
     <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
   </div>
 </div>
+
+
+<!--
+CASHFREE SETUP CHECKLIST
+
+1. CASHFREE DASHBOARD
+   - Create App
+   - Get:
+     a) App ID
+     b) Secret Key
+
+2. BACKEND REQUIRED
+   Create APIs:
+   - POST /create-order
+   - POST /verify-payment
+
+3. OPTIONAL
+   EmailJS:
+   - Public Key
+   - Service ID
+   - Template ID
+
+4. WEBHOOK (Recommended)
+   Add Cashfree webhook URL:
+   https://yourdomain.com/webhook
+
+5. NEVER EXPOSE:
+   - Secret Key
+   - Webhook Secret
+-->
 
 </body>
 </html>

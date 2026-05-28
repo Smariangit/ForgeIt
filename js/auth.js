@@ -1,5 +1,10 @@
-const SUPABASE_URL = 'https://cogcatpdaengjybswcnq.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvZ2NhdHBkYWVuZ2p5YnN3Y25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNjczOTYsImV4cCI6MjA5NDk0MzM5Nn0.RCD-qCYHtGAFPEqEAoqn76RzzEzs444DhETw2v8Tu_k';
+// auth.js — SSBForge Auth (Supabase Auth + profiles table)
+// Replace these two values with your project details:
+//   SUPABASE_URL → Supabase Dashboard → Settings → API → Project URL
+//   SUPABASE_KEY → Supabase Dashboard → Settings → API → anon/public key
+
+const SUPABASE_URL = window.SSB_SUPABASE_URL || 'YOUR_SUPABASE_URL';
+const SUPABASE_KEY = window.SSB_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
 
 function isSupabaseConfigured() {
   return SUPABASE_URL && SUPABASE_KEY
@@ -74,8 +79,6 @@ const _sb = {
     return this.authPost('token?grant_type=refresh_token', { refresh_token: refreshToken });
   },
 
-  // NOTE: premium_payments table is optional. If it doesn't exist in your DB,
-  // the error is swallowed and premium upgrade still completes via profiles update.
   async insertPremiumPayment(data, accessToken) {
     if (!isSupabaseConfigured()) return;
     const res = await fetch(SUPABASE_URL + '/rest/v1/premium_payments', {
@@ -334,8 +337,8 @@ const Auth = {
 // ── Handle email confirmation redirect ────────────────────────────────────
 // When user clicks the confirmation link, Supabase redirects back with tokens
 // in the URL hash: #access_token=xxx&refresh_token=yyy&type=signup
-// Session is stored immediately (sync); UI updates wait for DOM.
-(function handleEmailConfirmation() {
+// We detect this, establish the session, then clean the URL.
+(async function handleEmailConfirmation() {
   const hash = window.location.hash;
   if (!hash) return;
 
@@ -346,60 +349,47 @@ const Auth = {
 
   if (!accessToken || type !== 'signup') return;
 
-  // Store session immediately — don't wait for DOM
-  (async () => {
-    try {
-      const res = await fetch(SUPABASE_URL + '/auth/v1/user', {
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': 'Bearer ' + accessToken
-        }
-      });
-      if (!res.ok) return;
-      const user = await res.json();
-
-      const profile = await _sb.getProfile(user.id, accessToken).catch(() => null);
-
-      _session.set({
-        user,
-        access_token:  accessToken,
-        refresh_token: refreshToken,
-        expires_in:    3600
-      }, profile);
-
-      // Clean tokens from URL immediately
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-
-      // Update UI once DOM is ready
-      function onDomReady(fn) {
-        if (document.readyState !== 'loading') fn();
-        else document.addEventListener('DOMContentLoaded', fn);
+  try {
+    // Get user from the token
+    const res = await fetch(SUPABASE_URL + '/auth/v1/user', {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + accessToken
       }
+    });
+    if (!res.ok) return;
+    const user = await res.json();
 
-      onDomReady(() => {
-        // Show success in modal if present
-        if (typeof window.showModalStatus === 'function') {
-          window.showModalStatus('✓ Email confirmed! You are now logged in.', false);
-        }
-        if (typeof window.switchModalView === 'function') {
-          window.switchModalView('login');
-        }
-        const modal = document.getElementById('loginModal');
-        if (modal) modal.classList.add('active');
+    // Fetch profile
+    const profile = await _sb.getProfile(user.id, accessToken).catch(() => null);
 
-        // Rebuild nav to show logged-in name
-        const navLinks = document.getElementById('navLinks');
-        if (navLinks && typeof buildNav === 'function') buildNav();
-        else if (navLinks) {
-          // Minimal fallback: just reload page so nav.js picks up the session
-          window.location.reload();
-        }
-      });
+    // Build a session-compatible object and store it
+    _session.set({
+      user,
+      access_token:  accessToken,
+      refresh_token: refreshToken,
+      expires_in:    3600
+    }, profile);
 
-    } catch (err) {
-      console.error('Email confirmation handling failed:', err);
+    // Clean the tokens out of the URL so they aren't visible / bookmarked
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+
+    // If there's a confirmation view open, switch to login and show success
+    if (typeof switchModalView === 'function') {
+      switchModalView('login');
     }
-  })();
+    if (typeof showModalStatus === 'function') {
+      showModalStatus('✓ Email confirmed! You are now logged in.', false);
+      const modal = document.getElementById('loginModal');
+      if (modal) modal.classList.add('active');
+    }
+
+    // Reload nav to show logged-in state
+    if (typeof buildNav === 'function') buildNav();
+
+  } catch (err) {
+    console.error('Email confirmation handling failed:', err);
+  }
 })();
 
 // Refresh token on every page load (silent, non-blocking)
