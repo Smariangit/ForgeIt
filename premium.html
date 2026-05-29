@@ -100,7 +100,9 @@
   <div class="payment-section" id="paymentSection">
     <h2>Get Premium Now</h2>
     <p>Secure payment via Cashfree. Supports UPI, cards, netbanking, wallets.</p>
-    <button class="btn-primary" id="razorpayBtn">Pay ₹51 via Cashfree</button>
+
+<button class="btn-primary" id="razorpayBtn">Pay ₹51 via Cashfree</button>
+
     <p id="premiumStatus" class="hidden" style="margin-top:1rem;color:var(--gold);font-size:14px;"></p>
     <div class="payment-logos">
       <span>UPI</span><span>Visa</span><span>Mastercard</span><span>RuPay</span><span>Net Banking</span><span>Wallets</span>
@@ -122,7 +124,19 @@
 </div>
 
 <!-- Cashfree SDK -->
-<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js">
+document.getElementById('forgotPasswordBtn')?.addEventListener('click', async () => {
+  const email = document.getElementById('loginEmail')?.value?.trim();
+
+  if (!email) {
+    alert('Enter your email first.');
+    return;
+  }
+
+  await resetPasswordFlow(email);
+});
+
+</script>
 <!-- EmailJS — free 200 emails/month. Sign up at emailjs.com -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/nav.js"></script>
@@ -192,13 +206,30 @@ document.getElementById('razorpayBtn').addEventListener('click', async function(
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        amount: 51,
-        customer_email: user.email,
-        customer_name: user.name || 'SSB Aspirant'
-      })
+  order_amount: 51,
+  customer_email: user.email,
+  customer_phone: (() => {
+
+  const phoneInput = prompt(
+    'Enter your 10-digit phone number for payment verification'
+  )?.trim();
+
+  if (!/^[6-9]\d{9}$/.test(phoneInput)) {
+    throw new Error(
+      'Enter valid 10-digit Indian phone number'
+    );
+  }
+
+  return phoneInput;
+
+})(),
+  customer_id: user.id
+})
     });
 
     const data = await response.json();
+
+    console.log('Create order response:', data);
 
     if (!data.payment_session_id) {
       throw new Error('Payment session creation failed');
@@ -211,63 +242,18 @@ document.getElementById('razorpayBtn').addEventListener('click', async function(
 
     const result = await cashfree.checkout({
       paymentSessionId: data.payment_session_id,
-      redirectTarget: '_modal'
+      redirectTarget: "_self"
     });
 
     console.log('Cashfree Result:', result);
 
-    // Verify payment from backend
-    const verifyResponse = await fetch('https://cogcatpdaengjybswcnq.supabase.co/functions/v1/verify-payment', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        order_id: data.order_id
-      })
-    });
-
-    const verifyData = await verifyResponse.json();
-
-    if (!verifyData.success) {
-      throw new Error('Payment verification failed');
-    }
-
-    const premiumResult = await Auth.upgradeToPremium(verifyData.payment_id);
-
-    if (premiumResult.error) {
-      throw new Error(premiumResult.error);
-    }
-
-    const u = Auth.getUser();
-
-    try {
-      emailjs.init('YOUR_EMAILJS_PUBLIC_KEY');
-
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-        to_name: u?.name || 'Aspirant',
-        to_email: u?.email,
-        payment_id: verifyData.payment_id,
-        expiry_date: new Date(premiumResult.expiry).toLocaleDateString('en-IN', {
-          day:'numeric',
-          month:'long',
-          year:'numeric'
-        }),
-        amount: '₹51'
-      });
-
-    } catch(emailErr) {
-      console.log('EmailJS not configured yet:', emailErr);
-    }
-
-    alert('✅ Payment successful! Premium unlocked.');
-
-    document.getElementById('paymentSection').classList.add('hidden');
-    document.getElementById('alreadyPremium').classList.remove('hidden');
+    // Cashfree will redirect automatically
+    return;
 
   } catch(err) {
     console.error(err);
-    alert('Payment failed or cancelled. Please try again.');
+    console.error('Payment flow error:', err);
+    alert('Payment failed: ' + (err.message || 'Unknown error'));
     setPremiumStatus(err.message || 'Payment failed');
     document.getElementById('razorpayBtn').disabled = false;
   }
@@ -282,6 +268,73 @@ function setPremiumStatus(message) {
 
 // Check if already premium
 (async function checkPremiumOnLoad() {
+
+  const params = new URLSearchParams(window.location.search);
+
+  const returnedOrderId =
+    params.get('order_id');
+
+  if (returnedOrderId) {
+
+    setPremiumStatus('Verifying payment...');
+
+    try {
+
+      const verifyResponse = await fetch(
+        'https://cogcatpdaengjybswcnq.supabase.co/functions/v1/verify-payment',
+        {
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify({
+            order_id: returnedOrderId
+          })
+        }
+      );
+
+      const verifyData =
+        await verifyResponse.json();
+
+      console.log(
+        'Verify response:',
+        verifyData
+      );
+
+      if (verifyData.success) {
+
+        await Auth.refreshUserProfile();
+
+        alert(
+          '✅ Premium activated successfully!'
+        );
+
+        document
+          .getElementById('paymentSection')
+          ?.classList.add('hidden');
+
+        document
+          .getElementById('alreadyPremium')
+          ?.classList.remove('hidden');
+
+      } else {
+
+        setPremiumStatus(
+          'Payment verification pending...'
+        );
+      }
+
+    } catch(err) {
+
+      console.error(err);
+
+      setPremiumStatus(
+        'Payment verification failed'
+      );
+    }
+  }
   if (Auth.getUser()) await Auth.refreshUserProfile().catch(() => null);
   if (Auth.isPremium()) {
     document.getElementById('paymentSection').classList.add('hidden');
@@ -299,6 +352,7 @@ function setPremiumStatus(message) {
     <input type="email" id="loginEmail" placeholder="Email address" class="modal-input" />
     <input type="password" id="loginPassword" placeholder="Password" class="modal-input" />
     <button class="btn-primary full-width" id="doLogin">Login</button>
+    <button class="btn-outline full-width" id="forgotPasswordBtn" style="margin-top:10px;">Forgot Password</button>
     <div class="modal-divider">or</div>
     <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
   </div>

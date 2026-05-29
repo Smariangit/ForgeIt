@@ -106,14 +106,14 @@ async function loadContentIndex(module) {
   // Step 1: Load free content (from index.json → practice-content-data.js fallback)
   const freeItems = await loadFreeContent(module);
 
-  // Step 2: If premium, fetch premium content from Supabase
-  if (typeof Auth !== 'undefined' && Auth.isPremium()) {
-    const premiumItems = await fetchPremiumContent(module);
-    if (premiumItems.length) {
-      // Merge: free first, then premium
-      const combined = [...freeItems, ...premiumItems];
-      return normalizeContentItems(combined, module);
-    }
+  // Step 2: Fetch premium metadata/content from Supabase
+  // Premium users get unlocked content
+  // Free users only get locked placeholders in the list
+  const premiumItems = await fetchPremiumContent(module);
+
+  if (premiumItems.length) {
+    const combined = [...freeItems, ...premiumItems];
+    return normalizeContentItems(combined, module);
   }
 
   return freeItems;
@@ -218,13 +218,16 @@ function stringToItem(value, module, index) {
 // Free users only see free items (no locked placeholders cluttering the list).
 // ---------------------------------------------------------------------------
 function filterContent(items, module) {
-  if (typeof Auth !== 'undefined' && Auth.isPremium()) {
-    return items.map(item => ({ ...item, locked: false }));
-  }
-  // Free user: only show free items (remove premium entirely — they're not loaded anyway)
-  return items
-    .filter(item => item.free !== false)
-    .map(item => ({ ...item, locked: false }));
+  const isPremiumUser = typeof Auth !== 'undefined' && Auth.isPremium();
+
+  return items.map(item => {
+    const isFree = item.free !== false;
+
+    return {
+      ...item,
+      locked: !isPremiumUser && !isFree
+    };
+  });
 }
 
 // ---------------------------------------------------------------------------

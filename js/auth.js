@@ -6,6 +6,7 @@
 const SUPABASE_URL = 'https://cogcatpdaengjybswcnq.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvZ2NhdHBkYWVuZ2p5YnN3Y25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNjczOTYsImV4cCI6MjA5NDk0MzM5Nn0.RCD-qCYHtGAFPEqEAoqn76RzzEzs444DhETw2v8Tu_k';
 
+
 function isSupabaseConfigured() {
   return SUPABASE_URL && SUPABASE_KEY
     && !SUPABASE_URL.includes('YOUR_SUPABASE')
@@ -78,6 +79,15 @@ const _sb = {
   async refreshSession(refreshToken) {
     return this.authPost('token?grant_type=refresh_token', { refresh_token: refreshToken });
   },
+
+  // Send password reset email
+  async resetPassword(email) {
+    return this.authPost('recover', {
+      email: email,
+      redirect_to: window.location.origin + '/premium.html?reset=true'
+    });
+  },
+
 
   async insertPremiumPayment(data, accessToken) {
     if (!isSupabaseConfigured()) return;
@@ -396,3 +406,19 @@ const Auth = {
 Auth.refreshIfNeeded();
 
 window.Auth = Auth;
+
+
+// Forgot password helper
+window.resetPasswordFlow = async function(email) {
+  if (!email) {
+    alert('Enter your email first.');
+    return;
+  }
+
+  try {
+    await _sb.resetPassword(email);
+    alert('Password reset email sent. Check your inbox.');
+  } catch(err) {
+    alert(err.message || 'Could not send reset email.');
+  }
+};
