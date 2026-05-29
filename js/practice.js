@@ -165,32 +165,110 @@ const Practice = (function() {
     img.classList.add('hidden');
   }
 
-  function loadSlideImage(img, src, label) {
+  async function loadSlideImage(img, src, label) {
     if (!src) {
       showImageMissing(label);
       return;
+    }
+
+    let resolvedSrc = src;
+
+    try {
+
+      // Premium Supabase storage images
+      // Example src:
+      // tat/tat_001.webp
+      // ppdt/ppdt_001.webp
+      // gpe/gpe_001.webp
+
+      if (
+        !src.startsWith('http') &&
+        (src.startsWith('tat/') ||
+         src.startsWith('ppdt/') ||
+         src.startsWith('gpe/'))
+      ) {
+
+        const session = JSON.parse(
+          localStorage.getItem('ssbSession') || 'null'
+        );
+
+        const accessToken =
+          session?.accessToken;
+
+        const response = await fetch(
+          'https://cogcatpdaengjybswcnq.supabase.co/storage/v1/object/sign/premium-images/' + src,
+          {
+            method: 'POST',
+
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SUPABASE_KEY,
+              'Authorization':
+                'Bearer ' + accessToken
+            },
+
+            body: JSON.stringify({
+              expiresIn: 3600
+            })
+          }
+        );
+
+        const signedData =
+          await response.json();
+
+        console.log(
+          'Signed URL response:',
+          signedData
+        );
+
+        if (signedData.signedURL) {
+
+          resolvedSrc =
+            'https://cogcatpdaengjybswcnq.supabase.co/storage/v1' +
+            signedData.signedURL;
+
+        } else {
+
+          console.error(
+            'Could not generate signed URL'
+          );
+        }
+      }
+
+    } catch(err) {
+
+      console.error(
+        'Signed URL generation failed:',
+        err
+      );
     }
 
     const tried = [];
 
     function trySrc(nextSrc) {
       tried.push(nextSrc);
+
       img.onload = function() {
         img.classList.remove('hidden');
         el.slideTextArea().classList.add('hidden');
       };
+
       img.onerror = function() {
-        const fallback = getImageFallbacks(nextSrc).find(path => !tried.includes(path));
+        const fallback = getImageFallbacks(nextSrc)
+          .find(path => !tried.includes(path));
+
         if (fallback) {
           trySrc(fallback);
           return;
         }
+
         showImageMissing(label);
       };
+
       img.src = nextSrc;
     }
 
-    trySrc(src);
+    trySrc(resolvedSrc);
   }
 
   function showImageMissing(label) {
