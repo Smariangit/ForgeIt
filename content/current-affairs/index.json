@@ -1,5 +1,89 @@
 [
   {
+    "label": "May 30, 2026",
+    "category": "Environment policy",
+    "headline": "Uttar Pradesh emphasised to prevent water-borne diseases in rural areas through community driven participation",
+    "summary": "The Uttar Pradesh government is prioritizing community-driven water quality testing to prevent water-borne diseases in rural areas. Around 63,700 water quality samples have been tested this financial year, establishing a robust system for quality assurance and monitoring. This initiative aims to enhance public health and safety in rural communities through active participation.",
+    "gd_angle": "Public health infrastructure, rural development, community participation in governance, water security, environmental health."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Environment policy",
+    "headline": "Inside China’s green transition",
+    "summary": "China is undergoing a significant green transition, investing billions in sustainable technology and emission reduction projects. This includes developing 'future factories' and substantial purchases of wind turbines from extra-EU countries. This strategic shift underscores China's commitment to a green economy and its global impact on climate action and renewable energy markets.",
+    "gd_angle": "Global climate action, economic competition, strategic technology development, India-China comparison on green policies, energy security."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Supreme Court issues guidelines for protecting survivors of human trafficking",
+    "summary": "The Supreme Court has issued comprehensive guidelines for the government and competent authorities to protect survivors of human trafficking, especially young women from commercial sexual exploitation. These detailed guidelines aim to establish a uniform victim protection protocol. This ruling emphasizes the judiciary's role in upholding human rights and social justice.",
+    "gd_angle": "Rule of law, human rights protection, judicial activism, social justice, role of institutions in combating trafficking."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Strategic Technology",
+    "headline": "Doctors express concern over rising childhood myopia",
+    "summary": "Doctors are concerned about the rising incidence of childhood myopia, primarily linked to increased screen time from digital gadgets and online learning during the pandemic. This growing public health issue underscores the societal impact of pervasive technology use. There is a call for greater awareness and preventive strategies to mitigate the long-term effects.",
+    "gd_angle": "Impact of digital technology on public health, societal challenges from tech adoption, balancing innovation with well-being, future workforce health implications."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Economy",
+    "headline": "Supreme Court sets aside 'fraud' findings, disgorgement of ₹447 crore in 2007 RPL Futures Trading case",
+    "summary": "The Supreme Court has set aside 'fraud' findings and the disgorgement order of ₹447 crore in the 2007 RPL Futures Trading case, and directed a refund of ₹250 crore. This ruling revisits earlier directions from the market regulator. The decision impacts corporate governance and the regulatory framework for financial markets.",
+    "gd_angle": "Corporate governance, market regulation, judicial oversight, investor protection, economic integrity, rule of law."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Supreme Court sets 3-month deadline for High Courts to pronounce judgments after reserving orders",
+    "summary": "The Supreme Court has mandated a three-month deadline for High Courts to pronounce judgments after reserving orders. This directive aims to improve the efficiency and timeliness of the judicial process across the country. It addresses concerns about delayed pronouncements, enhancing access to justice and institutional accountability.",
+    "gd_angle": "Judicial efficiency, legal reforms, access to justice, institutional accountability, rule of law."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Economy",
+    "headline": "Delhi High Court upholds TRAI regulations capping television ads to 12 minutes per hour",
+    "summary": "The Delhi High Court has upheld TRAI's regulations capping advertisements on television channels at 12 minutes per hour. The court rejected petitions from broadcasters challenging the cap, reinforcing the regulatory body's authority. This decision aims to balance commercial interests within the media industry with enhancing viewer experience.",
+    "gd_angle": "Regulatory framework, media governance, consumer rights, economic regulation, balancing commercial interests and public good."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Defence",
+    "headline": "Naga body threatens to boycott Manipur government",
+    "summary": "A Naga body has threatened to boycott the Manipur government and urged Naga legislators to withdraw support, citing alleged cross-border \"terrorist aggression\" on Naga villages by Myanmar-based Kuki armed groups. They criticized the state Home Minister for failing to acknowledge the incident. This escalation highlights internal security challenges and ethnic tensions in the sensitive border region.",
+    "gd_angle": "Internal security challenges, border management, ethnic conflict resolution, regional stability, role of state and central government in maintaining peace."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Environment policy",
+    "headline": "Greens seek curb on unregulated tourism in Wayanad",
+    "summary": "Environmental groups in Wayanad are calling for a curb on unregulated tourism, citing increased human-wildlife conflicts and illegal constructions. They allege that recent wild elephant attacks are a direct consequence of unsustainable tourism practices. This demand highlights the critical need for balanced development and ecological preservation in sensitive regions.",
+    "gd_angle": "Sustainable development, environmental conservation, human-wildlife coexistence, impact of tourism, policy for ecological sensitive zones."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Economy",
+    "headline": "Athletes hit hard as sports medicine institute remains shut",
+    "summary": "The State’s first Institute of Sports Medicine in Kozhikode has been closed for over a year, severely impacting athletes. Valuable equipment for sports injury treatment, worth over ₹2 crore, is deteriorating due to disuse. This situation highlights issues in public investment and infrastructure management, hindering athlete development and performance, and affecting national sports potential.",
+    "gd_angle": "Public expenditure efficiency, sports infrastructure, national human capital development, institutional accountability, promoting a sporting culture."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Strategic Technology",
+    "headline": "Kerala start-up unveils first AI system-on-chip",
+    "summary": "Thiruvananthapuram-based semiconductor start-up Netrasemi has launched its flagship AI system-on-chip (SoC), A2000. The company was among the first selected for ₹15 crore in DLI support by MeitY and has secured ₹125 crore in funding. This marks a significant development in India's semiconductor and AI capabilities, fostering technological self-reliance.",
+    "gd_angle": "Technological self-reliance, strategic importance of semiconductors, AI development, start-up ecosystem, future of defence technology, Make in India initiative."
+  },
+  {
+    "label": "May 30, 2026",
+    "category": "Economy",
+    "headline": "Dedicated policy framework proposed for Sivakasi’s ₹6,000-crore fireworks industry",
+    "summary": "A dedicated policy framework has been proposed for Sivakasi’s fireworks industry, valued at around ₹6,000 crore and comprising over 1,100 factories. This proposal aims to streamline regulations and provide necessary support for this significant industrial cluster. The move is crucial for the economic stability, employment generation, and growth of the region.",
+    "gd_angle": "Industrial policy, economic growth, employment generation, regulatory framework, balancing industry with environmental and safety concerns."
+  },
+  {
     "label": "May 29, 2026",
     "category": "Geopolitics",
     "headline": "First Kuki village in Churachandpur resettled 3 years after conflict began",
