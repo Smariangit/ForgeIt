@@ -53,46 +53,135 @@ const MODULES = {
 // Supabase premium content fetcher
 // Reads SUPABASE_URL and SUPABASE_KEY from auth.js (already loaded before this)
 // ---------------------------------------------------------------------------
+
+// Generate signed URLs in batch for image modules
+// Uses POST /storage/v1/object/sign/{bucket} with array of paths
+async function generateSignedUrls(paths, bucket, accessToken) {
+  if (!paths.length) return {};
+
+  const url = (typeof SUPABASE_URL !== 'undefined') ? SUPABASE_URL : null;
+  const key = (typeof SUPABASE_KEY !== 'undefined') ? SUPABASE_KEY : null;
+  if (!url || !key) return {};
+
+  try {
+    const res = await fetch(url + '/storage/v1/object/sign/' + bucket, {
+      method: 'POST',
+      headers: {
+        'apikey':        key,
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type':  'application/json'
+      },
+      body: JSON.stringify({ expiresIn: 3600, paths: paths })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      console.warn('Signed URL batch failed:', res.status, err.message || err.error);
+      return {};
+    }
+
+    const results = await res.json();
+    // Build map: path → full signed URL
+    const map = {};
+    results.forEach(item => {
+      if (item.signedURL) {
+        // signedURL is a relative path — prepend Supabase URL
+        map[item.path] = url + item.signedURL;
+      } else if (item.error) {
+        console.warn('Signed URL error for', item.path, ':', item.error);
+      }
+    });
+    return map;
+  } catch (err) {
+    console.warn('Signed URL generation error:', err);
+    return {};
+  }
+}
+
+// Extract the storage path from a src value
+// Handles: 'tat/tat_006.jpg', 'premium-images/tat/tat_006.jpg', 'tat_006.jpg'
+function toStoragePath(src, module) {
+  if (!src) return null;
+  if (src.startsWith('premium-images/')) return src.replace('premium-images/', '');
+  if (src.includes('/')) return src; // already has subfolder e.g. 'tat/tat_006.jpg'
+  return module + '/' + src;         // just filename — add module subfolder
+}
+
 async function fetchPremiumContent(module) {
-  const url  = (typeof SUPABASE_URL  !== 'undefined') ? SUPABASE_URL  : null;
-  const key  = (typeof SUPABASE_KEY  !== 'undefined') ? SUPABASE_KEY  : null;
+  const url     = (typeof SUPABASE_URL !== 'undefined') ? SUPABASE_URL : null;
+  const key     = (typeof SUPABASE_KEY !== 'undefined') ? SUPABASE_KEY : null;
   const session = (typeof Auth !== 'undefined') ? Auth.getUser() : null;
 
   if (!url || !key || !url.includes('supabase') || !session?.accessToken) return [];
 
   try {
+    // ── Step 1: Fetch metadata from premium_content table ──────────────────
     const res = await fetch(
       url + '/rest/v1/premium_content?module=eq.' + module +
             '&order=sort_order.asc&select=*',
       {
         headers: {
           'apikey':        key,
-          'Authorization': 'Bearer ' + session.accessToken, // user JWT — RLS enforces premium check
+          'Authorization': 'Bearer ' + session.accessToken,
           'Accept':        'application/json'
         }
       }
     );
 
     if (!res.ok) {
-      // 401/403 = not premium or token expired — silent fail, show locks
-      if (res.status === 401 || res.status === 403) return [];
+      if (res.status === 401 || res.status === 403) {
+        console.warn('Premium content access denied (' + res.status + ') — user may not be premium or token expired');
+        return [];
+      }
       console.warn('Premium content fetch failed:', res.status);
       return [];
     }
 
     const rows = await res.json();
-    return rows.map(row => ({
-      id:           row.id,
-      label:        row.label,
-      word:         row.word,
-      topic:        row.topic,
-      situation:    row.situation,
-      src:          row.src,
-      instructions: row.instructions,
-      timeSeconds:  row.time_seconds,
-      free:         false,
-      locked:       false  // already verified premium server-side
-    }));
+    if (!rows.length) return [];
+
+    // ── Step 2: For image modules, batch-generate signed URLs ──────────────
+    const IMAGE_MODULES = ['tat', 'ppdt', 'gpe'];
+    let signedUrlMap = {};
+
+    if (IMAGE_MODULES.includes(module)) {
+      const storagePaths = rows
+        .map(row => toStoragePath(row.src, module))
+        .filter(Boolean);
+
+      if (storagePaths.length) {
+        signedUrlMap = await generateSignedUrls(storagePaths, 'premium-images', session.accessToken);
+        console.log('Signed URLs generated:', Object.keys(signedUrlMap).length + '/' + storagePaths.length);
+      }
+    }
+
+    // ── Step 3: Build items with resolved src URLs ─────────────────────────
+    return rows.map(row => {
+      let resolvedSrc = row.src;
+
+      if (IMAGE_MODULES.includes(module) && row.src) {
+        const storagePath = toStoragePath(row.src, module);
+        resolvedSrc = signedUrlMap[storagePath] || null;
+
+        if (!resolvedSrc) {
+          console.warn('No signed URL for:', row.src, '— check storage path and RLS policy');
+        }
+      }
+
+      return {
+        id:           row.id,
+        label:        row.label,
+        word:         row.word,
+        topic:        row.topic,
+        situation:    row.situation,
+        src:          resolvedSrc,
+        instructions: row.instructions,
+        timeSeconds:  row.time_seconds,
+        free:         false,
+        locked:       false
+      };
+    });
+
   } catch (err) {
     console.warn('Premium content fetch error:', err);
     return [];
@@ -197,8 +286,12 @@ function normalizeContentItems(data, module) {
 }
 
 function normalizeImageSrc(src, module, number) {
+  // Already a full signed URL or external URL — use as-is
+  if (src && (src.startsWith('http://') || src.startsWith('https://'))) return src;
+  // Local relative path (free content)
   if (src && src.includes('/')) return src;
   if (src) return 'content/' + module + '/' + src;
+  // Auto-generate local path as last resort
   const prefix = module + '_';
   return 'content/' + module + '/' + prefix + String(number).padStart(3, '0') + '.jpg';
 }
