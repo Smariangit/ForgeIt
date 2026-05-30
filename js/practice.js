@@ -196,7 +196,7 @@ const Practice = (function() {
           session?.accessToken;
 
         const response = await fetch(
-          'https://cogcatpdaengjybswcnq.supabase.co/storage/v1/object/sign/premium-images/' + src,
+          'https://cogcatpdaengjybswcnq.supabase.co/storage/v1/object/sign/premium_images/' + src,
           {
             method: 'POST',
 
