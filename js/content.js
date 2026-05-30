@@ -99,10 +99,10 @@ async function generateSignedUrls(paths, bucket, accessToken) {
 }
 
 // Extract the storage path from a src value
-// Handles: 'tat/tat_006.jpg', 'premium-images/tat/tat_006.jpg', 'tat_006.jpg'
+// Handles: 'tat/tat_006.jpg', 'premium_images/tat/tat_006.jpg', 'tat_006.jpg'
 function toStoragePath(src, module) {
   if (!src) return null;
-  if (src.startsWith('premium-images/')) return src.replace('premium-images/', '');
+  if (src.startsWith('premium_images/')) return src.replace('premium_images/', '');
   if (src.includes('/')) return src; // already has subfolder e.g. 'tat/tat_006.jpg'
   return module + '/' + src;         // just filename — add module subfolder
 }
@@ -150,7 +150,7 @@ async function fetchPremiumContent(module) {
         .filter(Boolean);
 
       if (storagePaths.length) {
-        signedUrlMap = await generateSignedUrls(storagePaths, 'premium-images', session.accessToken);
+        signedUrlMap = await generateSignedUrls(storagePaths, 'premium_images', session.accessToken);
         console.log('Signed URLs generated:', Object.keys(signedUrlMap).length + '/' + storagePaths.length);
       }
     }
