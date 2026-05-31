@@ -85,8 +85,17 @@ async function generateSignedUrls(paths, bucket, accessToken) {
     const map = {};
     results.forEach(item => {
       if (item.signedURL) {
-        // signedURL is a relative path — prepend Supabase URL
-        map[item.path] = url + item.signedURL;
+        // Normalize to full URL — Supabase may return with or without /storage/v1 prefix
+        let signedPath = item.signedURL;
+        if (signedPath.startsWith('http')) {
+          // Already a full URL
+          map[item.path] = signedPath;
+        } else if (signedPath.startsWith('/storage/v1')) {
+          map[item.path] = url + signedPath;
+        } else {
+          // Missing /storage/v1 prefix — add it
+          map[item.path] = url + '/storage/v1' + signedPath;
+        }
       } else if (item.error) {
         console.warn('Signed URL error for', item.path, ':', item.error);
       }
