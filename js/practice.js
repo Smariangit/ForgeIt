@@ -342,15 +342,16 @@ const Practice = (function() {
     return;
   }
 
-  // Start session normally
+  // Start session from currently selected item (not always index 0)
   isRunning = true;
-  currentIdx = 0;
+  // currentIdx is already set to whatever the user clicked in the content list
+  // If nothing was clicked, it defaults to 0 (set during switchModule)
 
   el.startBtn().textContent = '⬛ Running...';
-    showSlide();
+  showSlide();
 
   const mod = ContentLoader.MODULES[currentModule];
-  startSlideTimer(items[0].timeSeconds || mod.timePerSlide || 30);
+  startSlideTimer(items[currentIdx].timeSeconds || mod.timePerSlide || 30);
 }
 
   function nextSlide() {
