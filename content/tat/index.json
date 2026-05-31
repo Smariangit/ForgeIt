@@ -30,12 +30,6 @@
         "free":  true
     },
     {
-        "id":  "tat_006",
-        "label":  "Scene 6",
-        "src":  "content/tat/tat_006.jpg",
-        "free":  false
-    },
-    {
         "id":  "tat_007",
         "label":  "Scene 7",
         "src":  "content/tat/tat_007.jpg",
