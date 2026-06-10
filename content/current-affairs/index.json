@@ -1,5 +1,61 @@
 [
   {
+    "label": "Jun 11, 2026",
+    "category": "Defence",
+    "headline": "U.S. military says it’s striking ‘multiple targets’ in Iran in latest escalation",
+    "summary": "The U.S. military launched a new round of strikes against Iran following President Trump's orders, escalating tensions in the Middle East. This series of attacks threatens to derail efforts to end the war, highlighting the volatile geopolitical landscape. The situation has implications for regional stability and global security.",
+    "gd_angle": "Strategic geography, border awareness, think from geopolitical perspective;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "Economy",
+    "headline": "SEBI proposes to limit salary disclosure of AMC top employees",
+    "summary": "SEBI has proposed that asset management companies (AMCs) disclose senior executive salaries as a group rather than individually. This change, detailed in a consultation paper, would reduce the specific information available to investors. The proposal aims to balance transparency with other considerations in the financial sector.",
+    "gd_angle": "Economic policy, market regulation, transparency in financial systems;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Delhi High Court grants bail to Kashmir human-rights activist Khuram Parvez in UAPA case",
+    "summary": "The Delhi High Court granted bail to Kashmiri human rights activist Khuram Parvez, who was arrested under the Unlawful Activities (Prevention) Act (UAPA). This decision comes after a period of detention, bringing into focus the application of anti-terror laws. It underscores the ongoing debate on balancing national security with civil liberties.",
+    "gd_angle": "Institutional trust, constitutional values, what reforms are the best for India as a democracy;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "Geopolitics",
+    "headline": "Mirwaiz expresses concern over deadly violence in PoK, calls for dialogue",
+    "summary": "Kashmir's chief cleric Mirwaiz Umar Farooq voiced concern over violent street protests in Pakistan Occupied Kashmir (PoK) and called for engagement and peaceful redressal. He also demanded an end to arbitrary arrests and threats to life in the region. This highlights the volatile internal situation in PoK and its potential regional impact.",
+    "gd_angle": "Strategic geography, border awareness, think from geopolitical perspective;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "Geopolitics",
+    "headline": "India summons U.S. Deputy Chief of Mission after second ship attack in three days",
+    "summary": "India summoned the U.S. Deputy Chief of Mission to condemn a second attack on a commercial vessel off the coast of Oman within three days. The vessel, Settebello, had 24 Indian crew members onboard, raising concerns about maritime security and the safety of Indian citizens abroad. India emphasized its strong condemnation of such incidents.",
+    "gd_angle": "Diplomatic engagement, maritime security, international cooperation against threats;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "Geopolitics",
+    "headline": "Two Indian seafarers dead, one missing after U.S. attack on ship off Oman, says sailors’ union",
+    "summary": "Following a U.S. attack on the commercial vessel Settebello off Oman, two Indian seafarers were reported dead and one missing, according to the Forward Seamen’s Union of India. This incident underscores the perils faced by Indian maritime personnel in conflict zones. It highlights the human cost of escalating geopolitical tensions.",
+    "gd_angle": "Maritime security, safety of Indian diaspora, geopolitical implications of regional conflicts;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "PM diplomacy",
+    "headline": "PM Modi credits ‘public maturity’ for NDA’s 12-year stable rule",
+    "summary": "Prime Minister Narendra Modi credited the maturity of the Indian public for enabling the NDA's 12 years of stable governance and rapid development. He stated that this political stability facilitated long-term reforms and welfare initiatives, which lifted approximately 25 crore people out of poverty. This highlights the government's narrative of impactful governance.",
+    "gd_angle": "Governance models, political stability, socio-economic development;"
+  },
+  {
+    "label": "Jun 11, 2026",
+    "category": "Economy",
+    "headline": "Bristol, York and UNSW get approval to set up campuses in India",
+    "summary": "The Union Education Ministry has granted Letters of Approval to three prominent foreign higher education institutions: the University of Bristol, the University of York, and the University of New South Wales (UNSW). This approval allows them to establish campuses in India, marking a significant step towards internationalizing the country's education sector. It aims to enhance skill development and research capabilities.",
+    "gd_angle": "Education policy, skill development, international collaboration in higher education;"
+  },
+  {
     "label": "Jun 10, 2026",
     "category": "Geopolitics",
     "headline": "U.S. strikes Iran following crash of Army Apache helicopter off Oman coast",
