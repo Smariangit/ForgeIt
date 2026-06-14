@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Progress — SSBForge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Page layout ────────────────────────────────────────── */
+    .progress-page {
+      padding: 80px 0 5rem;
+      min-height: 100vh;
+    }
+
+    .progress-header {
+      background: var(--dark-2);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+    }
+    .progress-header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .progress-header h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 3vw, 36px);
+      color: var(--cream);
+    }
+    .progress-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 0.3rem;
+    }
+    .last-updated {
+      font-family: var(--font-cond);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .progress-body {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* ── Loading / not-logged-in states ─────────────────────── */
+    .state-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 4rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .state-card .state-icon { font-size: 48px; }
+    .state-card h2 { font-family: var(--font-serif); font-size: 24px; color: var(--cream); }
+    .state-card p  { color: var(--text-muted); font-size: 14px; max-width: 400px; }
+
+    /* ── Streak row ──────────────────────────────────────────── */
+    .streak-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .streak-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .streak-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+    }
+    .streak-card.login::before  { background: #4a9eff; }
+    .streak-card.total::before  { background: var(--success); }
+    .streak-icon { font-size: 32px; }
+    .streak-info {}
+    .streak-value {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .streak-value sup {
+      font-size: 18px;
+      font-family: var(--font-cond);
+      color: var(--text-muted);
+    }
+    .streak-label {
+      font-family: var(--font-cond);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── Section title ───────────────────────────────────────── */
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .section-title-row .label {
+      font-family: var(--font-cond);
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .section-title-row .rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Module cards grid ───────────────────────────────────── */
+    .modules-progress-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .mod-progress-card {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .mod-progress-card:hover { border-color: var(--border-strong); }
+
+    .mod-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .mod-icon-name { display: flex; align-items: center; gap: 0.75rem; }
+    .mod-icon { font-size: 24px; }
+    .mod-name {
+      font-family: var(--font-cond);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .mod-fullname {
+      font-family: var(--font-cond);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .mod-count-block { text-align: right; }
+    .mod-count {
+      font-family: var(--font-serif);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+    }
+    .mod-count-label {
+      font-family: var(--font-cond);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Progress bar */
+    .mod-bar-wrap {
+      height: 4px;
+      background: var(--dark-3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .mod-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--gold);
+      transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Milestones */
+    .mod-milestones {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .milestone {
+      font-family: var(--font-cond);
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      text-transform: uppercase;
+    }
+    .milestone.reached {
+      background: rgba(58,125,68,0.2);
+      border: 1px solid rgba(58,125,68,0.4);
+      color: #7dca89;
+    }
+    .milestone.upcoming {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    /* Practice link */
+    .mod-practice-link {
+      font-family: var(--font-cond);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      margin-top: auto;
+    }
+    .mod-practice-link:hover { color: var(--gold-light); }
+
+    /* ── Activity calendar heatmap ───────────────────────────── */
+    .heatmap-section {}
+    .heatmap-wrap {
+      background: var(--dark-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .heatmap-inner {
+      display: flex;
+      gap: 3px;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .heatmap-col { display: flex; flex-direction: column; gap: 3px; }
+    .heatmap-cell {
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      background: var(--dark-3);
+      cursor: default;
+      position: relative;
+    }
+    .heatmap-cell[data-level="1"] { background: rgba(201,168,76,0.25); }
+    .heatmap-cell[data-level="2"] { background: rgba(201,168,76,0.50); }
+    .heatmap-cell[data-level="3"] { background: rgba(201,168,76,0.75); }
+    .heatmap-cell[data-level="4"] { background: #C9A84C; }
+    .heatmap-legend {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 0.75rem;
+      justify-content: flex-end;
+    }
+    .heatmap-legend span {
+      font-family: var(--font-cond);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .legend-cell {
+      width: 12px; height: 12px; border-radius: 2px;
+    }
+    .heatmap-months {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 4px;
+      overflow-x: auto;
+    }
+    .heatmap-month-label {
+      font-family: var(--font-cond);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      min-width: 14px;
+    }
+
+    /* ── Quick stats summary bar ─────────────────────────────── */
+    .summary-bar {
+      background: var(--dark-3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .summary-stat {}
+    .summary-stat .val {
+      font-family: var(--font-cond);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--cream);
+    }
+    .summary-stat .lbl {
+      font-family: var(--font-cond);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .summary-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+
+    /* ── Source badge ────────────────────────────────────────── */
+    .source-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-cond);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+    }
+    .source-badge.supabase {
+      background: rgba(58,125,68,0.15);
+      border: 1px solid rgba(58,125,68,0.3);
+      color: #7dca89;
+    }
+    .source-badge.local {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold);
+    }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .streak-row { grid-template-columns: 1fr 1fr; }
+      .modules-progress-grid { grid-template-columns: 1fr; }
+      .summary-bar { gap: 1rem; }
+      .summary-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">SSB<span>FORGE</span></a>
+    <div class="nav-links" id="navLinks"></div>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+  </div>
+</nav>
+
+<div class="progress-page">
+
+  <!-- HEADER -->
+  <div class="progress-header">
+    <div class="progress-header-inner">
+      <div>
+        <span class="section-label">PERSONAL DASHBOARD</span>
+        <h1>My Progress</h1>
+        <p>Track attempts, streaks, and milestones across every SSB module.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem;">
+        <div id="sourceBadge"></div>
+        <div class="last-updated" id="lastUpdated"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-body" id="progressBody">
+
+    <!-- Loading state -->
+    <div class="state-card" id="loadingState">
+      <div class="state-icon">⏳</div>
+      <h2>Loading your progress...</h2>
+      <p>Fetching your data from Supabase.</p>
+    </div>
+
+    <!-- Not logged in state -->
+    <div class="state-card hidden" id="notLoggedInState">
+      <div class="state-icon">🔐</div>
+      <h2>Login to see your progress</h2>
+      <p>Your progress is saved to your account. Login to view attempts, streaks, and milestones across all modules.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:0.5rem;">
+        <button class="btn-primary" id="loginFromProgress">Login / Sign Up</button>
+        <a href="practice.html" class="btn-outline">Practice without login</a>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:1rem;">
+        Practising without an account? Your attempts are saved locally on this device.
+        <a href="#" id="showLocalBtn">View local data →</a>
+      </p>
+    </div>
+
+    <!-- MAIN DASHBOARD (hidden until data loads) -->
+    <div id="dashboardContent" class="hidden">
+
+      <!-- Streak row -->
+      <div>
+        <div class="section-title-row">
+          <span class="label">Streaks</span>
+          <div class="rule"></div>
+        </div>
+        <div class="streak-row">
+          <div class="streak-card">
+            <div class="streak-icon">🔥</div>
+            <div class="streak-info">
+              <div class="streak-value" id="practiceStreakVal">0</div>
+              <div class="streak-label">Practice Streak</div>
+            </div>
+          </div>
+          <div class="streak-card login">
+            <div class="streak-icon">📅</div>
+            <div class="streak-info">
+              <div class="streak-value" id="loginStreakVal">0</div>
+              <div class="streak-label">Login Streak</div>
+            </div>
+          </div>
+          <div class="streak-card total">
+            <div class="streak-icon">📊</div>
+            <div class="streak-info">
+              <div class="streak-value" id="totalAttemptsVal">0</div>
+              <div class="streak-label">Total Attempts</div>
+            </div>
+          </div>
+          <div class="streak-card" style="--card-accent:var(--text-muted);">
+            <div class="streak-icon">🗓️</div>
+            <div class="streak-info">
+              <div class="streak-value" id="lastPracticeVal" style="font-size:20px;margin-top:4px;">—</div>
+              <div class="streak-label">Last Practised</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary bar -->
+      <div class="summary-bar" id="summaryBar">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- Module breakdown -->
+      <div>
+        <div class="section-title-row">
+          <span class="label">Module Breakdown</span>
+          <div class="rule"></div>
+        </div>
+        <div class="modules-progress-grid" id="modulesGrid">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Activity heatmap -->
+      <div class="heatmap-section">
+        <div class="section-title-row">
+          <span class="label">Activity (Last 6 Months)</span>
+          <div class="rule"></div>
+        </div>
+        <div class="heatmap-wrap">
+          <div class="heatmap-months" id="heatmapMonths"></div>
+          <div class="heatmap-inner" id="heatmapInner"></div>
+          <div class="heatmap-legend">
+            <span>Less</span>
+            <div class="legend-cell" style="background:var(--dark-3);border:1px solid var(--border);"></div>
+            <div class="legend-cell" data-level="1" style="background:rgba(201,168,76,0.25);"></div>
+            <div class="legend-cell" data-level="2" style="background:rgba(201,168,76,0.5);"></div>
+            <div class="legend-cell" data-level="3" style="background:rgba(201,168,76,0.75);"></div>
+            <div class="legend-cell" data-level="4" style="background:#C9A84C;"></div>
+            <span>More</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /dashboardContent -->
+
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+    <h2>Login to SSBForge</h2>
+    <input type="email" id="loginEmail" placeholder="Email address" class="modal-input" />
+    <input type="password" id="loginPassword" placeholder="Password" class="modal-input" />
+    <button class="btn-primary full-width" id="doLogin">Login</button>
+    <div class="modal-divider">or</div>
+    <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
+  </div>
+</div>
+
+<script src="js/nav.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/progress-tracker.js?v=20260601"></script>
+<script src="js/main.js"></script>
+<script>
+// ── Module metadata ──────────────────────────────────────────────────────
+const MODULES_META = [
+  {
+    key:      'tat_attempts',
+    mode:     'tat',
+    icon:     '🖼️',
+    name:     'TAT',
+    fullname: 'Thematic Apperception Test',
+    color:    '#C9A84C',
+    // Milestones: [threshold, label]
+    milestones: [[10,'Beginner'],[50,'Practised'],[100,'Consistent'],[200,'Expert']],
+    max:      200,
+  },
+  {
+    key:      'wat_attempts',
+    mode:     'wat',
+    icon:     '✍️',
+    name:     'WAT',
+    fullname: 'Word Association Test',
+    color:    '#4a9eff',
+    milestones: [[30,'Beginner'],[100,'Practised'],[300,'Consistent'],[500,'Expert']],
+    max:      500,
+  },
+  {
+    key:      'ppdt_attempts',
+    mode:     'ppdt',
+    icon:     '👥',
+    name:     'PPDT',
+    fullname: 'Picture Perception & Discussion',
+    color:    '#a78bfa',
+    milestones: [[5,'Beginner'],[20,'Practised'],[50,'Consistent'],[100,'Expert']],
+    max:      100,
+  },
+  {
+    key:      'srt_attempts',
+    mode:     'srt',
+    icon:     '⚡',
+    name:     'SRT',
+    fullname: 'Situation Reaction Test',
+    color:    '#f59e0b',
+    milestones: [[15,'Beginner'],[60,'Practised'],[150,'Consistent'],[300,'Expert']],
+    max:      300,
+  },
+  {
+    key:      'lecturette_attempts',
+    mode:     'lecturette',
+    icon:     '🎤',
+    name:     'Lecturette',
+    fullname: '3-Minute Speaking',
+    color:    '#34d399',
+    milestones: [[5,'Beginner'],[20,'Practised'],[60,'Consistent'],[100,'Expert']],
+    max:      100,
+  },
+  {
+    key:      'gpe_attempts',
+    mode:     'gpe',
+    icon:     '🗺️',
+    name:     'GPE',
+    fullname: 'Group Planning Exercise',
+    color:    '#fb923c',
+    milestones: [[3,'Beginner'],[10,'Practised'],[30,'Consistent'],[60,'Expert']],
+    max:      60,
+  },
+  {
+    key:      'oir_attempts',
+    mode:     'oir',
+    icon:     '🧠',
+    name:     'OIR',
+    fullname: 'Officer Intelligence Rating',
+    color:    '#e879f9',
+    milestones: [[1,'Beginner'],[5,'Practised'],[15,'Consistent'],[30,'Expert']],
+    max:      30,
+  },
+];
+
+// ── Render helpers ───────────────────────────────────────────────────────
+function renderDashboard(data) {
+  const isPremium   = typeof Auth !== 'undefined' && Auth.isPremium();
+  const isSupabase  = data.source === 'supabase';
+
+  // Source badge
+  const sb = document.getElementById('sourceBadge');
+  sb.innerHTML = isSupabase
+    ? '<span class="source-badge supabase">● Synced to Supabase</span>'
+    : '<span class="source-badge local">● Local storage only · <a href=\"premium.html\" style=\"color:var(--gold)\">Login to sync</a></span>';
+
+  // Last updated
+  const lu = document.getElementById('lastUpdated');
+  if (data.updated_at) {
+    lu.textContent = 'Updated ' + new Date(data.updated_at).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'});
+  }
+
+  // Streak cards
+  document.getElementById('practiceStreakVal').textContent = data.practice_streak || 0;
+  document.getElementById('loginStreakVal').textContent    = data.login_streak    || 0;
+
+  const lastDate = data.last_practice_date;
+  document.getElementById('lastPracticeVal').textContent = lastDate
+    ? new Date(lastDate).toLocaleDateString('en-IN', {day:'numeric',month:'short'})
+    : '—';
+
+  // Total attempts
+  const total = MODULES_META.reduce((sum, m) => sum + (data[m.key] || 0), 0);
+  document.getElementById('totalAttemptsVal').textContent = total;
+
+  // Summary bar
+  const summaryBar = document.getElementById('summaryBar');
+  const summaryItems = MODULES_META
+    .filter(m => (data[m.key] || 0) > 0)
+    .map(m => `
+      <div class="summary-stat">
+        <div class="val" style="color:${m.color};">${data[m.key] || 0}</div>
+        <div class="lbl">${m.name}</div>
+      </div>
+    `).join('<div class="summary-divider"></div>');
+  summaryBar.innerHTML = summaryItems || '<span style="color:var(--text-muted);font-size:13px;">Start practising to see your stats here.</span>';
+
+  // Module cards grid
+  const grid = document.getElementById('modulesGrid');
+  grid.innerHTML = '';
+
+  MODULES_META.forEach(m => {
+    const count      = data[m.key] || 0;
+    const pct        = Math.min(100, Math.round((count / m.max) * 100));
+    const milestones = m.milestones.map(([thresh, label]) => ({
+      thresh, label, reached: count >= thresh,
+    }));
+    const nextMilestone = milestones.find(ms => !ms.reached);
+    const toNext = nextMilestone ? (nextMilestone.thresh - count) : 0;
+
+    const card = document.createElement('div');
+    card.className = 'mod-progress-card';
+    card.innerHTML = `
+      <div class="mod-card-top">
+        <div class="mod-icon-name">
+          <span class="mod-icon">${m.icon}</span>
+          <div>
+            <div class="mod-name">${m.name}</div>
+            <div class="mod-fullname">${m.fullname}</div>
+          </div>
+        </div>
+        <div class="mod-count-block">
+          <div class="mod-count" style="color:${m.color};">${count}</div>
+          <div class="mod-count-label">attempts</div>
+        </div>
+      </div>
+
+      <div class="mod-bar-wrap">
+        <div class="mod-bar-fill" style="width:0%;background:${m.color};" data-target="${pct}"></div>
+      </div>
+
+      <div class="mod-milestones">
+        ${milestones.map(ms => `
+          <span class="milestone ${ms.reached ? 'reached' : 'upcoming'}">
+            ${ms.reached ? '✓ ' : ''}${ms.label} (${ms.thresh})
+          </span>
+        `).join('')}
+      </div>
+
+      ${nextMilestone
+        ? `<div style="font-size:12px;color:var(--text-muted);">
+             <span style="color:${m.color};font-weight:600;">${toNext}</span> more to reach <em>${nextMilestone.label}</em>
+           </div>`
+        : `<div style="font-size:12px;color:#7dca89;">✓ All milestones reached!</div>`
+      }
+
+      <a href="practice.html?mode=${m.mode}" class="mod-practice-link">Practice ${m.name} →</a>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Animate bars after render
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.mod-bar-fill[data-target]').forEach(bar => {
+      setTimeout(() => {
+        bar.style.width = bar.dataset.target + '%';
+      }, 120);
+    });
+  });
+
+  // Heatmap (using last_practice_date and practice_streak to reconstruct rough activity)
+  renderHeatmap(data);
+
+  // Show dashboard
+  document.getElementById('dashboardContent').classList.remove('hidden');
+}
+
+// ── Heatmap ──────────────────────────────────────────────────────────────
+// We don't have per-day activity from Supabase by default (would need a
+// separate practice_log table). We render a rough heatmap using whatever
+// data we have from localStorage (ssbforge_heatmap) merged with profile data.
+function renderHeatmap(data) {
+  const heatmapData = JSON.parse(localStorage.getItem('ssbforge_heatmap') || '{}');
+
+  // Build 26 weeks (182 days) grid ending today
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const startDate = new Date(today);
+  startDate.setDate(startDate.getDate() - 181);
+  // Align to Sunday
+  startDate.setDate(startDate.getDate() - startDate.getDay());
+
+  const cols = document.getElementById('heatmapInner');
+  const monthLabels = document.getElementById('heatmapMonths');
+  cols.innerHTML = '';
+  monthLabels.innerHTML = '';
+
+  let currentCol = null;
+  let prevMonth = -1;
+  let colIndex = 0;
+  const cursor = new Date(startDate);
+
+  while (cursor <= today) {
+    const dow = cursor.getDay();
+    if (dow === 0) {
+      currentCol = document.createElement('div');
+      currentCol.className = 'heatmap-col';
+      cols.appendChild(currentCol);
+
+      // Month label for first column of each month
+      const monthEl = document.createElement('div');
+      monthEl.className = 'heatmap-month-label';
+      const m = cursor.getMonth();
+      if (m !== prevMonth) {
+        monthEl.textContent = cursor.toLocaleDateString('en-IN', { month: 'short' });
+        prevMonth = m;
+      }
+      monthLabels.appendChild(monthEl);
+      colIndex++;
+    }
+
+    const dateStr = cursor.toISOString().slice(0, 10);
+    const activity = heatmapData[dateStr] || 0;
+    const level = activity === 0 ? 0 : activity < 5 ? 1 : activity < 15 ? 2 : activity < 30 ? 3 : 4;
+
+    const cell = document.createElement('div');
+    cell.className = 'heatmap-cell';
+    if (level > 0) cell.setAttribute('data-level', level);
+    cell.title = dateStr + ': ' + activity + ' attempt' + (activity !== 1 ? 's' : '');
+    if (currentCol) currentCol.appendChild(cell);
+
+    cursor.setDate(cursor.getDate() + 1);
+  }
+}
+
+// ── Record today's practice to heatmap (called from progress-tracker hook) ──
+function recordHeatmapActivity(count) {
+  const today = new Date().toISOString().slice(0, 10);
+  const hm = JSON.parse(localStorage.getItem('ssbforge_heatmap') || '{}');
+  hm[today] = (hm[today] || 0) + count;
+  localStorage.setItem('ssbforge_heatmap', JSON.stringify(hm));
+}
+
+// ── Listen for progress updates from practice page ───────────────────────
+window.addEventListener('ssbforge:progress-updated', (e) => {
+  recordHeatmapActivity(e.detail.count);
+  // Refresh dashboard if it's visible
+  const dash = document.getElementById('dashboardContent');
+  if (dash && !dash.classList.contains('hidden')) loadAndRender();
+});
+
+// ── Main load function ────────────────────────────────────────────────────
+async function loadAndRender() {
+  document.getElementById('loadingState').classList.remove('hidden');
+  document.getElementById('notLoggedInState').classList.add('hidden');
+  document.getElementById('dashboardContent').classList.add('hidden');
+
+  // Small delay so loading state is visible
+  await new Promise(r => setTimeout(r, 400));
+
+  const user = typeof Auth !== 'undefined' ? Auth.getUser() : null;
+
+  if (!user) {
+    document.getElementById('loadingState').classList.add('hidden');
+    document.getElementById('notLoggedInState').classList.remove('hidden');
+    return;
+  }
+
+  try {
+    const data = await ProgressTracker.getProgress();
+    document.getElementById('loadingState').classList.add('hidden');
+    renderDashboard(data);
+  } catch (e) {
+    document.getElementById('loadingState').classList.add('hidden');
+    document.getElementById('notLoggedInState').classList.remove('hidden');
+    console.error('[Progress] Failed to load:', e);
+  }
+}
+
+// ── Login from progress page ──────────────────────────────────────────────
+document.getElementById('loginFromProgress').addEventListener('click', () => {
+  document.getElementById('loginModal').classList.add('active');
+});
+
+// ── Show local data without login ─────────────────────────────────────────
+document.getElementById('showLocalBtn').addEventListener('click', async (e) => {
+  e.preventDefault();
+  const local = JSON.parse(localStorage.getItem('ssbforge_progress') || '{}');
+  local.source = 'local';
+  document.getElementById('notLoggedInState').classList.add('hidden');
+  renderDashboard(local);
+});
+
+// ── Boot ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', loadAndRender);
+</script>
+</body>
+</html>

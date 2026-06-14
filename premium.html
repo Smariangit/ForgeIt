@@ -124,19 +124,7 @@
 </div>
 
 <!-- Cashfree SDK -->
-<script src="https://sdk.cashfree.com/js/v3/cashfree.js">
-document.getElementById('forgotPasswordBtn')?.addEventListener('click', async () => {
-  const email = document.getElementById('loginEmail')?.value?.trim();
-
-  if (!email) {
-    alert('Enter your email first.');
-    return;
-  }
-
-  await resetPasswordFlow(email);
-});
-
-</script>
+<script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 <!-- EmailJS — free 200 emails/month. Sign up at emailjs.com -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/nav.js"></script>

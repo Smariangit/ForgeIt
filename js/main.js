@@ -1,6 +1,8 @@
 // main.js — SSBForge General UI
 
 document.addEventListener('DOMContentLoaded', function() {
+  ensureLoginModal();
+
   // ===== NAV: hamburger =====
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const loginBtn = document.getElementById('loginBtn');
   const loginModal = document.getElementById('loginModal');
   const modalClose = document.getElementById('modalClose');
+  const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
 
   if (loginBtn && loginModal && !loginBtn.dataset.authWired) {
     loginBtn.addEventListener('click', (e) => {
@@ -61,6 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
       updateLoginBtn();
       alert(`Welcome back, ${user?.name || user?.email || email}!`);
       window.location.reload();
+    });
+  }
+
+  if (forgotPasswordBtn) {
+    forgotPasswordBtn.addEventListener('click', async () => {
+      const email = document.getElementById('loginEmail').value.trim();
+      if (!email) {
+        alert('Enter your email first.');
+        return;
+      }
+
+      setAuthButtonState(forgotPasswordBtn, true, 'Sending reset link...');
+      await resetPasswordFlow(email);
+      setAuthButtonState(forgotPasswordBtn, false, 'Forgot Password');
     });
   }
 
@@ -132,3 +149,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+function ensureLoginModal() {
+  let loginModal = document.getElementById('loginModal');
+
+  if (!loginModal) {
+    loginModal = document.createElement('div');
+    loginModal.className = 'modal-overlay';
+    loginModal.id = 'loginModal';
+    loginModal.innerHTML = `
+      <div class="modal">
+        <button class="modal-close" id="modalClose">x</button>
+        <h2>Login to SSBForge</h2>
+        <input type="email" id="loginEmail" placeholder="Email address" class="modal-input" />
+        <input type="password" id="loginPassword" placeholder="Password" class="modal-input" />
+        <button class="btn-primary full-width" id="doLogin">Login</button>
+        <div class="modal-divider">or</div>
+        <button class="btn-outline full-width" id="goRegister">Create Free Account</button>
+      </div>
+    `;
+    document.body.appendChild(loginModal);
+  }
+
+  const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+  const doLogin = document.getElementById('doLogin');
+  if (!forgotPasswordBtn && doLogin) {
+    const button = document.createElement('button');
+    button.className = 'btn-outline full-width';
+    button.id = 'forgotPasswordBtn';
+    button.type = 'button';
+    button.style.marginTop = '10px';
+    button.textContent = 'Forgot Password';
+    doLogin.insertAdjacentElement('afterend', button);
+  }
+}

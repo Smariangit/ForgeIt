@@ -84,8 +84,28 @@ const _sb = {
   async resetPassword(email) {
     return this.authPost('recover', {
       email: email,
-      redirect_to: window.location.origin + '/premium.html?reset=true'
+      redirect_to: window.location.origin + '/reset-password.html'
     });
+  },
+
+  async updatePassword(accessToken, password) {
+    if (!isSupabaseConfigured()) {
+      throw new Error('Supabase is not configured. Add your Project URL and anon key in js/auth.js.');
+    }
+
+    const res = await fetch(SUPABASE_URL + '/auth/v1/user', {
+      method: 'PUT',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ password })
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error_description || data.msg || data.message || 'Password update failed');
+    return data;
   },
 
 
@@ -284,6 +304,57 @@ const Auth = {
     return saveProfileToSession(profile);
   },
 
+  async recordPracticeProgress(moduleName) {
+    const session = _session.get();
+    if (!session) return { skipped: true, reason: 'Not logged in.' };
+
+    const moduleColumns = {
+      wat: 'wat_attempts',
+      tat: 'tat_attempts',
+      ppdt: 'ppdt_attempts',
+      lecturette: 'lecturette_attempts',
+      srt: 'srt_attempts',
+      gpe: 'gpe_attempts'
+    };
+    const moduleColumn = moduleColumns[moduleName];
+    if (!moduleColumn) return { skipped: true, reason: 'Unknown practice module.' };
+
+    try {
+      await this.refreshIfNeeded();
+      const freshSession = _session.get();
+      if (!freshSession) return { skipped: true, reason: 'Session expired.' };
+
+      const profile = await _sb.getProfile(freshSession.id, freshSession.accessToken).catch(() => null);
+      const now = new Date();
+      const todayKey = toLocalDateKey(now);
+      const lastActivity = profile?.last_activity ? new Date(profile.last_activity) : null;
+      const lastKey = lastActivity && !Number.isNaN(lastActivity.getTime()) ? toLocalDateKey(lastActivity) : null;
+      const yesterdayKey = toLocalDateKey(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
+
+      let nextStreak = Number(profile?.streak || 0);
+      if (lastKey === todayKey) {
+        nextStreak = Math.max(nextStreak, 1);
+      } else if (lastKey === yesterdayKey) {
+        nextStreak += 1;
+      } else {
+        nextStreak = 1;
+      }
+
+      const update = {
+        tests_attempted: Number(profile?.tests_attempted || 0) + 1,
+        [moduleColumn]: Number(profile?.[moduleColumn] || 0) + 1,
+        streak: nextStreak,
+        last_activity: now.toISOString()
+      };
+
+      await _sb.updateProfile(freshSession.id, update, freshSession.accessToken);
+      return { success: true, update };
+    } catch (err) {
+      console.error('Practice progress update failed:', err);
+      return { error: err.message || 'Practice progress update failed.' };
+    }
+  },
+
   async waitForPremiumVerification(options = {}) {
     const attempts = options.attempts || 10;
     const delayMs = options.delayMs || 1500;
@@ -344,6 +415,12 @@ const Auth = {
   }
 };
 
+function toLocalDateKey(date) {
+  return date.getFullYear() + '-' +
+    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+    String(date.getDate()).padStart(2, '0');
+}
+
 // ── Handle email confirmation redirect ────────────────────────────────────
 // When user clicks the confirmation link, Supabase redirects back with tokens
 // in the URL hash: #access_token=xxx&refresh_token=yyy&type=signup
@@ -356,6 +433,14 @@ const Auth = {
   const accessToken  = params.get('access_token');
   const refreshToken = params.get('refresh_token');
   const type         = params.get('type'); // 'signup' or 'recovery'
+
+  if (accessToken && type === 'recovery') {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    if (currentPage !== 'reset-password.html') {
+      window.location.replace('reset-password.html' + hash);
+    }
+    return;
+  }
 
   if (!accessToken || type !== 'signup') return;
 
@@ -420,5 +505,32 @@ window.resetPasswordFlow = async function(email) {
     alert('Password reset email sent. Check your inbox.');
   } catch(err) {
     alert(err.message || 'Could not send reset email.');
+  }
+};
+
+window.updatePasswordFromRecovery = async function(password) {
+  const hash = window.location.hash;
+  const params = new URLSearchParams(hash.replace('#', ''));
+  const accessToken = params.get('access_token');
+  const refreshToken = params.get('refresh_token');
+  const type = params.get('type');
+
+  if (!accessToken || type !== 'recovery') {
+    return { error: 'This reset link is invalid or expired. Please request a new password reset email.' };
+  }
+
+  try {
+    const user = await _sb.updatePassword(accessToken, password);
+    const profile = await _sb.getProfile(user.id, accessToken).catch(() => null);
+    _session.set({
+      user,
+      access_token: accessToken,
+      refresh_token: refreshToken,
+      expires_in: 3600
+    }, profile);
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+    return { success: true };
+  } catch(err) {
+    return { error: err.message || 'Could not update password.' };
   }
 };
