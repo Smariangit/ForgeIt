@@ -433,8 +433,17 @@ function toLocalDateKey(date) {
   const accessToken  = params.get('access_token');
   const refreshToken = params.get('refresh_token');
   const type         = params.get('type'); // 'signup' or 'recovery'
+  const errorCode    = params.get('error_code');
 
   if (accessToken && type === 'recovery') {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    if (currentPage !== 'reset-password.html') {
+      window.location.replace('reset-password.html' + hash);
+    }
+    return;
+  }
+
+  if (errorCode && (errorCode === 'otp_expired' || params.get('error'))) {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     if (currentPage !== 'reset-password.html') {
       window.location.replace('reset-password.html' + hash);
