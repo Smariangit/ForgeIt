@@ -24,10 +24,11 @@
 
 const ProgressTracker = (function () {
 
-  // ── CONFIG — set these to your actual Supabase project values ──────────
-  // Replace with your real values from Supabase → Settings → API
-  const SUPABASE_URL = window.SUPABASE_URL || 'https://YOUR_PROJECT.supabase.co';
-  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'YOUR_ANON_KEY';
+  // ── CONFIG ──────────────────────────────────────────────────────────────
+  // Keep these aligned with js/auth.js. This site uses a custom ssbSession
+  // cache instead of the Supabase JS client's sb-... localStorage key.
+  const SUPABASE_URL = window.SUPABASE_URL || 'https://cogcatpdaengjybswcnq.supabase.co';
+  const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvZ2NhdHBkYWVuZ2p5YnN3Y25xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkzNjczOTYsImV4cCI6MjA5NDk0MzM5Nn0.RCD-qCYHtGAFPEqEAoqn76RzzEzs444DhETw2v8Tu_k';
 
   // Map practice module names → profiles column names
   const MODULE_COL = {
@@ -67,32 +68,35 @@ const ProgressTracker = (function () {
     const count = slidesCompleted ?? sessionCount;
     if (count < 1) return;   // don't record empty sessions
 
-    // Try Supabase first; fall back to localStorage
-    const ok = await _recordToSupabase(sessionModule, count);
-    if (!ok) _recordToLocalStorage(sessionModule, count);
-
-    // Update practice streak regardless of backend
-    await _updatePracticeStreak();
+    // Try the app's primary Auth helper first; fall back to localStorage.
+    // One completed timed session counts as one attempt.
+    const ok = await _recordToSupabase(sessionModule);
+    if (!ok) _recordToLocalStorage(sessionModule, 1);
 
     // Fire a custom event so progress.html can refresh if open
     window.dispatchEvent(new CustomEvent('ssbforge:progress-updated', {
-      detail: { module: sessionModule, count }
+      detail: { module: sessionModule, count: 1 }
     }));
   }
 
   // ── Supabase upsert ────────────────────────────────────────────────────
-  async function _recordToSupabase(module, count) {
+  async function _recordToSupabase(module) {
     const col = MODULE_COL[module];
     if (!col) return false;
 
-    // Get current session token from Supabase auth (via localStorage key it sets)
-    const token = _getSupabaseToken();
-    if (!token) return false;  // not logged in with Supabase
+    if (typeof Auth !== 'undefined' && Auth.recordPracticeProgress) {
+      const result = await Auth.recordPracticeProgress(module);
+      return !!result?.success;
+    }
 
     try {
+      const session = _getSession();
+      const token = session?.accessToken;
+      if (!session?.id || !token) return false;
+
       // 1. Fetch current value
       const getResp = await fetch(
-        `${SUPABASE_URL}/rest/v1/profiles?select=id,${col}&limit=1`,
+        `${SUPABASE_URL}/rest/v1/profiles?select=id,${col},tests_attempted,streak,last_activity&id=eq.${encodeURIComponent(session.id)}&limit=1`,
         { headers: _headers(token) }
       );
       if (!getResp.ok) return false;
@@ -101,6 +105,8 @@ const ProgressTracker = (function () {
 
       const userId  = rows[0].id;
       const current = rows[0][col] || 0;
+      const currentTests = rows[0].tests_attempted || 0;
+      const nextStreak = _nextStreak(rows[0].streak, rows[0].last_activity);
 
       // 2. Increment
       const now = new Date().toISOString();
@@ -110,9 +116,10 @@ const ProgressTracker = (function () {
           method:  'PATCH',
           headers: { ..._headers(token), 'Content-Type': 'application/json' },
           body:    JSON.stringify({
-            [col]:       current + count,
-            updated_at:  now,
-            last_practice_date: now.slice(0, 10),
+            [col]:             current + 1,
+            tests_attempted:   currentTests + 1,
+            streak:            nextStreak,
+            last_activity:     now,
           }),
         }
       );
@@ -120,49 +127,6 @@ const ProgressTracker = (function () {
     } catch (e) {
       console.warn('[ProgressTracker] Supabase error:', e);
       return false;
-    }
-  }
-
-  // ── Practice streak update ─────────────────────────────────────────────
-  async function _updatePracticeStreak() {
-    const token = _getSupabaseToken();
-    if (!token) return;
-
-    try {
-      const getResp = await fetch(
-        `${SUPABASE_URL}/rest/v1/profiles?select=id,practice_streak,last_practice_date&limit=1`,
-        { headers: _headers(token) }
-      );
-      if (!getResp.ok) return;
-      const rows = await getResp.json();
-      if (!rows.length) return;
-
-      const { id, practice_streak, last_practice_date } = rows[0];
-      const today     = new Date().toISOString().slice(0, 10);
-      const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-
-      let newStreak = 1;
-      if (last_practice_date === yesterday) {
-        newStreak = (practice_streak || 0) + 1;   // extended streak
-      } else if (last_practice_date === today) {
-        newStreak = practice_streak || 1;           // already practised today
-      }
-      // if last_practice_date is older → streak resets to 1
-
-      await fetch(
-        `${SUPABASE_URL}/rest/v1/profiles?id=eq.${id}`,
-        {
-          method:  'PATCH',
-          headers: { ..._headers(token), 'Content-Type': 'application/json' },
-          body:    JSON.stringify({
-            practice_streak:     newStreak,
-            last_practice_date:  today,
-            updated_at:          new Date().toISOString(),
-          }),
-        }
-      );
-    } catch (e) {
-      console.warn('[ProgressTracker] Streak update error:', e);
     }
   }
 
@@ -192,21 +156,22 @@ const ProgressTracker = (function () {
   // ── Read progress (used by progress.html) ─────────────────────────────
   // Returns a merged object: Supabase data if logged in, localStorage otherwise
   async function getProgress() {
-    const token = _getSupabaseToken();
-    if (token) {
+    const session = _getSession();
+    const token = session?.accessToken;
+    if (session?.id && token) {
       try {
         const cols = [
           'tat_attempts','wat_attempts','ppdt_attempts',
-          'srt_attempts','lecturette_attempts','gpe_attempts','oir_attempts',
-          'login_streak','practice_streak','last_practice_date','last_login_date',
+          'srt_attempts','lecturette_attempts','gpe_attempts',
+          'tests_attempted','streak','last_activity',
         ].join(',');
         const resp = await fetch(
-          `${SUPABASE_URL}/rest/v1/profiles?select=${cols}&limit=1`,
+          `${SUPABASE_URL}/rest/v1/profiles?select=${cols}&id=eq.${encodeURIComponent(session.id)}&limit=1`,
           { headers: _headers(token) }
         );
         if (resp.ok) {
           const rows = await resp.json();
-          if (rows.length) return { source: 'supabase', ...rows[0] };
+          if (rows.length) return _normalizeProfile(rows[0]);
         }
       } catch (e) {
         console.warn('[ProgressTracker] getProgress Supabase error:', e);
@@ -226,19 +191,42 @@ const ProgressTracker = (function () {
     };
   }
 
-  function _getSupabaseToken() {
-    // Supabase JS client stores the session under a key like
-    // "sb-<project-ref>-auth-token" in localStorage
+  function _getSession() {
     try {
-      for (let i = 0; i < localStorage.length; i++) {
-        const k = localStorage.key(i);
-        if (k && k.startsWith('sb-') && k.endsWith('-auth-token')) {
-          const obj = JSON.parse(localStorage.getItem(k) || '{}');
-          return obj?.access_token || null;
-        }
-      }
+      if (typeof Auth !== 'undefined' && Auth.getUser) return Auth.getUser();
+      return JSON.parse(localStorage.getItem('ssbSession') || 'null');
     } catch { /* ignore */ }
     return null;
+  }
+
+  function _normalizeProfile(profile) {
+    return {
+      source: 'supabase',
+      ...profile,
+      oir_attempts: profile.oir_attempts || 0,
+      login_streak: 0,
+      practice_streak: profile.streak || 0,
+      last_practice_date: profile.last_activity || null,
+      updated_at: profile.last_activity || null,
+    };
+  }
+
+  function _nextStreak(currentStreak, lastActivity) {
+    const now = new Date();
+    const today = _dateKey(now);
+    const yesterday = _dateKey(new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1));
+    const last = lastActivity ? _dateKey(new Date(lastActivity)) : null;
+
+    if (last === today) return Math.max(Number(currentStreak || 0), 1);
+    if (last === yesterday) return Number(currentStreak || 0) + 1;
+    return 1;
+  }
+
+  function _dateKey(date) {
+    if (!date || Number.isNaN(date.getTime())) return null;
+    return date.getFullYear() + '-' +
+      String(date.getMonth() + 1).padStart(2, '0') + '-' +
+      String(date.getDate()).padStart(2, '0');
   }
 
   // ── Public API ─────────────────────────────────────────────────────────
