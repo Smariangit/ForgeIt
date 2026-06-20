@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
   ensureLoginModal();
+  ensurePasswordToggle('loginPassword', 'loginPasswordToggle', 'Password');
 
   // ===== NAV: hamburger =====
   const hamburger = document.getElementById('hamburger');
@@ -182,4 +183,26 @@ function ensureLoginModal() {
     button.textContent = 'Forgot Password';
     doLogin.insertAdjacentElement('afterend', button);
   }
+
+  ensurePasswordToggle('loginPassword', 'loginPasswordToggle', 'Password');
+}
+
+function ensurePasswordToggle(inputId, buttonId, label) {
+  const input = document.getElementById(inputId);
+  if (!input || document.getElementById(buttonId)) return;
+
+  const button = document.createElement('button');
+  button.className = 'btn-outline full-width';
+  button.id = buttonId;
+  button.type = 'button';
+  button.style.marginTop = '8px';
+  button.textContent = 'Show ' + label;
+
+  button.addEventListener('click', () => {
+    const isHidden = input.type === 'password';
+    input.type = isHidden ? 'text' : 'password';
+    button.textContent = (isHidden ? 'Hide ' : 'Show ') + label;
+  });
+
+  input.insertAdjacentElement('afterend', button);
 }

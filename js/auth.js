@@ -226,6 +226,7 @@ const Auth = {
 
       const profile = await _sb.getProfile(data.user.id, data.access_token).catch(() => null);
       _session.set(data, profile);
+      await this.recordLoginActivity().catch(err => console.warn('Login streak update skipped:', err));
       return { user: data.user, session: _session.get() };
     } catch (err) {
       console.error('Register error:', err);
@@ -241,6 +242,7 @@ const Auth = {
       // Fetch latest profile (premium status, streak, etc.)
       const profile = await _sb.getProfile(data.user.id, data.access_token).catch(() => null);
       _session.set(data, profile);
+      await this.recordLoginActivity().catch(err => console.warn('Login streak update skipped:', err));
       return { user: data.user, session: _session.get() };
     } catch (err) {
       console.error('Login error:', err);
@@ -355,6 +357,51 @@ const Auth = {
     }
   },
 
+  async recordLoginActivity() {
+    const session = _session.get();
+    if (!session) return { skipped: true, reason: 'Not logged in.' };
+
+    try {
+      await this.refreshIfNeeded();
+      const freshSession = _session.get();
+      if (!freshSession) return { skipped: true, reason: 'Session expired.' };
+
+      const profile = await _sb.getProfile(freshSession.id, freshSession.accessToken).catch(() => null);
+      const localLogin = getLocalLoginStreak();
+      const today = toLocalDateKey(new Date());
+      const yesterday = toLocalDateKey(new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() - 1));
+      const lastLoginDate = profile?.last_login_date || localLogin.last_login_date || null;
+
+      let nextLoginStreak = Number(profile?.login_streak || localLogin.login_streak || 0);
+      if (lastLoginDate === today) {
+        nextLoginStreak = Math.max(nextLoginStreak, 1);
+      } else if (lastLoginDate === yesterday) {
+        nextLoginStreak += 1;
+      } else {
+        nextLoginStreak = 1;
+      }
+
+      setLocalLoginStreak({
+        login_streak: nextLoginStreak,
+        last_login_date: today
+      });
+
+      await _sb.updateProfile(
+        freshSession.id,
+        {
+          login_streak: nextLoginStreak,
+          last_login_date: today
+        },
+        freshSession.accessToken
+      );
+
+      return { success: true, login_streak: nextLoginStreak };
+    } catch (err) {
+      console.warn('Login streak Supabase update failed; using local mirror:', err);
+      return { local: true };
+    }
+  },
+
   async waitForPremiumVerification(options = {}) {
     const attempts = options.attempts || 10;
     const delayMs = options.delayMs || 1500;
@@ -421,6 +468,18 @@ function toLocalDateKey(date) {
     String(date.getDate()).padStart(2, '0');
 }
 
+function getLocalLoginStreak() {
+  try {
+    return JSON.parse(localStorage.getItem('ssbforge_login_streak') || '{}');
+  } catch {
+    return {};
+  }
+}
+
+function setLocalLoginStreak(data) {
+  localStorage.setItem('ssbforge_login_streak', JSON.stringify(data));
+}
+
 // ── Handle email confirmation redirect ────────────────────────────────────
 // When user clicks the confirmation link, Supabase redirects back with tokens
 // in the URL hash: #access_token=xxx&refresh_token=yyy&type=signup
@@ -474,6 +533,8 @@ function toLocalDateKey(date) {
       refresh_token: refreshToken,
       expires_in:    3600
     }, profile);
+
+    await Auth.recordLoginActivity().catch(err => console.warn('Login streak update skipped:', err));
 
     // Clean the tokens out of the URL so they aren't visible / bookmarked
     history.replaceState(null, '', window.location.pathname + window.location.search);

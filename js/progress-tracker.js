@@ -171,7 +171,10 @@ const ProgressTracker = (function () {
         );
         if (resp.ok) {
           const rows = await resp.json();
-          if (rows.length) return _normalizeProfile(rows[0]);
+          if (rows.length) {
+            const loginProfile = await _getOptionalLoginProfile(session, token);
+            return _normalizeProfile({ ...rows[0], ...loginProfile });
+          }
         }
       } catch (e) {
         console.warn('[ProgressTracker] getProgress Supabase error:', e);
@@ -200,15 +203,38 @@ const ProgressTracker = (function () {
   }
 
   function _normalizeProfile(profile) {
+    const localLogin = _getLocalLoginStreak();
     return {
       source: 'supabase',
       ...profile,
       oir_attempts: profile.oir_attempts || 0,
-      login_streak: 0,
+      login_streak: profile.login_streak || localLogin.login_streak || 0,
       practice_streak: profile.streak || 0,
       last_practice_date: profile.last_activity || null,
       updated_at: profile.last_activity || null,
     };
+  }
+
+  async function _getOptionalLoginProfile(session, token) {
+    try {
+      const resp = await fetch(
+        `${SUPABASE_URL}/rest/v1/profiles?select=login_streak,last_login_date&id=eq.${encodeURIComponent(session.id)}&limit=1`,
+        { headers: _headers(token) }
+      );
+      if (!resp.ok) return {};
+      const rows = await resp.json();
+      return rows[0] || {};
+    } catch {
+      return {};
+    }
+  }
+
+  function _getLocalLoginStreak() {
+    try {
+      return JSON.parse(localStorage.getItem('ssbforge_login_streak') || '{}');
+    } catch {
+      return {};
+    }
   }
 
   function _nextStreak(currentStreak, lastActivity) {

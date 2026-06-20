@@ -520,9 +520,9 @@
 </div>
 
 <script src="js/nav.js"></script>
-<script src="js/auth.js"></script>
+<script src="js/auth.js?v=20260616"></script>
 <script src="js/progress-tracker.js?v=20260615"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20260616"></script>
 <script>
 // ── Module metadata ──────────────────────────────────────────────────────
 const MODULES_META = [
@@ -607,7 +607,7 @@ function renderDashboard(data) {
   // Source badge
   const sb = document.getElementById('sourceBadge');
   sb.innerHTML = isSupabase
-    ? '<span class="source-badge supabase">● Synced to Supabase</span>'
+    ? '<span class="source-badge supabase">● Synced</span>'
     : '<span class="source-badge local">● Local storage only · <a href=\"premium.html\" style=\"color:var(--gold)\">Login to sync</a></span>';
 
   // Last updated

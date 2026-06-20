@@ -49,7 +49,17 @@
         }
       });
     }
-
+// Premium indicator next to logo
+	const logo = document.querySelector('.logo');
+	if (logo && typeof Auth !== 'undefined' && Auth.isPremium()) {
+	  const badge = document.createElement('span');
+	  badge.id = 'premiumBadge';
+	  //badge.textContent = '★';
+	  badge.innerHTML = '★ PREMIUM';
+	  badge.title = 'Premium Member';
+	  badge.setAttribute('aria-label', 'Premium Member');
+	  logo.appendChild(badge);
+	}
   }
 
   document.addEventListener('DOMContentLoaded', buildNav);
