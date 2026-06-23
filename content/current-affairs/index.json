@@ -1,5 +1,89 @@
 [
   {
+    "label": "Jun 24, 2026",
+    "category": "Geopolitics",
+    "headline": "Turkey detains 209 in raids in the capital ahead of July’s NATO summit",
+    "summary": "Turkish security forces detained over 200 people with suspected extremist links in raids ahead of the upcoming NATO summit in Ankara. President Erdogan's government has prioritized security for the July 7-8 event, which will be attended by leaders of the 32-member alliance including Donald Trump.",
+    "gd_angle": "International security challenges, counter-terrorism efforts, role of host nations in global events like NATO summits;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Defence",
+    "headline": "North Korea should build two warships a year in next five years, Kim says",
+    "summary": "North Korean leader Kim Jong Un has instructed the nation to construct two warships annually, each as large as its 5,000-metric-ton Choe Hyon vessel, over the next five years. This directive was given at a destroyer commissioning ceremony, as reported by state media KCNA.",
+    "gd_angle": "Naval power projection, regional arms race dynamics, implications of North Korean military build-up on Indo-Pacific security;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Geopolitics",
+    "headline": "Starmer vows ‘orderly’ transition as Labour MPs mull bid to be PM",
+    "summary": "Britain's Prime Minister Keir Starmer pledged an 'orderly' transition of power after announcing his resignation following a loss of confidence from his own MPs. Two Labour lawmakers are reportedly considering challenging frontrunner Andy Burnham for the leadership, as Downing Street authorized 'access talks' for prospective successors.",
+    "gd_angle": "Democratic governance, political stability in major global powers, impact of leadership changes on international diplomacy;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Geopolitics",
+    "headline": "U.S. Senate for the first time approves War Powers resolution in rebuke to Trump over Iran conflict",
+    "summary": "The U.S. Senate approved a war powers resolution to block military action against Iran, marking a rebuke to President Trump. This move comes as the Pentagon seeks significant funding for the Iran conflict, primarily for munitions and stockpiles.",
+    "gd_angle": "Separation of powers, legislative oversight in foreign policy, US foreign policy dynamics, regional stability in the Middle East;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Economy",
+    "headline": "Stock markets go into tailspin; Sensex, Nifty drop over 1%",
+    "summary": "Indian stock markets experienced a significant downturn, with Sensex and Nifty dropping over 1%. This plunge was triggered by global investors reacting to South Korean capital market regulators' statement concerning investment products linked to AI-driven stocks.",
+    "gd_angle": "Economic stability, global market interdependencies, impact of technological developments like AI on financial markets;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Economy",
+    "headline": "BJP’s Punjab chief writes to World Bank president, seeks partnership with India for rural transformation",
+    "summary": "BJP Punjab President Kewal Dhillon urged World Bank President Ajay Banga to explore a collaborative partnership with the Government of India. The aim is to drive transformative change in rural India, focusing on agricultural diversification, rural entrepreneurship, skill development, financial literacy, and integrated rural development.",
+    "gd_angle": "Sustainable rural development, international financial partnerships, agricultural reforms and economic diversification in India;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Defence",
+    "headline": "Indian Navy warships INS Udaygiri, INS Kavaratti in Vietnam to boost maritime cooperation",
+    "summary": "The Indian Navy's indigenously designed warships, INS Udaygiri and INS Kavaratti, arrived in Ho Chi Minh City, Vietnam, as part of an operational deployment to South East Asia. This visit marks a significant step in enhancing India-Vietnam maritime relations and cooperation.",
+    "gd_angle": "Maritime security cooperation, India's Act East policy, naval diplomacy, projection of indigenous defence capabilities in the Indo-Pacific;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Economy",
+    "headline": "Claims about sugarcane juice directly mixed with petrol, car engine absorbing water because of ethanol “misleading, unsubstantiated”: Petroleum Ministry",
+    "summary": "The Union Petroleum Ministry stated that claims regarding ethanol-blended petrol absorbing water or sugarcane juice being directly mixed with fuel are 'misleading' and 'unsubstantiated'. The Ministry emphasized that ethanol blending undergoes rigorous testing and adheres to strict specifications to ensure fuel quality and engine safety.",
+    "gd_angle": "Energy security, ethanol blending program, promotion of alternative fuels, combating misinformation on national policies;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Geopolitics",
+    "headline": "Wang Yi calls for India, China to accelerate resumption of stalled dialogue mechanisms",
+    "summary": "China’s Foreign Minister Wang Yi met with India's National Security Adviser Ajit Doval, urging both nations to accelerate the resumption of stalled dialogue mechanisms. Wang Yi emphasized promoting exchanges in critical areas like trade and finance to improve bilateral relations.",
+    "gd_angle": "India-China relations, diplomatic engagement for dispute resolution, regional peace and stability, strategic communication;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Strategic Technology",
+    "headline": "Stretching ‘information’ to include Telegram",
+    "summary": "The Union government temporarily blocked Telegram to protect the sanctity of the NEET-UG 2026 re-examination. This action reflects an expansive interpretation of 'information' under Section 69A, allowing the government to block entire intermediary platforms rather than just specific content for national interest and public order.",
+    "gd_angle": "Digital governance, balancing national security with freedom of information, regulation of social media platforms, safeguarding integrity of examinations;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Geopolitics",
+    "headline": "Omar Abdullah meets Shashi Tharoor-led Parliamentary committee, calls for sustained engagement to understand J&K’s aspirations",
+    "summary": "Jammu and Kashmir Chief Minister Omar Abdullah met with the Parliamentary Standing Committee on External Affairs, led by Shashi Tharoor. Abdullah advocated for sustained engagement to understand and address the aspirations of the people of J&K, emphasizing democratic processes in the region.",
+    "gd_angle": "National integration, parliamentary oversight, addressing regional aspirations through dialogue, security and development in Jammu & Kashmir;"
+  },
+  {
+    "label": "Jun 24, 2026",
+    "category": "Environment policy",
+    "headline": "Delhi L-G asks MCD to replicate ‘zero-waste model’ across the city",
+    "summary": "Delhi Lieutenant-Governor Taranjit Singh Sandhu directed the Municipal Corporation of Delhi (MCD) to replicate the 'zero-waste model' across the city. This directive followed his visit to Navjeevan Vihar, a certified zero-waste colony successfully managing waste through 100% source segregation, composting, and recycling for nearly eight years.",
+    "gd_angle": "Urban waste management, sustainable development, smart city initiatives, public participation in environmental policies;"
+  },
+  {
     "label": "Jun 23, 2026",
     "category": "Major sports wins",
     "headline": "FIFA World Cup 2026",
