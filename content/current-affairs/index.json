@@ -1,5 +1,82 @@
 [
   {
+    "label": "Jul 17, 2026",
+    "category": "Economy",
+    "headline": "Raise public issues during monsoon session of Parliament, Jagan tells YSRCP MPs",
+    "summary": "YSRCP President Jagan Mohan Reddy instructed party MPs to raise public issues, including the privatization of ports like Ramayapatnam Port, during the monsoon session of Parliament. He questioned the transparency and financial terms of handing over the nearly completed port. This highlights concerns over public assets and government policies.",
+    "gd_angle": "Economy, infrastructure development, public vs. private sector roles, impact on national assets."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Geopolitics",
+    "headline": "Trinamool MP Samirul Islam calls on family who was pushed into Bangladesh",
+    "summary": "A Trinamool MP visited the family of Sweety Bibi, who was allegedly pushed into Bangladesh a year ago. This incident occurs amidst reports that 10,000 Bangladeshi nationals have returned from West Bengal and 1800 are currently held in detention centers, highlighting border management challenges.",
+    "gd_angle": "Border security, illegal immigration, diplomatic relations with Bangladesh, internal security challenges."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Higher education Bill may lead to concentration of powers in single central regulator: House panel",
+    "summary": "A joint parliamentary committee expressed concerns that the Viksit Bharat Shiksha Adhishthan Bill, 2025, could lead to excessive concentration of regulatory powers in a single central body. This bill aims to overhaul India's higher education sector by dissolving existing bodies like UGC, AICTE, and NCTE.",
+    "gd_angle": "Constitutional reforms, education policy, federalism vs. centralisation, impact on human resource development."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Geopolitics",
+    "headline": "Avoid deploying Indian sailors on vessels moving via Strait of Hormuz: DGMA to shipping companies",
+    "summary": "The Directorate General of Maritime Affairs (DGMA) advised shipping companies to avoid deploying Indian seafarers on vessels transiting the Strait of Hormuz. This directive follows an attack on an oil tanker carrying Indian crew, raising concerns about maritime security in this crucial geopolitical region.",
+    "gd_angle": "Geopolitics, maritime security, protection of Indian interests abroad, global trade routes, impact of regional conflicts."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Defence",
+    "headline": "After ambushes, CRPF tells forces in Manipur to use armoured vehicles, avoid sudden deployment",
+    "summary": "Following two ambushes on Assam Rifles personnel in Manipur and Nagaland, CRPF units in Manipur have been instructed to exclusively use armoured vehicles for movement. They are also advised to avoid sudden or unplanned deployments, enhancing troop safety in volatile regions.",
+    "gd_angle": "Internal security, counter-insurgency operations, defence preparedness, technology adaptation for force protection, regional stability."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Supreme Court judgments say state has a duty to preserve life of person on indefinite fast without disrupting right to dissent",
+    "summary": "The Supreme Court reaffirmed the state's duty to preserve the life of an individual on an indefinite fast while upholding their right to dissent. This comes as activist Sonam Wangchuk continues his hunger strike over NEET irregularities, highlighting the balance between individual rights and state responsibility.",
+    "gd_angle": "Constitutional values, right to dissent, judicial activism, state's role in public welfare, integrity of national exams."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Environment policy",
+    "headline": "Female elephant found dead in estate near Valparai",
+    "summary": "An eight-year-old female elephant was discovered dead in a private estate near Valparai, within the Manambolly forest range of the Anamalai Tiger Reserve. This incident underscores the ongoing challenges in wildlife conservation and the need for effective human-wildlife conflict management.",
+    "gd_angle": "Environment policy, wildlife conservation, human-animal conflict, ecological balance, forest management."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Strategic Technology",
+    "headline": "Left parties step up opposition to proposed data centre projects in Vizag",
+    "summary": "Left parties are intensifying their opposition to proposed data centre projects in Visakhapatnam, citing concerns over massive power and water requirements (512 MW) and potential environmental impacts. They argue these projects will strain resources and cause heat, noise, and pollution in residential areas.",
+    "gd_angle": "Strategic technology, environment policy, sustainable development, resource management, public vs. private development, smart city planning."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Economy",
+    "headline": "Delhi cabinet approves ₹400-crore start-up policy",
+    "summary": "The Delhi cabinet has approved a new start-up and incubation policy with an allocation of ₹400 crore over the next five years. This initiative aims to foster innovation, promote self-employment, and create a robust entrepreneurial ecosystem within the capital region.",
+    "gd_angle": "Economy, strategic technology, youth employment, innovation and entrepreneurship, government support for MSMEs."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Constitutional reforms",
+    "headline": "NEET-UG 2026 results: 11.21 lakh candidates qualify in re-test; women outshine men",
+    "summary": "After a re-test conducted due to allegations of a question paper leak, 11.21 lakh candidates qualified in NEET-UG 2026, with female candidates outperforming males. This outcome follows concerns over the integrity of the examination process and the need for administrative reforms.",
+    "gd_angle": "Constitutional values, integrity of national exams, education policy, social justice, youth aspirations, administrative reforms."
+  },
+  {
+    "label": "Jul 17, 2026",
+    "category": "Economy",
+    "headline": "Monsoon season power crisis: Power curbs likely to continue in Kerala",
+    "summary": "Kerala is expected to continue experiencing power curbs as the state faces a significant 500-600 MW deficit in electricity availability during the monsoon season. This situation highlights challenges in energy security, resource management, and the impact of climatic patterns on infrastructure.",
+    "gd_angle": "Economy, environment policy, energy security, infrastructure development, climate change impact, state-level resource management."
+  },
+  {
     "label": "Jul 16, 2026",
     "category": "Constitutional reforms",
     "headline": "NDA steps up push for numbers ahead of delimitation Bill, Opposition closes ranks",
