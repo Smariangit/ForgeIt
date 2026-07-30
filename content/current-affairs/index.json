@@ -1,5 +1,40 @@
 [
   {
+    "label": "Jul 31, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Parliament passes paper leak Bill as Opposition walks out of Rajya Sabha",
+    "summary": "Parliament passed the Public Examinations (Prevention of Unfair Means) Amendment Bill, 2026, despite the Opposition walking out of the Rajya Sabha. This legislative action follows nationwide protests by youth over alleged exam irregularities. The Bill aims to ensure fairness and prevent paper leaks in public examinations.",
+    "gd_angle": "Institutional trust, governance reforms, importance of fair public examinations for national talent and integrity;"
+  },
+  {
+    "label": "Jul 31, 2026",
+    "category": "Geopolitics",
+    "headline": "West Asia war updated: U.S. military says no U.S. aircraft hit in attempted Iranian attacks",
+    "summary": "The U.S. military launched \"powerful\" strikes on Iran in retaliation for Tehran's attacks targeting U.S. forces. Despite attempted Iranian responses, the U.S. military stated no U.S. aircraft were hit. This indicates escalating tensions and ongoing conflict in West Asia.",
+    "gd_angle": "Geopolitical dynamics, regional conflicts, India's energy security implications, global power balance;"
+  },
+  {
+    "label": "Jul 31, 2026",
+    "category": "Strategic Technology",
+    "headline": "Delhi govt. to introduce land records Bill; issue Aadhaar-like ID cards to all properties",
+    "summary": "The Delhi government plans to introduce a Land Records Bill, 2026, to issue secure, Aadhaar-like digital identity cards to all properties in the city. This aims to provide a trusted and authentic digital identity for every property, enhancing transparency and record-keeping. A special Assembly session is expected for this Bill.",
+    "gd_angle": "Digital governance, property rights, technology for administrative efficiency and transparency, potential for economic impact;"
+  },
+  {
+    "label": "Jul 31, 2026",
+    "category": "PM diplomacy",
+    "headline": "Attacks on commercial vessels, Indian seafarers ‘absolutely unacceptable’, Jaishankar tells Ukraine’s Sybiha",
+    "summary": "External Affairs Minister S. Jaishankar conveyed to Ukrainian Foreign Minister Andrii Sybiha that attacks on commercial vessels and Indian seafarers are \"absolutely unacceptable.\" This firm statement highlights India's serious concern for maritime security and the protection of its citizens amidst global conflicts.",
+    "gd_angle": "India's diplomatic efforts, maritime security challenges, protection of Indian interests and citizens abroad, international law and order;"
+  },
+  {
+    "label": "Jul 31, 2026",
+    "category": "Environment policy",
+    "headline": "Two bio-CBG plants proposed in Delhi to handle 800 tonnes of wet waste a day",
+    "summary": "Delhi has proposed establishing two bio-compressed biogas (Bio-CBG) plants at Tehkhand and Okhla, with a combined capacity to process 800 tonnes of wet waste daily. This initiative, following an MoU with Oil India Limited, aims to boost sustainable waste management and renewable energy production in the city.",
+    "gd_angle": "Sustainable development, waste management innovation, renewable energy solutions, urban environmental challenges;"
+  },
+  {
     "label": "Jul 30, 2026",
     "category": "Environment policy",
     "headline": "Delhi HC declines to stay HPV vaccination drive, seeks Centre’s reply",
