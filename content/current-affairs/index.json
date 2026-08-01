@@ -1,5 +1,61 @@
 [
   {
+    "label": "Aug 02, 2026",
+    "category": "Strategic Technology",
+    "headline": "Digital medical emergency referral system set to transform patient care in Rajasthan",
+    "summary": "Rajasthan has introduced a Simplified Emergency Transfer and Urgent Referral (SETU) digital system to streamline medical emergency cases. Developed at Rabindranath Tagore Medical College, Udaipur, SETU has already managed over 3,510 emergencies across 15 districts, aiming to transform patient care. This initiative leverages technology to enhance healthcare delivery and efficiency, improving public service delivery.",
+    "gd_angle": "Technology adaptation, public service delivery, how digital transformation can improve governance and citizen welfare."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Constitutional Reforms",
+    "headline": "J&K speeds up FRA implementation; warns Forest Dept. against eviction notices",
+    "summary": "Jammu and Kashmir is expediting the implementation of the Forest Rights Act (FRA) 2006, with the Tribal Affairs department designated as the nodal agency. The Minister has warned the Forest Department against issuing eviction notices to forest dwellers without due process. This move aims to secure the rights of tribal communities and ensure equitable resource management, reflecting a commitment to constitutional values.",
+    "gd_angle": "Institutional trust, constitutional values, what reforms are the best for India as a democracy; Social justice, tribal rights, balancing development with environmental protection."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Environment Policy",
+    "headline": "Trawling ban end fails to cheer fishers as adverse weather spoils their plans",
+    "summary": "The lifting of the 52-day trawling ban failed to bring relief to fishers in Kochi, as adverse weather warnings from the India Meteorological Department (IMD) forced most to postpone their plans. Despite preparations, rough seas prevented hundreds of trawlnet boats from venturing out, impacting their livelihoods. This highlights the vulnerability of the fishing community to environmental factors and the importance of meteorological alerts.",
+    "gd_angle": "Environment policy, climate change, impact on economy and livelihoods; Disaster preparedness, role of meteorological departments in safeguarding economic activities."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Environment Policy",
+    "headline": "Incessant downpour disrupts life in Kerala’s Kozhikode",
+    "summary": "Incessant heavy rain caused widespread disruption in Kerala's Kozhikode district, leading to flooding, isolated landslips, and significant damage. The district administration has intensified rescue and relief operations to manage the situation. This event highlights the increasing frequency of extreme weather events and the need for robust disaster preparedness and mitigation strategies.",
+    "gd_angle": "Environment policy, climate change, disaster management preparedness; Role of local administration in crisis response and citizen welfare."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Environment Policy",
+    "headline": "Heavy rain batters Kerala’s Kannur, two missing, 26 shifted to relief camp",
+    "summary": "Kannur district in Kerala experienced heavy rainfall, causing widespread disruption, road damage, house inundations, and forcing evacuations. The Bavali River overflowed, and two individuals are missing, with 26 people shifted to relief camps. Authorities have imposed travel and tourism restrictions, underscoring the severity of the climate event and the urgent need for disaster response.",
+    "gd_angle": "Environment policy, climate change, disaster management and mitigation strategies; Challenges in disaster relief and rehabilitation."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Geopolitics",
+    "headline": "The hopes of two families are dashed as terror attack leaves their sole breadwinners dead",
+    "summary": "A terror attack in Kulgam, J&K, tragically claimed the lives of two Chhattisgarh workers, shattering their families who relied on them as sole breadwinners. Chhattisgarh Chief Minister announced an ex-gratia of ₹20 lakh for each family, highlighting the economic vulnerability of migrant workers. This incident underscores the ongoing internal security challenges in the region and its profound human cost.",
+    "gd_angle": "Geopolitics, internal security challenges, counter-terrorism strategies in India; Economic impact of terrorism, social welfare for victims of conflict."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Constitutional Reforms",
+    "headline": "DMK to boycott verification of EVMs in Kolathur alleging lapses; plans to go to court",
+    "summary": "The DMK announced a boycott of EVM verification in Kolathur, alleging significant lapses where nearly 30% of machines showed problems, and plans to challenge the election in court. This raises concerns about the transparency and fairness of the electoral process and the integrity of electronic voting machines, impacting institutional trust.",
+    "gd_angle": "Institutional trust, constitutional values, electoral reforms; Debates around electronic voting machines, ensuring fair and transparent elections."
+  },
+  {
+    "label": "Aug 02, 2026",
+    "category": "Constitutional Reforms",
+    "headline": "No evidence of EVM tampering, says poll official on fourth day",
+    "summary": "On the fourth day of verification, a poll official stated there was no evidence of EVM tampering in the Kolathur Assembly constituency, despite ongoing scrutiny. This statement addresses allegations of lapses by a political party regarding the integrity of the electronic voting machines. It highlights the efforts to ensure transparency and maintain public confidence in the electoral process.",
+    "gd_angle": "Institutional trust, constitutional values, electoral reforms; Debates around electronic voting machines, ensuring fair and transparent elections."
+  },
+  {
     "label": "Aug 01, 2026",
     "category": "Geopolitics",
     "headline": "Modi, Burnham discuss trade, technology, Hormuz over phone",
