@@ -1,5 +1,61 @@
 [
   {
+    "label": "Aug 06, 2026",
+    "category": "Geopolitics",
+    "headline": "Spain's Ceuta seeks transfer of unaccompanied migrant minors to mainland Spain after border rush",
+    "summary": "The Spanish government approved €25 million in funding for Ceuta to support unaccompanied migrant minors after a mass influx from Morocco. Migrant youth took refuge in cemeteries after crossing into the Spanish enclave. Ceuta is seeking to transfer these minors to mainland Spain, highlighting the humanitarian and administrative challenges of the border situation.",
+    "gd_angle": "International relations, humanitarian crisis, border management, impact on regional stability, European Union's migration policy."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Defence",
+    "headline": "Yemen's Houthis say attacked two Saudi oil tankers",
+    "summary": "Yemen's Iran-backed Houthis announced they attacked two Saudi oil tankers, continuing their maritime blockade of the kingdom. This action escalates tensions in the region, impacting maritime trade routes and energy security. The ongoing conflict poses a threat to international shipping and regional stability.",
+    "gd_angle": "Geopolitical stability, maritime security, energy security, proxy conflicts, regional power dynamics in the Middle East."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Defence",
+    "headline": "North Korea's Kim Yo Jong warns of new military options over Japan's strike capabilities",
+    "summary": "Kim Yo Jong, sister of North Korean leader Kim Jong Un, warned of 'additional military options' in response to Japan's transformation into a military power. This warning came after Tokyo test-fired a U.S. missile, indicating a potential escalation of tensions in East Asia. North Korea views Japan's defense posture as a direct threat.",
+    "gd_angle": "Regional security, arms race, nuclear proliferation, international diplomacy, impact on India's strategic interests in the Indo-Pacific."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Geopolitics",
+    "headline": "West Asia war updates: Iran and Oman agree on coordinates of route through Hormuz, Iran's Foreign Ministry says",
+    "summary": "Iran and Oman reportedly inched towards an agreement on reopening the Strait of Hormuz, a critical waterway, potentially aiding an end to the West Asia conflict. This diplomatic move follows previous U.S. calls to halt military strikes against Iran. The agreement aims to secure passage through the strait and de-escalate regional tensions.",
+    "gd_angle": "Energy security, geopolitical stability of critical waterways, international diplomacy, India's economic interests in West Asia."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Geopolitics",
+    "headline": "Bangladesh government ‘outraged’ over Sheikh Hasina’s press conference in India",
+    "summary": "The Bangladesh government expressed outrage over deposed Prime Minister Sheikh Hasina’s press conference held in New Delhi. This incident highlights sensitivities in bilateral relations and potential political interference. It underscores the challenges of managing political exiles and their activities on foreign soil.",
+    "gd_angle": "Bilateral relations, regional stability, diplomatic protocols, impact of internal politics on foreign policy between India and Bangladesh."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Rajya Sabha clears Bill to increase number of Supreme Court judges",
+    "summary": "The Rajya Sabha passed a Money Bill to increase the number of Supreme Court judges, which had previously cleared the Lok Sabha. This legislative action aims to address the backlog of cases and enhance judicial efficiency. The increase in judicial strength is expected to strengthen the country's justice delivery system.",
+    "gd_angle": "Institutional trust, constitutional values, judicial reforms, efficiency of judiciary, separation of powers."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Having majority no reason for lawmakers to defy party: Supreme Court",
+    "summary": "The Supreme Court ruled that a group of MLAs or MPs cannot defy official directives of their parent political party, even if they hold a majority among elected members. This ruling pertains to a prolonged dispute between Shiv Sena factions, clarifying the scope of the anti-defection law. It reinforces party discipline within parliamentary democracy.",
+    "gd_angle": "Institutional trust, constitutional values, parliamentary democracy, anti-defection law, party discipline vs. individual legislator's autonomy."
+  },
+  {
+    "label": "Aug 06, 2026",
+    "category": "Economy",
+    "headline": "T.N. to enable registration of documents from home: Finance Minister",
+    "summary": "Tamil Nadu Finance Minister announced a new 'Anywhere Registration' facility to reform the Registration Department, allowing citizens to register documents from home. This initiative aims to streamline the process, enhance convenience, and ensure hassle-free public service delivery. It is a landmark reform to digitize and improve administrative efficiency.",
+    "gd_angle": "Economic reforms, ease of doing business, digital governance, efficiency in administration, public service delivery."
+  },
+  {
     "label": "Aug 05, 2026",
     "category": "Geopolitics",
     "headline": "Lebanon and Israel hold new round of direct talks in Rome",
