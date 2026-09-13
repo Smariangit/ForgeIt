@@ -1,5 +1,82 @@
 [
   {
+    "label": "Sep 14, 2026",
+    "category": "Economy",
+    "headline": "Trump says lifting U.S. tariff on Irish whiskey as 'everybody's been bugging' him about it",
+    "summary": "President Donald Trump announced a plan to remove a 10% tariff on Irish whiskey, a decision revealed at a golf tournament in Ireland. Trump stated this move was in response to public pressure. This decision signifies a shift in U.S. trade policy regarding specific imports.",
+    "gd_angle": "International trade relations, economic impact on global markets, diplomacy and trade policies;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Geopolitics",
+    "headline": "Trump calls on Ukraine to halt strikes on Russian diesel fuel, says attacks causing shortage",
+    "summary": "President Donald Trump urged Ukrainian President Volodymyr Zelenskyy to stop attacks on Russian oil refineries and infrastructure. Trump stated that these strikes, targeting diesel production and distribution, are causing a global shortage. This intervention highlights the broader economic and geopolitical implications of the conflict.",
+    "gd_angle": "International relations, energy security, geopolitical implications of conflict;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Major Sports Wins",
+    "headline": "Zverev beats Shelton to win U.S. Open title",
+    "summary": "Germany's Alexander Zverev won the men's singles final at the U.S. Open, defeating American Ben Shelton 6-3 7-6(2) 5-7 6-2. This victory marks a significant achievement for Zverev, securing the title six years after a previous missed opportunity. It is a major win for Germany in international tennis.",
+    "gd_angle": "National pride, sports diplomacy, promoting healthy lifestyle;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Defence",
+    "headline": "Fighting in Yemen intensifies, Houthis launch more attacks on Saudi Arabia",
+    "summary": "Fighting in Yemen has escalated, with Iran-aligned Houthis launching more attacks on Saudi Arabia. Houthis seized control of Yemen's port city of Mocha on September 10, 2026, as shown by drone footage. This intensification of conflict severely impacts regional stability and security in the Middle East.",
+    "gd_angle": "Regional security, geopolitical stability, impact on global energy routes;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Geopolitics",
+    "headline": "Talks between Iran and Gulf countries in Oman postponed ‘in the interests of consensus’",
+    "summary": "A scheduled meeting in Oman between Gulf countries and Iran, aimed at discussing agreements on the Strait of Hormuz, has been postponed. The Omani Foreign Minister stated the delay was 'in the interests of consensus.' Iran's President previously had a 'good talk' with a UAE official, indicating ongoing diplomatic efforts despite the postponement.",
+    "gd_angle": "Middle East diplomacy, regional stability, geopolitical power dynamics;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Geopolitics",
+    "headline": "Pakistan’s westward turn — strategic depth or overstretch",
+    "summary": "Pakistan's rapidly expanding strategic footprint in West Asia, highlighted by a defence cooperation agreement with Kuwait, raises questions about its long-term strategy. The analysis explores whether this 'westward turn' offers strategic depth or risks overstretching its military and financial resources. This geopolitical shift has significant implications for Pakistan's regional alignment and potential involvement in conflicts.",
+    "gd_angle": "Regional security dynamics, India's neighbours' foreign policy, strategic implications for India;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Geopolitics",
+    "headline": "Trump reiterates support for united Ireland, says won't talk about Scotland 'yet'",
+    "summary": "President Donald Trump publicly reiterated his support for Northern Ireland to unify with the Republic of Ireland, separating from the United Kingdom. He also indicated he would not comment on Scottish independence 'yet.' These statements from a former U.S. President carry significant geopolitical weight regarding territorial integrity and national self-determination.",
+    "gd_angle": "International relations, sovereignty issues, geopolitical impact of major powers' statements;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Geopolitics",
+    "headline": "BRICS Summit 2026 updates: India, China stress need for peace and tranquility in border areas",
+    "summary": "During the BRICS Summit in New Delhi, Prime Minister Narendra Modi met Chinese President Xi Jinping. Both leaders emphasized the importance of maintaining peace and tranquility in border areas. PM Modi also acknowledged China's support for India's BRICS chairship and its contributions to the summit's success, highlighting ongoing diplomatic engagement despite existing border tensions.",
+    "gd_angle": "Multilateral diplomacy, India-China relations, border management and regional peace;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Major Sports Wins",
+    "headline": "Asia Cup: Indian women's cricket team refuses to accept trophy from ACC head Mohsin Naqvi",
+    "summary": "The victorious Indian women's cricket team declined to accept the Asia Cup trophy from Mohsin Naqvi, the Asian Cricket Council (ACC) chairperson from Pakistan. This incident marks the second consecutive year of such an impasse, following a similar refusal by the Indian men's team last year. The decision reflects underlying diplomatic tensions between India and Pakistan in the context of sports diplomacy.",
+    "gd_angle": "Sports diplomacy, national sentiment in international events, India-Pakistan relations;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Defence",
+    "headline": "Russian drone hits train near Ukraine-Poland border soon after Boris Johnson, other visiting dignitaries passed through",
+    "summary": "A Russian drone struck a train near the Ukraine-Poland border shortly after senior visiting officials, including former UK Prime Minister Boris Johnson, passed through. A diplomatic train carrying Johnson and European Union security advisers had purposely left the Yahodyn station ahead of schedule. The incident highlights the ongoing risks of conflict zones and potential targeting of high-profile movements.",
+    "gd_angle": "Modern warfare tactics, regional security challenges, implications of drone technology in conflict;"
+  },
+  {
+    "label": "Sep 14, 2026",
+    "category": "Geopolitics",
+    "headline": "Want to 'reset' ties with India, should be done through bilateral discussions: Bangladesh",
+    "summary": "Bangladesh has expressed its desire to 'reset' relations with India, advocating for new bilateral engagement based on mutual interests through discussions. This statement follows what Bangladesh described as 'uncomfortable' ties during the tenure of the deposed Prime Minister Sheikh Hasina. This move signals a potential shift in India-Bangladesh diplomatic relations and regional cooperation.",
+    "gd_angle": "India's neighbourhood policy, bilateral relations, regional cooperation and stability;"
+  },
+  {
     "label": "Sep 13, 2026",
     "category": "Geopolitics",
     "headline": "Mehbooba Mufti welcomes BRICS condemnation of Pahalgam terror attack, but calls out ‘selective outrage’",
