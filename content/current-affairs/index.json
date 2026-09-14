@@ -1,5 +1,54 @@
 [
   {
+    "label": "Sep 15, 2026",
+    "category": "Geopolitics",
+    "headline": "Trump nominates Wesley Hunt to serve as U.S. Ambassador to Saudi; picks wife of 'God Bless the USA' singer as envoy to Barbados",
+    "summary": "US President Trump nominated Wesley Hunt as Ambassador to Saudi Arabia and the wife of a singer as envoy to Barbados. These appointments reflect the US administration's diplomatic choices and priorities in foreign representation, impacting bilateral relations.",
+    "gd_angle": "Geopolitical appointments, US foreign policy, impact of ambassadorial choices on bilateral relations;"
+  },
+  {
+    "label": "Sep 15, 2026",
+    "category": "Defence",
+    "headline": "NATO fighter jet shoots down drone in Lithuania",
+    "summary": "A NATO fighter jet successfully shot down a drone in Lithuania, near the strategically sensitive Suwalki Gap. This incident highlights ongoing tensions in European airspace and NATO's operational readiness in the region bordering Russia and Belarus.",
+    "gd_angle": "European security, NATO's role, air defence capabilities, geopolitical tensions in the Baltic region;"
+  },
+  {
+    "label": "Sep 15, 2026",
+    "category": "Defence",
+    "headline": "Houthis say Saudi Arabia hits Yemen with 54 strikes after attack on bases",
+    "summary": "Yemen's Houthis reported that Saudi Arabia launched 54 airstrikes across the country following Houthi attacks on Saudi military bases. This signifies a major escalation in the ongoing conflict in Yemen, intensifying regional instability.",
+    "gd_angle": "Middle East conflicts, regional power dynamics, humanitarian implications of prolonged warfare;"
+  },
+  {
+    "label": "Sep 15, 2026",
+    "category": "Economy",
+    "headline": "Govt. bars bank charges on payments up to ₹2,000 via UPI, RuPay-powered debit cards",
+    "summary": "The Indian government has notified changes in the Payment And Settlement Act, 2007, barring banks from imposing charges on UPI transactions and RuPay debit card payments up to ₹2,000. This aims to boost digital payment adoption and financial inclusion across India.",
+    "gd_angle": "Digital economy, financial inclusion, government policy to promote cashless transactions, economic impact of digital infrastructure;"
+  },
+  {
+    "label": "Sep 15, 2026",
+    "category": "Environment policy",
+    "headline": "Underwater survey to be done to assess long-term impact of MSC Elsa 3 sinking, Centre informs Kerala HC",
+    "summary": "The Central government informed the Kerala High Court that a multi-beam underwater survey would be conducted following the MSC Elsa 3 shipwreck. This survey will assess long-term environmental and marine ecological impacts, the wreck's current state, and future risks.",
+    "gd_angle": "Environmental protection, maritime safety, impact of shipping incidents on coastal ecosystems, role of technology in environmental monitoring;"
+  },
+  {
+    "label": "Sep 15, 2026",
+    "category": "Geopolitics",
+    "headline": "Zelenskyy says Ukraine will pause strikes on Russia if Kremlin spares critical infrastructure",
+    "summary": "Ukrainian President Volodymyr Zelenskyy stated that Ukraine is prepared to halt its strikes on Russian territory if Russia commits to not targeting Ukraine’s critical infrastructure. This conditional offer opens a potential pathway for de-escalation in the ongoing conflict.",
+    "gd_angle": "International conflict resolution, geopolitical leverage, impact of critical infrastructure targeting on warfare strategies;"
+  },
+  {
+    "label": "Sep 15, 2026",
+    "category": "Economy",
+    "headline": "Upgraded Karimnagar-Warangal section of NH 563 set to boost tourism, trade in the region",
+    "summary": "The upgraded 68-km Karimnagar-Warangal section of NH-563 has been four-laned at an estimated cost of ₹2,414 crore. This infrastructure development is poised to significantly improve regional connectivity, reduce travel time, and boost tourism and economic activity.",
+    "gd_angle": "Infrastructure development, economic growth, regional connectivity, impact of national highways on trade and tourism;"
+  },
+  {
     "label": "Sep 14, 2026",
     "category": "Economy",
     "headline": "Trump says lifting U.S. tariff on Irish whiskey as 'everybody's been bugging' him about it",
