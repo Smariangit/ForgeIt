@@ -1,5 +1,82 @@
 [
   {
+    "label": "Sep 30, 2026",
+    "category": "Constitutional reforms",
+    "headline": "INDIA bloc announces Odisha bandh on October 8 over new mining law, other issues",
+    "summary": "Odisha's INDIA bloc announced a bandh against the MMDR (Amendment) Act, 2026, claiming the Centre is infringing on the state's rights over mineral deposits. Protests were held outside the Odisha Assembly demanding withdrawal of the Act, citing the state's primary right to mineral wealth.",
+    "gd_angle": "Federalism, resource distribution, state-centre relations, impact of national economic policy on states."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Geopolitics",
+    "headline": "The United Nations’ long road to restoring trust",
+    "summary": "As world leaders gathered for the 81st UN General Assembly, discussions centered on restoring trust in the international body. The article highlights the UN's urgent need to enhance transparency and remake its ties directly with global citizens, rather than just governments.",
+    "gd_angle": "International relations, global governance, India's role in multilateral forums, UN reforms."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Environment policy",
+    "headline": "Activists caution against efforts to revive bauxite mining in Odisha’s Niyamgiri hills",
+    "summary": "Activists are cautioning against reviving a bauxite mining project in Odisha's Niyamgiri hills, which was halted 13 years ago due to local tribal opposition. The region is vital for the Dongria Kondh, a Particularly Vulnerable Tribal Group, who depend on its natural resources and have historically protected the area.",
+    "gd_angle": "Environmental protection, sustainable development, tribal rights, resource management vs. industrial needs."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Economy",
+    "headline": "Rajasthan first State in northern India to complete digital identification of farmers",
+    "summary": "Rajasthan has become the first state in northern India and the sixth nationally to complete digital identification of farmers. The state achieved the target of issuing over 90.19 lakh identity cards, set by the Union Ministry of Agriculture and Farmers’ Welfare, streamlining agricultural services.",
+    "gd_angle": "Digital governance, agricultural reforms, economic development, technology integration in rural sectors."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Environment policy",
+    "headline": "NCR air quality panel tightens winter pollution curbs",
+    "summary": "The Commission for Air Quality Management in NCR announced tighter restrictions under a revised Graded Response Action Plan (GRAP) to mitigate winter air pollution in Delhi and surrounding districts. BS-III petrol and BS-IV diesel cars will be prohibited in high-vehicle-density areas during Stage 3 of GRAP.",
+    "gd_angle": "Environmental governance, public health challenges, inter-state cooperation on pollution, sustainable urban development."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Strategic Technology",
+    "headline": "Highly educated professionals are vulnerable to financial cybercrime, finds IIT-Madras study",
+    "summary": "An IIT-Madras study revealed that even highly educated professionals are vulnerable to financial cybercrime, incurring losses from thousands to over ₹1 crore. The study highlighted that high digital literacy does not guarantee protection and victims often experience psychological distress, emphasizing evolving cyber threats.",
+    "gd_angle": "Cybersecurity threats, digital literacy, economic implications of cybercrime, national security aspects of financial technology."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Defence",
+    "headline": "Terrorist killed in ongoing operation in Kashmir’s Budgam",
+    "summary": "One terrorist was killed during an ongoing anti-militancy operation conducted by the Army in Kashmir's Budgam district. This operation is part of continuous efforts to counter insurgency in the region, aimed at maintaining peace and security.",
+    "gd_angle": "Internal security challenges, counter-terrorism operations, border security, strategic importance of Kashmir."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Economy",
+    "headline": "India’s growing elderly population needs an integrated care system, says report",
+    "summary": "A new report highlights the urgent need for an integrated care system to support India's growing elderly population. The study points to demographic shifts requiring comprehensive policy frameworks for healthcare, social security, and welfare services to ensure dignified living for senior citizens.",
+    "gd_angle": "Demographic dividend/challenge, social welfare policies, healthcare infrastructure, economic implications of an aging population."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Constitutional reforms",
+    "headline": "BLAs in Delhi bypassed EC’s 10-form daily limit using poll panel’s own portal, data show",
+    "summary": "Data revealed lapses in Delhi's voter registration drive, with booth-level agents bypassing the Election Commission's daily limit of 10 applications by using the ECINET portal. This raises concerns about electoral transparency and the integrity of the voter revision exercise, potentially impacting democratic fairness.",
+    "gd_angle": "Electoral reforms, democratic processes, transparency in governance, role of Election Commission."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Economy",
+    "headline": "Shah launches Barapullah corridor, three other road projects worth ₹1,941 cr. in Delhi",
+    "summary": "Union Home Minister Amit Shah inaugurated four road infrastructure projects in Delhi worth ₹1,941 crore, including the long-pending Barapullah Phase-3 elevated corridor. These projects are expected to significantly cut travel times and improve urban connectivity, vital for economic growth and public convenience.",
+    "gd_angle": "Infrastructure development, urban planning, economic growth, public-private partnerships in infrastructure."
+  },
+  {
+    "label": "Sep 30, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Democracy without choice: how unopposed Maharashtra rural polls silence dissent",
+    "summary": "A report highlights a concerning trend in Maharashtra's rural polls, where some local panchayats have not held elections for decades due to candidates running unopposed. This raises questions about the health of grassroots democracy, voter disenfranchisement, and the silencing of dissent in local governance, impacting constitutional values.",
+    "gd_angle": "Grassroots democracy, electoral integrity, constitutional values, challenges to democratic participation."
+  },
+  {
     "label": "Sep 29, 2026",
     "category": "Geopolitics",
     "headline": "U.S., Iran separately talk with mediators in latest bid to end war",
