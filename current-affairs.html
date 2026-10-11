@@ -7,6 +7,198 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       CALENDAR POPUP — replaces <select>
+    ═══════════════════════════════════════════════════════ */
+
+    /* Wrapper that positions the popup relative to the toggle button */
+    .ca-jump-control {
+      position: relative;
+    }
+
+    /* The toggle button — mirrors the existing .ctrl-btn style */
+    #caCalToggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 180px;
+      justify-content: center;
+      font-family: var(--font-cond);
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    #caCalToggle .cal-toggle-arrow {
+      font-size: 10px;
+      opacity: 0.6;
+      transition: transform 0.2s;
+    }
+    #caCalToggle.open .cal-toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Floating calendar popup */
+    #caCalPopup {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+      background: var(--dark-2);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      width: 280px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+      overflow: hidden;
+      animation: calPopIn 0.18s ease;
+    }
+    #caCalPopup.open { display: block; }
+
+    @keyframes calPopIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+
+    /* Month navigation header */
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .cal-nav-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 26px; height: 26px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 13px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .cal-nav-btn:hover:not(:disabled) {
+      color: var(--gold);
+      border-color: var(--border-strong);
+    }
+    .cal-nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+    .cal-month-label {
+      font-family: var(--font-cond);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    /* Day-of-week row */
+    .cal-dow-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      padding: 0.5rem 0.75rem 0.2rem;
+    }
+    .cal-dow {
+      font-family: var(--font-cond);
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Day grid */
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      padding: 0.25rem 0.6rem 0.6rem;
+    }
+
+    .cal-day {
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-cond);
+      font-size: 12px;
+      transition: all 0.12s;
+    }
+
+    /* Empty padding cells */
+    .cal-day.empty { pointer-events: none; }
+
+    /* Days with NO content — greyed out, not clickable */
+    .cal-day.no-content {
+      color: rgba(232,226,213,0.18);
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* Days WITH content — bright, clickable */
+    .cal-day.has-content {
+      color: var(--cream);
+      cursor: pointer;
+    }
+    .cal-day.has-content:hover {
+      background: rgba(201,168,76,0.15);
+      color: var(--gold);
+    }
+
+    /* Gold dot under days that have content */
+    .cal-day.has-content::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .cal-day { position: relative; } /* needed for ::after */
+
+    /* Active (currently selected) date */
+    .cal-day.active-date {
+      background: var(--gold) !important;
+      color: var(--dark) !important;
+      font-weight: 700;
+    }
+    .cal-day.active-date::after { display: none; }
+
+    /* Today outline */
+    .cal-day.today:not(.active-date) {
+      border: 1px solid rgba(201,168,76,0.45);
+    }
+
+    /* Legend */
+    .cal-legend {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+    .cal-legend-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .cal-legend span {
+      font-family: var(--font-cond);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body>
 
@@ -25,7 +217,6 @@
     <p>An officer is a scholar of the world before a master of the sword.</p>
   </section>
 
-
   <div class="ca-category-bar">
     <div class="ca-category-tabs" id="caCategoryTabs"></div>
   </div>
@@ -36,12 +227,50 @@
 
     <div id="caDayFrame" class="ca-day-frame hidden">
       <div class="ca-date-controls">
+
         <button class="ctrl-btn" id="caNextDate" type="button">&#9664; Previous Date</button>
+
+        <!-- CALENDAR TOGGLE — replaces the old <select> -->
         <div class="ca-jump-control">
-          <select id="caDateJump"></select>
+
+          <button class="ctrl-btn" id="caCalToggle" type="button" aria-haspopup="true" aria-expanded="false">
+            <span id="caToggleLabel">Select Date</span>
+            <span class="cal-toggle-arrow">▼</span>
+          </button>
+
+          <!-- Floating calendar popup -->
+          <div id="caCalPopup" role="dialog" aria-label="Date picker">
+
+            <div class="cal-header">
+              <button class="cal-nav-btn" id="calPrev" title="Previous month">‹</button>
+              <div class="cal-month-label" id="calMonthLabel"></div>
+              <button class="cal-nav-btn" id="calNext" title="Next month">›</button>
+            </div>
+
+            <div class="cal-dow-row">
+              <div class="cal-dow">Su</div>
+              <div class="cal-dow">Mo</div>
+              <div class="cal-dow">Tu</div>
+              <div class="cal-dow">We</div>
+              <div class="cal-dow">Th</div>
+              <div class="cal-dow">Fr</div>
+              <div class="cal-dow">Sa</div>
+            </div>
+
+            <div class="cal-grid" id="calGrid"></div>
+
+            <div class="cal-legend">
+              <div class="cal-legend-dot"></div>
+              <span>Has summaries &nbsp;|&nbsp; greyed = no content</span>
+            </div>
+
+          </div>
         </div>
+
         <button class="ctrl-btn" id="caPrevDate" type="button">Next Date &#9654;</button>
+
       </div>
+
       <div class="ca-day-stack-wrap">
         <div class="ca-day-meta" id="caDayMeta">Loading...</div>
         <div class="ca-day-stack" id="caDayStack"></div>
@@ -72,24 +301,32 @@
 <script src="js/current-affairs-data.js"></script>
 <script src="js/main.js?v=20260616"></script>
 <script>
+// ════════════════════════════════════════════════════════════
+// EXISTING LOGIC — unchanged
+// ════════════════════════════════════════════════════════════
 const CAT_COLORS = {
-  defence: 'var(--red-accent)',
+  defence:      'var(--red-accent)',
   geopolitical: '#2b6cb0',
-  geopolitics: '#2b6cb0',
-  national: 'var(--success)',
-  economy: '#b7791f',
-  environment: '#2f855a',
-  technology: '#553c9a',
-  social: '#9f7aea',
-  sports: '#dd6b20',
-  default: 'var(--gold)'
+  geopolitics:  '#2b6cb0',
+  national:     'var(--success)',
+  economy:      '#b7791f',
+  environment:  '#2f855a',
+  technology:   '#553c9a',
+  social:       '#9f7aea',
+  sports:       '#dd6b20',
+  default:      'var(--gold)'
 };
 
-let allSummaries = [];
+let allSummaries   = [];
 let summariesByDate = new Map();
-let orderedDates = [];
+let orderedDates   = [];
 let activeDateIndex = 0;
-let activeCategory = 'all';
+let activeCategory  = 'all';
+
+// ── Set of "YYYY-MM-DD" strings that have content ────────────────────────
+// Built from the item.date field in index.json.
+// Falls back to parsing item.label if item.date is absent.
+let availableDateSet = new Set();
 
 function parseLabelDate(label) {
   const time = Date.parse(label || '');
@@ -98,6 +335,14 @@ function parseLabelDate(label) {
 
 function normalizeCategory(category) {
   return String(category || 'general').trim().toLowerCase();
+}
+
+// Extract a YYYY-MM-DD string from an item (uses item.date first, then parses item.label)
+function itemToDateStr(item) {
+  if (item.date) return item.date;
+  const d = new Date(item.label || '');
+  if (isNaN(d)) return null;
+  return d.toISOString().slice(0, 10);
 }
 
 async function loadCurrentAffairs() {
@@ -115,12 +360,30 @@ async function loadCurrentAffairs() {
     if (!Array.isArray(items) || !items.length) throw new Error('No current affairs data');
 
     allSummaries = items.slice().sort((a, b) => parseLabelDate(b.label) - parseLabelDate(a.label));
+
+    // Build the set of available dates for the calendar
+    allSummaries.forEach(item => {
+      const ds = itemToDateStr(item);
+      if (ds) availableDateSet.add(ds);
+    });
+
     buildDateGroups(allSummaries);
     renderCategoryTabs();
-    renderDateJump();
+
     document.getElementById('caLoading').classList.add('hidden');
     document.getElementById('caDayFrame').classList.remove('hidden');
     renderActiveDate();
+
+    // Init calendar on the most recent available month
+    if (orderedDates.length) {
+      const anchor = new Date(parseLabelDate(orderedDates[0]));
+      if (!isNaN(anchor)) {
+        calYear  = anchor.getFullYear();
+        calMonth = anchor.getMonth();
+      }
+    }
+    renderCalendar();
+
   } catch (error) {
     console.error('Current affairs load failed:', error);
     document.getElementById('caLoading').classList.add('hidden');
@@ -140,20 +403,6 @@ function buildDateGroups(items) {
   activeDateIndex = 0;
 }
 
-function renderDateJump() {
-  const select = document.getElementById('caDateJump');
-  select.innerHTML = '';
-
-  orderedDates.forEach((label, index) => {
-    const option = document.createElement('option');
-    option.value = String(index);
-    option.textContent = label;
-    select.appendChild(option);
-  });
-
-  select.value = String(activeDateIndex);
-}
-
 function renderCategoryTabs() {
   const tabs = document.getElementById('caCategoryTabs');
   const categories = ['all', ...new Set(allSummaries.map(item => normalizeCategory(item.category)))];
@@ -163,10 +412,10 @@ function renderCategoryTabs() {
     const btn = document.createElement('button');
     btn.className = 'module-tab' + (category === activeCategory ? ' active' : '');
     btn.type = 'button';
-    btn.textContent = category === 'all' ? 'All' : category.replace(/\b\w/g, char => char.toUpperCase());
+    btn.textContent = category === 'all' ? 'All' : category.replace(/\b\w/g, c => c.toUpperCase());
     btn.addEventListener('click', () => {
       activeCategory = category;
-      document.querySelectorAll('#caCategoryTabs .module-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('#caCategoryTabs .module-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
       renderActiveDate();
     });
@@ -178,15 +427,17 @@ function renderActiveDate() {
   if (!orderedDates.length) return;
 
   const dateLabel = orderedDates[activeDateIndex];
-  const jump = document.getElementById('caDateJump');
-  if (jump) jump.value = String(activeDateIndex);
+
+  // Update toggle button label
+  document.getElementById('caToggleLabel').textContent = dateLabel;
+
   const dayItems = summariesByDate.get(dateLabel) || [];
   const filtered = activeCategory === 'all'
     ? dayItems
     : dayItems.filter(item => normalizeCategory(item.category) === activeCategory);
 
   const stack = document.getElementById('caDayStack');
-  const meta = document.getElementById('caDayMeta');
+  const meta  = document.getElementById('caDayMeta');
   stack.innerHTML = '';
   meta.textContent = dateLabel + ' | ' + filtered.length + (filtered.length === 1 ? ' story' : ' stories');
 
@@ -196,15 +447,20 @@ function renderActiveDate() {
   }
 
   filtered.forEach(item => stack.appendChild(createNewsCard(item, dateLabel)));
+
+  // Refresh calendar to reflect newly active date
+  renderCalendar();
 }
 
 function createNewsCard(item, dateLabel) {
   const category = normalizeCategory(item.category);
-  const color = CAT_COLORS[category] || CAT_COLORS.default;
-  const card = document.createElement('article');
+  const color    = CAT_COLORS[category] || CAT_COLORS.default;
+  const card     = document.createElement('article');
   card.className = 'ca-news-card';
   card.style.setProperty('--ca-accent', color);
-  const gdAngle = item.gd_angle ? `<div class="ca-gd-angle"><div>GD / INTERVIEW ANGLE</div><p>${item.gd_angle}</p></div>` : '';
+  const gdAngle = item.gd_angle
+    ? `<div class="ca-gd-angle"><div>GD / INTERVIEW ANGLE</div><p>${item.gd_angle}</p></div>`
+    : '';
   card.innerHTML = `
     <div class="ca-card-meta">
       <span>${dateLabel}</span>
@@ -225,11 +481,155 @@ function moveDate(direction) {
 
 document.getElementById('caPrevDate').addEventListener('click', () => moveDate(-1));
 document.getElementById('caNextDate').addEventListener('click', () => moveDate(1));
-document.getElementById('caDateJump').addEventListener('change', event => {
-  activeDateIndex = Number(event.target.value) || 0;
-  renderActiveDate();
+
+
+// ════════════════════════════════════════════════════════════
+// CALENDAR POPUP
+// ════════════════════════════════════════════════════════════
+let calYear  = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+
+const MONTHS_LONG = ['January','February','March','April','May','June',
+                     'July','August','September','October','November','December'];
+
+function renderCalendar() {
+  document.getElementById('calMonthLabel').textContent = MONTHS_LONG[calMonth] + ' ' + calYear;
+
+  const grid    = document.getElementById('calGrid');
+  grid.innerHTML = '';
+
+  const todayStr    = new Date().toISOString().slice(0, 10);
+  const activeDateStr = getActiveDateStr();
+
+  const firstDOW   = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  // Empty padding cells before the 1st
+  for (let i = 0; i < firstDOW; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+
+  // Day cells
+  for (let d = 1; d <= daysInMonth; d++) {
+    const ds  = `${calYear}-${String(calMonth + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const el  = document.createElement('div');
+    const has = availableDateSet.has(ds);
+
+    let cls = 'cal-day';
+    if (!has)             cls += ' no-content';
+    if (has)              cls += ' has-content';
+    if (ds === todayStr)  cls += ' today';
+    if (ds === activeDateStr) cls += ' active-date';
+
+    el.className   = cls;
+    el.textContent = d;
+    el.dataset.date = ds;
+
+    if (has) {
+      el.addEventListener('click', () => {
+        pickDateFromCalendar(ds);
+        closeCalendar();
+      });
+    }
+
+    grid.appendChild(el);
+  }
+
+  updateCalNavBtns();
+}
+
+// Convert the currently active orderedDates label → YYYY-MM-DD
+function getActiveDateStr() {
+  if (!orderedDates.length) return '';
+  const label = orderedDates[activeDateIndex];
+  const d = new Date(parseLabelDate(label));
+  if (isNaN(d)) return '';
+  return d.toISOString().slice(0, 10);
+}
+
+// When a day is clicked in the calendar, find the matching orderedDates index
+function pickDateFromCalendar(dateStr) {
+  // Try exact item.date match first
+  const idx = orderedDates.findIndex(label => {
+    // Check both: item.date (if stored in label) and parsed label date
+    if (label === dateStr) return true;
+    const d = new Date(parseLabelDate(label));
+    if (isNaN(d)) return false;
+    return d.toISOString().slice(0, 10) === dateStr;
+  });
+
+  if (idx !== -1) {
+    activeDateIndex = idx;
+    renderActiveDate();
+  }
+}
+
+function updateCalNavBtns() {
+  if (!availableDateSet.size) return;
+  const sorted  = [...availableDateSet].sort();
+  const minDate = new Date(sorted[0]);
+  const maxDate = new Date(sorted[sorted.length - 1]);
+
+  const atMin = calYear < minDate.getFullYear() ||
+    (calYear === minDate.getFullYear() && calMonth <= minDate.getMonth());
+  const atMax = calYear > maxDate.getFullYear() ||
+    (calYear === maxDate.getFullYear() && calMonth >= maxDate.getMonth());
+
+  document.getElementById('calPrev').disabled = atMin;
+  document.getElementById('calNext').disabled = atMax;
+}
+
+// Month nav
+document.getElementById('calPrev').addEventListener('click', () => {
+  calMonth--;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCalendar();
+});
+document.getElementById('calNext').addEventListener('click', () => {
+  calMonth++;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCalendar();
 });
 
+// ── Toggle open / close ──────────────────────────────────────────────────
+const calToggle = document.getElementById('caCalToggle');
+const calPopup  = document.getElementById('caCalPopup');
+
+function openCalendar() {
+  calPopup.classList.add('open');
+  calToggle.classList.add('open');
+  calToggle.setAttribute('aria-expanded', 'true');
+  renderCalendar();
+}
+function closeCalendar() {
+  calPopup.classList.remove('open');
+  calToggle.classList.remove('open');
+  calToggle.setAttribute('aria-expanded', 'false');
+}
+
+calToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  calPopup.classList.contains('open') ? closeCalendar() : openCalendar();
+});
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+  if (!calPopup.contains(e.target) && e.target !== calToggle) {
+    closeCalendar();
+  }
+});
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeCalendar();
+});
+
+
+// ════════════════════════════════════════════════════════════
+// BOOT
+// ════════════════════════════════════════════════════════════
 PremiumGate.requireAccess({ pageName: 'Current Affairs', contentId: 'premiumPageContent' });
 loadCurrentAffairs();
 </script>
