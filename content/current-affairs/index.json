@@ -1,5 +1,68 @@
 [
   {
+    "label": "Oct 24, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Students protest against SIR at Mumbai University, demand arrest of CEC Gyanesh Kumar",
+    "summary": "Student organizations in Mumbai protested against the Special Intensive Revision (SIR) of electoral rolls, demanding its withdrawal. They also called for the arrest of Chief Election Commissioner Gyanesh Kumar and fresh elections based on previous voter lists. This highlights concerns over the integrity of electoral processes and constitutional bodies.",
+    "gd_angle": "Institutional trust, constitutional values, what reforms are the best for India as a democracy;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Geopolitics",
+    "headline": "U.S. could strike Iran this weekend, envoy says",
+    "summary": "An envoy indicated that the U.S. might launch strikes against Iran this weekend, following recent bombing campaigns against the clerical state. Israeli Prime Minister Benjamin Netanyahu has also reportedly vowed to topple Iran, signaling escalating tensions in the Middle East. This situation points to potential military conflict in the region.",
+    "gd_angle": "Geopolitical instability, regional conflicts, India's stance on Middle East security;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Geopolitics",
+    "headline": "Iran has detailed plans to hit Gulf undersea cables if war resumes, officials say",
+    "summary": "Iran's Revolutionary Guards (IRGC) deputy head stated that Iran possesses detailed plans to target seven major internet cables beneath the Strait of Hormuz. This threat would be activated if Iranian infrastructure came under attack, raising global concerns about the security of critical communication infrastructure. Such actions could severely impact worldwide digital connectivity.",
+    "gd_angle": "Strategic choke points, cyber warfare, impact on global communication and economy;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Strategic Technology",
+    "headline": "U.S. Energy Department designates helium as critical material",
+    "summary": "The U.S. Energy Department has designated helium as a critical material under the Energy Act of 2020. This strategic move aims to bolster American manufacturing capabilities and enhance the security of the supply chain for this vital resource. Helium is crucial for various high-tech industries, including defence and aerospace.",
+    "gd_angle": "Resource security, strategic minerals, implications for technological development and national security;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Legal action ordered against officials over irregularities in voter list in Pilibhit",
+    "summary": "Legal action has been ordered against officials in Pilibhit following irregularities identified in the voter list, where numerous Form-8s were approved while others were rejected. This highlights critical concerns regarding the integrity of electoral processes and the accountability of administration in maintaining accurate voter records. Ensuring fair electoral rolls is fundamental for democracy.",
+    "gd_angle": "Electoral integrity, administrative accountability, ensuring free and fair elections;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Environment policy",
+    "headline": "Chennai Corporation ramps up preparedness amid monsoon, El Niño concerns",
+    "summary": "The Greater Chennai Corporation has issued comprehensive instructions to officials to bolster preparedness for the impending Northeast monsoon season. Measures are being undertaken to address potential emergencies arising from heavy rainfall, strong winds, and floods, intensified by existing El Niño concerns. This proactive approach is crucial for urban resilience.",
+    "gd_angle": "Disaster management, climate change adaptation, urban resilience strategies;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Environment policy",
+    "headline": "Delhi govt. directs officials to identify pollution hotspots amid decline in air quality",
+    "summary": "With Delhi's air quality remaining 'poor' for a second consecutive day and no immediate relief predicted, the Environment Minister has instructed officials to develop hotspot-specific action plans. This initiative includes identifying responsible agencies and establishing deadlines for corrective measures to mitigate severe air pollution. Addressing air quality is vital for public health.",
+    "gd_angle": "Environmental governance, public health challenges, inter-state cooperation for pollution control;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Environment policy",
+    "headline": "Cyclonic storm likely to hit North Andhra Pradesh coast on October 28, says IMD",
+    "summary": "The Indian Meteorological Department (IMD) has forecast that a cyclonic storm is likely to make landfall along the North Andhra Pradesh coast around October 28. A low-pressure area has formed over the east-central and adjoining southeast Bay of Bengal, prompting authorities to initiate preparedness measures in the vulnerable coastal regions. Early warning systems are crucial.",
+    "gd_angle": "Disaster preparedness, climate change impacts, role of IMD in national safety;"
+  },
+  {
+    "label": "Oct 24, 2026",
+    "category": "Economy",
+    "headline": "M.P. receives investment proposals of over ₹15,400 crore at semiconductor summit",
+    "summary": "Madhya Pradesh secured investment proposals exceeding ₹15,400 crore at a recent semiconductor summit held in Indore. Key investments include a ₹6,415 crore data centre in Gwalior and commitments from five companies for industrial projects across major cities. These initiatives are expected to create over 4,450 direct jobs, boosting the state's economy and technological footprint.",
+    "gd_angle": "Economic development, strategic technology manufacturing, attracting foreign investment in critical sectors;"
+  },
+  {
     "label": "Oct 23, 2026",
     "category": "Geopolitics",
     "headline": "Russia ready for talks on plans for final Ukraine deal, not truce: Putin",
