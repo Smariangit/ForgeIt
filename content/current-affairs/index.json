@@ -1,5 +1,47 @@
 [
   {
+    "label": "Oct 25, 2026",
+    "category": "Economy",
+    "headline": "Indonesia cuts pipeline gas exports to Singapore by about 9%",
+    "summary": "Indonesia has reduced its natural gas exports to Singapore by approximately 9% (31 million standard cubic feet per day). This decision aims to divert gas supply to meet domestic power sector demands. The cut impacts Singapore's energy imports from Indonesia's Natuna and Sumatra fields.",
+    "gd_angle": "Energy security, regional economic dependencies, impact on bilateral relations;"
+  },
+  {
+    "label": "Oct 25, 2026",
+    "category": "Geopolitics",
+    "headline": "Houthis say attacked Saudi Arabia, Yemen’s Aden after deadly strikes",
+    "summary": "Yemen's Houthi rebels launched new attacks on Saudi Arabia and Aden, the seat of Yemen’s internationally recognised government. This offensive followed accusations by the Iran-backed group that Saudi Arabia was responsible for recent strikes that killed 17 people. The attacks signal an escalation in the ongoing regional conflict.",
+    "gd_angle": "West Asian conflicts, regional security dynamics, impact on global energy markets and maritime security;"
+  },
+  {
+    "label": "Oct 25, 2026",
+    "category": "Strategic Technology",
+    "headline": "Starshield",
+    "summary": "The 'Starshield' headline refers to strategic satellite technology, like SpaceX's Starlink, which has critical defence implications. Ukrainian soldiers reportedly experienced loss of satellite connectivity for their drones while fighting Russian forces in Zaporizhzhia. This incident highlights the vulnerability and importance of such systems in modern warfare.",
+    "gd_angle": "Technology adaptation, future warfare, how will it affect future of defence;"
+  },
+  {
+    "label": "Oct 25, 2026",
+    "category": "Environment policy",
+    "headline": "Andhra Pradesh braces for very severe cyclonic storm; landfall likely between Bapatla and Vizag on October 28",
+    "summary": "Andhra Pradesh is preparing for a 'very severe cyclonic storm' expected to make landfall between Bapatla and Vizag on October 28. The storm is predicted to have sustained wind speeds of 118 kmph to 221 kmph. State authorities are on high alert, implementing disaster preparedness measures.",
+    "gd_angle": "Disaster management, climate change impact, national preparedness strategies;"
+  },
+  {
+    "label": "Oct 25, 2026",
+    "category": "Economy",
+    "headline": "Social security, welfare fund board pensions in Keralam to be distributed from October 26",
+    "summary": "The Kerala Chief Minister's office announced that the distribution of welfare pensions for October will commence on October 26. The government has sanctioned a total of ₹1,081 crore for this purpose. This includes ₹961.64 crore for social security pensions and ₹119.46 crore for welfare fund board pensions.",
+    "gd_angle": "Social welfare programs, government's economic policies, inclusive growth initiatives;"
+  },
+  {
+    "label": "Oct 25, 2026",
+    "category": "Economy",
+    "headline": "Healthcare challenges require collaborative, technology-ledsolutions, says Health Secretary",
+    "summary": "Health Secretary Darez Ahamed stressed the need for collaborative and technology-led solutions to tackle India's healthcare challenges. Speaking at the TN MedClave 2026, he highlighted 'Intelligent Healthcare: From Innovation to Implementation' as a core theme. This emphasizes leveraging technology for public health advancements and economic growth in the healthcare sector.",
+    "gd_angle": "Technology adaptation, public health policy, role of innovation in national development;"
+  },
+  {
     "label": "Oct 24, 2026",
     "category": "Constitutional reforms",
     "headline": "Students protest against SIR at Mumbai University, demand arrest of CEC Gyanesh Kumar",
