@@ -1,5 +1,75 @@
 [
   {
+    "label": "Nov 02, 2026",
+    "category": "Economy",
+    "headline": "Even as unemployment falls, lack of ‘decent work’ in India",
+    "summary": "India's unemployment rate is falling, but a significant challenge remains in the lack of 'decent work' opportunities. Despite improvements in employment conditions in some sectors, access to social security for workers is still limited. This highlights a critical issue in India's economic development and social welfare, requiring comprehensive policy interventions.",
+    "gd_angle": "Socio-economic challenges, inclusive growth, policy responses to improve working conditions and social security in India;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Geopolitics",
+    "headline": "Canada PM Carney says he had good conversation with Trump on trade",
+    "summary": "Canadian Prime Minister Mark Carney reported a positive conversation with U.S. President Trump regarding trade relations between the two nations. This interaction underscores ongoing bilateral economic discussions and diplomatic engagement at the highest levels. Such dialogues are crucial for maintaining stable international trade environments and addressing shared economic interests.",
+    "gd_angle": "International relations, trade diplomacy, impact of leadership interactions on bilateral ties and global economy;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Geopolitics",
+    "headline": "Bulgarian President wins runoff election: exit polls",
+    "summary": "Bulgaria’s incumbent President Iliana Iotova won the presidential runoff election, according to exit polls. Her victory is significant as she favors dialogue with Moscow and opposes military aid to Ukraine. This outcome indicates potential shifts in Bulgaria's foreign policy and its stance on regional conflicts, impacting broader European geopolitics.",
+    "gd_angle": "European geopolitics, implications of national elections on international alignment, understanding regional security dynamics;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Geopolitics",
+    "headline": "Trump holds call with Netanyahu over state of Iran war: report",
+    "summary": "U.S. President Trump reportedly held a call with Israeli Prime Minister Netanyahu to discuss the ongoing situation regarding the Iran war. Trump stated that negotiations to end the war were progressing, with a few targets remaining. This highlights critical diplomatic efforts and strategic discussions concerning a major Middle Eastern conflict and its international ramifications.",
+    "gd_angle": "Middle East geopolitics, international security, diplomatic approaches to regional conflicts and non-proliferation;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Geopolitics",
+    "headline": "U.S. mid-term elections: How officials are facing the heat",
+    "summary": "The U.S. mid-term elections highlight challenges faced by election officials, who manage thousands of county booths and vote counts. The article draws a comparison with India's electronic voting machines (EVMs), which can process millions of votes rapidly. This contrasts the different democratic processes and technological efficiencies in elections between the two nations.",
+    "gd_angle": "Comparative democracy, electoral systems, technology's role in governance and efficiency in democratic processes;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Strategic Technology",
+    "headline": "Slow recovery: On the ISRO’s GSLV-F18 mission",
+    "summary": "The article discusses the 'slow recovery' regarding ISRO’s GSLV-F18 mission, suggesting an increased budget allocation for the Department of Space in the upcoming Union Budget. A proposed hike to ₹17,000 crore from ₹13,705.6 crore in 2026-27 is recommended, focusing on manufacturing launch vehicles, replacing satellites, and recruitment. This highlights the importance of strategic investment in space technology for national development.",
+    "gd_angle": "Strategic technology, space capabilities, economic allocation for scientific advancement and national security interests;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Environment policy",
+    "headline": "Day 1 of Delhi entry curbs: 714 vehicles turned back, 38 impounded",
+    "summary": "Delhi implemented new time-bound measures to curb winter air pollution, including denying entry to non-Delhi registered vehicles not meeting BS-VI emission norms. On the first day, 714 vehicles were turned back and 38 impounded. This initiative reflects the government's strong commitment to tackling environmental challenges and improving public health.",
+    "gd_angle": "Environmental policy, sustainable development, government initiatives to combat pollution and their enforcement challenges;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Geopolitics",
+    "headline": "Dwindling support: On the U.S. and the Cuban embargo",
+    "summary": "The UN General Assembly consistently passes resolutions calling on the U.S. to end its economic, commercial, and financial embargo against Cuba, a trend observed almost annually since 1992. The recent October 30 resolution was therefore anticipated, indicating a growing international consensus against the U.S. policy. This reflects global shifts in diplomatic pressure and challenges to long-standing foreign policies.",
+    "gd_angle": "International diplomacy, economic sanctions, historical foreign policies and their global humanitarian and political impact;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Litigants will not be entitled to refund of court fees if disputes get settled out of court after commencement of trial, rules Madras High Court",
+    "summary": "The Madras High Court ruled that litigants are not entitled to a refund of court fees if disputes are settled out of court after the trial commences. This judgment, diverging from a 2021 Supreme Court ruling, aims to streamline judicial processes and encourage earlier settlements, impacting the economic aspects of litigation. It signifies a focus on judicial efficiency and resource allocation within the legal system.",
+    "gd_angle": "Judicial reforms, constitutional interpretation, balancing justice system efficiency with public access to legal remedies;"
+  },
+  {
+    "label": "Nov 02, 2026",
+    "category": "Economy",
+    "headline": "Karnataka turns to U.K. roadshows to revive declining NRI tourist footfall",
+    "summary": "To counter a decline in NRI tourist footfall, Karnataka's Tourism Department is participating in the World Travel Market (WTM) London 2026 roadshow. This initiative aims to revive the state's tourism sector by attracting international visitors, showcasing efforts to boost economic activity through global marketing strategies. It highlights the importance of international outreach for regional economic growth.",
+    "gd_angle": "Economic development, international tourism, state-level diplomacy for attracting foreign investment and revenue generation;"
+  },
+  {
     "label": "Nov 01, 2026",
     "category": "Sports Governance",
     "headline": "IOA’s election Code of Conduct bars criticism of ‘private life’ of candidates, publicity",
