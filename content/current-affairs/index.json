@@ -1,5 +1,75 @@
 [
   {
+    "label": "Nov 09, 2026",
+    "category": "Strategic Technology",
+    "headline": "Nvidia investigating reports that CEO Jensen Huang was targeted by Chinese intelligence",
+    "summary": "Nvidia is reportedly investigating claims that its CEO, Jensen Huang, was a target of Chinese intelligence. This comes amid intense global competition in advanced chip technology. Such targeting raises concerns about economic espionage and national security implications in the tech sector.",
+    "gd_angle": "Strategic technology, economic espionage, national security implications of tech leadership;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Geopolitics",
+    "headline": "Saudi Arabia turns to Syria for help as fighting with Houthis escalates",
+    "summary": "Saudi Arabia is reportedly seeking assistance from Syria as its conflict with Houthi rebels intensifies. This development follows the ouster of Bashar Assad and Israeli forces controlling a UN buffer zone in southern Syria. The move signals a potential realignment of regional alliances amid ongoing Middle East instability.",
+    "gd_angle": "Middle East geopolitics, regional alliances, security implications of proxy conflicts;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Geopolitics",
+    "headline": "Production suspended at Iraq’s Khor Mor gas field after drone attack, sources say",
+    "summary": "Production at Iraq's crucial Khor Mor gas field, a major energy asset in the Kurdistan region, was halted following a drone attack. This incident highlights the persistent threat posed by non-state actors and regional instability to critical energy infrastructure. It raises concerns about energy security and the broader security landscape in the Middle East.",
+    "gd_angle": "Energy security, regional stability, impact of non-state actors on critical infrastructure;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Defence",
+    "headline": "Infiltrators lurking across the border, will send them back from the same way they enter: Adhikari",
+    "summary": "West Bengal Chief Minister Suvendu Adhikari stated that infiltrators are present across the border, vowing to repel them. His remarks underscore ongoing challenges with illegal immigration and border security in the region. This highlights the government's commitment to protecting national integrity and addressing demographic changes.",
+    "gd_angle": "Border security challenges, national integrity, strategies to counter illegal immigration;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Environment policy",
+    "headline": "Air pollution over 50 times WHO limit in parts of Delhi as people defy ban on firecrackers on Deepavali",
+    "summary": "Delhi experienced severe air pollution, exceeding WHO limits by over 50 times, after residents defied firecracker bans during Deepavali. This highlights the persistent struggle in implementing environmental policies and the challenge of balancing cultural practices with public health. The incident raises serious concerns about urban environmental governance.",
+    "gd_angle": "Environmental policy implementation, public health crisis, balancing cultural practices with ecological concerns;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "PM diplomacy",
+    "headline": "19 Indian seafarers stranded in Yemen evacuated, Embassy says",
+    "summary": "Nineteen Indian seafarers, who were stranded in Yemen's Hodeidah and Sanaa for two weeks, have been successfully evacuated. The Indian Embassy confirmed their safety and return journey to India. This operation highlights India's commitment to ensuring the safety of its citizens abroad, especially in conflict zones, through diplomatic efforts.",
+    "gd_angle": "Diplomatic efforts, citizen safety abroad, role of Indian missions in conflict zones;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Geopolitics",
+    "headline": "Tens of thousands march in Amsterdam, pressing Dutch government on Gaza, Israel",
+    "summary": "Thousands marched in Amsterdam to pressure the Dutch government regarding its stance on the Gaza-Israel conflict. Demonstrators focused on economic and military ties with Israel. This reflects growing public opinion and international pressure on governments to address geopolitical conflicts and humanitarian crises.",
+    "gd_angle": "International conflicts, role of public opinion in foreign policy, geopolitical implications of humanitarian crises;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Geopolitics",
+    "headline": "Eisenkot warns of Israel crisis as he seeks to replace Netanyahu’s government",
+    "summary": "Gadi Eisenkot, Israel's former military chief, has begun efforts to form a new government, warning of a historic crisis under Benjamin Netanyahu. Eisenkot received a mandate from President Herzog, giving him 28 days to form a government. This power struggle signals potential shifts in Israel's leadership and its geopolitical approach.",
+    "gd_angle": "Middle East political stability, leadership transitions, regional security implications of Israeli domestic politics;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Environment policy",
+    "headline": "Thick smog blankets Delhi on Deepavali night, AQI at 20 stations ‘severe’",
+    "summary": "Delhi was covered in thick smog on Deepavali night, with the Air Quality Index (AQI) reaching 'severe' levels at 20 monitoring stations. This significant deterioration of air quality underscores the recurring challenge of urban pollution. It highlights the need for stricter enforcement of environmental regulations and public awareness.",
+    "gd_angle": "Urban environmental challenges, impact of cultural practices on pollution, governance in public health crises;"
+  },
+  {
+    "label": "Nov 09, 2026",
+    "category": "Geopolitics",
+    "headline": "Eisenkot says Netanyahu's party welcome to join government under him as new Israeli PM",
+    "summary": "Gadi Eisenkot, tasked with forming Israel's new government, expressed openness to Prime Minister Netanyahu's party joining under his leadership. This move suggests potential complex coalition formations amidst political transition. The outcome will significantly impact Israel's domestic and foreign policy, particularly concerning regional stability.",
+    "gd_angle": "Israeli political landscape, coalition dynamics, impact on regional stability and foreign policy;"
+  },
+  {
     "label": "Nov 08, 2026",
     "category": "Geopolitics",
     "headline": "U.S. military says it disabled cargo vessel in Gulf of Oman",
