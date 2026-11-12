@@ -1,5 +1,40 @@
 [
   {
+    "label": "Nov 13, 2026",
+    "category": "Economy",
+    "headline": "TNPDCL seeks nod to procure 3,000 MW",
+    "summary": "Tamil Nadu Power Distribution Corporation Limited (TNPDCL) proposes procuring 3,000 MW of round-the-clock power for five years. This initiative aims to meet surging power demand, currently around 19,000 MW, amidst extended summers. With an estimated annual expenditure of ₹6,150 crore, it is a significant step towards ensuring the state's energy security.",
+    "gd_angle": "Energy security, infrastructure development, economic planning, sustainable power solutions for state growth."
+  },
+  {
+    "label": "Nov 13, 2026",
+    "category": "Geopolitics",
+    "headline": "Yemen’s Houthis say they targeted Saudi East-West pipeline, port city of Yanbu",
+    "summary": "Yemen's Houthi rebels claimed attacks on Saudi Arabia's critical East-West pipeline and the port city of Yanbu, a key oil export terminal. This action follows the Saudi-led coalition's interception of a Houthi drone near Riyadh. The escalating conflict threatens global energy supplies and regional stability.",
+    "gd_angle": "Geopolitical instability, energy security, regional conflict dynamics, implications for global trade and maritime security."
+  },
+  {
+    "label": "Nov 13, 2026",
+    "category": "Strategic Technology",
+    "headline": "Widespread outage hits Microsoft apps",
+    "summary": "Microsoft platforms, including Outlook, experienced a widespread outage affecting numerous users globally. Many encountered issues with email accounts and other apps due to server failures. The company is actively working on a fix, highlighting the critical reliance on major digital infrastructure for daily operations.",
+    "gd_angle": "Cybersecurity, digital infrastructure resilience, strategic technology dependence, impact of tech failures on national and global operations."
+  },
+  {
+    "label": "Nov 13, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Karnataka to write to Prime Minister asking for inclusion of enhanced quota in Ninth Schedule",
+    "summary": "The Karnataka government plans to urge the Prime Minister to include its enhanced SC/ST reservation in the Ninth Schedule of the Constitution. This move seeks to protect the reservation policy after the High Court quashed a previous Act. It aims to reinforce constitutional safeguards for social justice and ensure funds reach beneficiaries.",
+    "gd_angle": "Institutional trust, constitutional values, social justice policies, federalism, legal mechanisms for affirmative action."
+  },
+  {
+    "label": "Nov 13, 2026",
+    "category": "Economy",
+    "headline": "Private passenger ship service between Beypore and Lakshadweep soon",
+    "summary": "A private passenger ship service between Beypore and Lakshadweep is set to commence operations, with the vessel 'Theja' already anchored at Beypore port. This initiative aims to boost connectivity and tourism to the strategic island territory. It signifies a step towards enhancing infrastructure and economic development in the region.",
+    "gd_angle": "Infrastructure development, regional connectivity, strategic maritime links, economic development in island territories."
+  },
+  {
     "label": "Nov 12, 2026",
     "category": "Geopolitics",
     "headline": "Trump defends Iran war in Veterans Day address",
