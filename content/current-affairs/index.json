@@ -1,5 +1,75 @@
 [
   {
+    "label": "Nov 28, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Centre proposes freeze on Lok Sabha seat proportions for States until 2051",
+    "summary": "A new Constitutional Amendment Bill approved by the Union Cabinet proposes an extension of the existing freeze on the inter-State distribution of Lok Sabha seats for another 25 years, until 2051. This addresses concerns of States fearing a loss of their proportionate strength due to population decline, marking a shift from a previous Bill seeking redistribution based on the 2011 Census.",
+    "gd_angle": "Institutional trust, constitutional values, what reforms are the best for India as a democracy; impact on federalism and regional representation."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Geopolitics",
+    "headline": "Makkah alliance countries review regional security situation, condemn Houthi attacks on Saudi Arabia",
+    "summary": "Foreign and Defence Ministers from Saudi Arabia, Turkiye, and Pakistan met in Islamabad to review the regional security situation and condemn Houthi attacks on Saudi Arabia. This high-level gathering focused on collaborative efforts against regional threats, indicating evolving alliances in the Middle East.",
+    "gd_angle": "Regional security dynamics, India's strategic interests in the Middle East, implications of such alliances and their impact on global stability."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Geopolitics",
+    "headline": "Hamas says Israel tried to kill chief’s son in Gaza",
+    "summary": "Hamas reported that Israel attempted to assassinate the son of its chief, Khalil al-Hayya, in an overnight strike in Gaza City, though he reportedly survived. This incident highlights the ongoing Israel-Hamas conflict and targeted operations in the region, escalating tensions.",
+    "gd_angle": "Middle East conflict dynamics, international humanitarian law, role of international actors in de-escalation; implications for regional peace."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Economy",
+    "headline": "Uttar Pradesh Khadi Mahotsav begins in Lucknow",
+    "summary": "The 10-day State-level ‘Uttar Pradesh Khadi Mahotsav-2026’ was inaugurated in Lucknow, emphasizing Khadi's role in self-respect, Swadeshi, and self-reliance. The Minister highlighted how Prime Minister Modi’s calls for ‘Vocal for Local’ and ‘Atmanirbhar Bharat’ have boosted Khadi since 2014, promoting local industries.",
+    "gd_angle": "Economic growth, 'Make in India' initiative, boosting local industries and employment; promoting self-reliance and rural entrepreneurship."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Strategic Technology",
+    "headline": "Cultural values of language remain irreplaceable in AI era: Arabic meet",
+    "summary": "An Arabic meet discussed the irreplaceable cultural values of language in the era of Artificial Intelligence, focusing on preserving linguistic heritage amidst technological advancements. The discussion highlighted the essential human element in an AI-driven future, beyond mere technological capabilities.",
+    "gd_angle": "Ethical AI development, cultural preservation in the digital age, balancing technology with human values; impact of AI on society and traditional knowledge."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Constitutional reforms",
+    "headline": "Lok Sabha seat freeze is no longer linked to population stabilisation",
+    "summary": "A Bill approved by the Union Cabinet proposes to continue the existing proportion of Lok Sabha seats for individual States until 2051, decoupling it from population stabilization goals. The statement of objects and reasons for the fresh Bill also presents a nexus between this freeze and women’s reservation.",
+    "gd_angle": "Impact on federal structure, representation in parliament, long-term demographic and political implications; constitutional amendments and their rationale."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Defence",
+    "headline": "Navy Project 17A programme completed as GRSE hands over final stealth frigate Vindhyagiri",
+    "summary": "The Indian Navy received 'Vindhyagiri', the seventh and final ship of the Nilgiri-class (Project 17A) stealth frigates, from Garden Reach Shipbuilders and Engineers Ltd (GRSE) in Kolkata. This marks the completion of the Project 17A program, a significant milestone for India’s indigenous warship construction capabilities and maritime defence preparedness.",
+    "gd_angle": "Indigenous defence capabilities, naval modernization, maritime security, self-reliance in defence manufacturing; enhancing India's strategic naval power."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Geopolitics",
+    "headline": "U.S. disables ship trying to leave Iran, as Tehran vows to confront blockade",
+    "summary": "The U.S. military disabled a Palau-flagged commercial ship attempting to run its blockade of Iran, striking its stern and disabling propulsion, though the civilian crew was unharmed. An adviser to the Iranian supreme leader vowed to keep the Strait of Hormuz shut and break the embargo, escalating regional tensions.",
+    "gd_angle": "International maritime law, energy security, geopolitical tensions in the Middle East, implications for global trade routes; freedom of navigation vs. blockades."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Strategic Technology",
+    "headline": "‘India needs to develop its own intellectual property’",
+    "summary": "Dignitaries at a centenary commemorative event emphasized the critical need for India to develop its own intellectual property, particularly in semiconductors, defence electronics, and clean energy. This highlights a strategic imperative for indigenous innovation, self-reliance, and strengthening the nation's technological autonomy.",
+    "gd_angle": "Innovation ecosystem, intellectual property rights, strategic autonomy in technology, economic competitiveness; fostering domestic R&D for national security."
+  },
+  {
+    "label": "Nov 28, 2026",
+    "category": "Economy",
+    "headline": "Global fashion brands shift orders from Bangladesh to India amid unrest",
+    "summary": "Global fashion brands are increasingly shifting orders from Bangladesh to India, following recent unrest and a significant 36% minimum wage increase for garment workers in Bangladesh. This presents a substantial opportunity for India's textile industry to attract investment and boost exports amid regional supply chain disruptions.",
+    "gd_angle": "Supply chain resilience, India's manufacturing competitiveness, regional economic shifts, impact on employment; advantages for 'Make in India' initiative."
+  },
+  {
     "label": "Nov 27, 2026",
     "category": "Geopolitics",
     "headline": "Clashes at Besiktas match against Israeli club spark diplomatic row",
